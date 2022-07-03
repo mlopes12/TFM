@@ -465,13 +465,190 @@ Se presenta el contexto de realización del trabajo realizando una revisión de 
 Breve descripción del contexto de realización del trabajo. Sirve para situar al lector.
 
 
-\section{El estado de la cuestión}
+\section{El estado del arte}
 
-Revisión de los trabajos existentes.
+Para conocer el punto en el que se encuentran las investigaciones relacionadas con este trabajo que han sido realizadas anteriormente se realizará el estado del arte. La metodología de investigación se divide en las siguientes tres fases: planificación de búsqueda, proceso de búsqueda y selección de muestras, y extracción de datos y preparación de informes. Para realizar el estudio seguimos las recomendaciones de Kitchenham \cite{nueve}, así como la guía PRISMA \cite{diez}. 
+
+\subsection{Definición del proyecto}
+
+Tras comprobar que no se ha realizado un estudio centrado exactamente en el campo de interés de nuestro trabajo que responda a las preguntas planteadas en él, se ha procedido a la búsqueda de artículos de los que conforman el universo de estudio con el que se trabajará. Se han considerado varias fuentes de información tales como IEEE Digital Library y Scopus.
+
+Una vez decididas las bases de datos en las que se van a realozar las búsquedas, es necesario construir cadenas de búsqueda adecuadas que permitan obtener resultados satisfactorios. Para la realización de la búsqueda se han construido XXX cadenas que se aplican a cada una de las bases de datos indicadas anteriormente. Se utilizarán artículos de acceso libre.
+
+La primera de ellas juntando a todas las tecnologías para conocer si hay alguna información combinada de ambas
+
+SS1('charging station' AND 'vehicle' AND ('security' OR 'cybersecurity') AND ('RFID' OR 'NFC'))
+
+Mediante esta cadena de búsqueda se intentó recopilar un conjunto de artículos en los que se encuentren todos los términos del trabajo. Uno de los filtros que se aplican durante la búsqueda es el relacionado con la fecha de publicación del artículo. Al ser campos tecnológicos, con cambios muy veloces, como es la ciberseguridad, nos centraremos únicamente en artículos recientes. En este caso, la búsqueda se centra en artículos publicados entre el año 2019 a hoy.
+
+Por otro lado se han realizado otras dos búsquedas separando las cadenas anteriores para conocer el estado de ambas tecnologías por separado dado que no hay una gran cantidad de artículos en la búsqueda anterior.
+
+SS2(('security' OR 'cybersecurity') AND ('RFID' OR 'NFC'))
+SS3('charging station' AND 'vehicle')
+
+En este caso el tiempo de búsqueda es menor, ya que hay un mayor número de artículos y, como se ha mencionado anteriormente, las tecnologías NFC y los cargadores de coche eléctrico tienen una evolución muy rápida y constante.
+
+
 
 \section{La definición del problema}
 
-Descripción del problema que ha motivado nuestro trabajo. Redactar en lenguaje sencillo y enumerando, de manera explícita, las limitaciones encontradas.
+Los equipos de suministro de vehículos eléctricos (EVSE), también conocidos como estaciones de recarga, sirven para cargar los vehículos eléctricos. Los EVSE contienen sistemas de computación conectados a Internet. Estos sistemas cumplen importantes funciones de control, tales como la autorización, la recarga de vehículos eléctricos y la conexión a la red eléctrica local. Las estaciones de carga autorizan a usuarios y vehículos mediante tarjetas RFID o NFC, Bluetooth o Wi-Fi.
+
+Por todo ello, hay muchos componentes de detección, comunicación y computación en los EVSE que son potencialmente vulnerables a los ataques de ciberseguridad. Como en todos los ataques, los piratas informáticos tratan de explotar estas vulnerabilidades para comprometer la disponibilidad, la integridad y la confidencialidad de la red. En este caso, se habla de una red de estaciones de carga o incluso la red eléctrica. Dado el tremendo crecimiento del mercado de vehículos eléctricos en los próximos años, es importante diseñar estaciones de carga confiables. El diseño de estaciones de carga confiables necesita una comprensión más profunda de las interacciones ciberfísicas dentro de la estación de carga, así como de las relaciones entre los componentes cibernéticos y físicos. 
+
+Se presenta un enfoque de sistema para comprender los posibles ataques a este tipo de sistemas. Además se tratará el estado de los sistemas de carga inteligente y de los sistemas de comunicaciones NFC. Se propone una estructura de sistema basica para dirimir las autorizaciones para poder recargar basada en un servidor web y una base de datos. Finalmente se propondrá un sistema conceptual para evitar los ataques de acceso no autorizado a nivel físico al punto de recarga (robo de datos NFC o denegación de servicio (DoS) para mejorar la seguridad de estos sistemas.
+
+\chapter{Estaciones de recarga del coche eléctrico (EVSE)}
+\label{Estaciones de recarga del coche eléctrico (EVSE)}
+
+En la próxima década se espera un gran crecimiento de los vehículos eléctricos enchufables (PEV) en el mundo. El calcula que en la próxima década habrá en circulación unos 120 millones de coches eléctricos. En lo que corresponde a España, actualmente se calcula que, en el mejor de los casos, no disponemos de más de 674 mil automóviles tanto eléctricos como híbridos. El equipo de carga, también conocido como Equipo de Suministro de Vehículos Eléctricos (EVSE) o estaciones de carga, proporciona carga segura a los vehículos eléctricos, de manera similar a las estaciones de servicio. 
+
+Actualmente, una de las limitaciones más graves para la difusión de lPEV es la falta de una infraestructura de carga de PEV generalizada, a pesar de la gran difusión de la infraestructura eléctrica. Aunque se espera que el problema del coste de los PEV disminuya con su creciente difusión (lo que va produciendo una mayor investigación y avance en este tipo de tecnologías), la todavía limitada autonomía del automóvil y el aún largo tiempo de carga de la batería, mucho más prolongado en comparación con el que se tarda en rellenar el depósito de combustible de los vehículos de combustión interna \cite{diezuno}, son percibidos actualmente por los compradores como serias barreras a la compra \cite{diezdos}\cite{dieztres}.
+
+Por ahora, el tiempo de recarga de la batería está limitado principalmente por la capacidad de la conexión a la red. Si bien la recarga mediante enchufes puede realizarse durante la noche en el hogar, es posible realizar una solución de recarga más rápida que requiere una alta potencia para la red eléctrica en estaciones de recarga, en estacionamientos públicos o comerciales, en centros comerciales y en la calle o los lugares de trabajo.
+
+Con una difusión masiva del PEV, las cargas de las baterías tendrán un gran impacto en el funcionamiento de las redes inteligentes, por lo que se debería tener en cuenta la alta potencia necesaria para una carga rápida (por ejemplo, se requieren 150 kW para cargar un Tesla modelo S del 20\% al 80\% en 30 minutos). Los problemas de sobrecarga de la red eléctrica pueden surgir cuando varios vehículos en el mismo vecindario se recargan al mismo tiempo, o durante los picos de carga normales.
+
+Los sistemas de carga de coche eléctrico no dejan de ser un tipo de sistema ciberfísico. Estos sistemas ciberfísicos (CPS, por sus siglas en inglés) son sistemas construidos mediante una integración segura y sin inconvenientes físicos y de computación (es decir, detección, computación y redes). Las llamadas tecnologías de sistemas inteligentes, como el transporte inteligente, la red inteligente, los vehículos inteligentes... se basan en los fundamentos de esta integración de CPS. La carga inteligente proporciona un mecanismo de comunicación entre el EVSE y la red que admite el monitoreo y la gestión de energía para mejorar la eficiencia y la personalización de los horarios de carga. A través de una mejor conectividad y control estos protocolos de carga inteligente han sido diseñados para reducir costes, equilibrar las cargas máximas y facilitar una mejor integración con diferentes niveles de operadores de red y fuentes de energía renovable. Los EVSE existentes tienen varios componentes tanto de comunicación como informáticos los cuales se utilizan para gestionar y controlar su funcionamiento. Por otro lado, las tecnologías emergentes de redes inteligentes también tienen como objetivo el facilitar un intercambio de energía bidireccional entre los vehículos eléctricos enchufables y la red a través de EVSE, en particular los cargadores rápidos. Además durante el proceso de autenticación para el inicio de la recarga inteligente se envían tanto la información personal como la financiera. Por todo ello, que la operación de EVSE sea segura es muy importante tanto para los vehículos como para las personas y la infraestructura de la red eléctrica.
+
+Hay varias posibles motivaciones para lanzar un ataque a una estación de carga que van desde el robo de electricidad hasta algunos ataques más sofisticados buscan producir la interrupción de una red de estaciones de carga mediante el uso de un EVSE como punto de entrada a la misma. Los ataques podrían ser aún más graves si el malware consigue propagarse potencialmente a través de una red de estaciones de carga que pudieran afectar la red eléctrica.
+
+La Sociedad de Ingenieros Automotrices (SAE) ha desarrollado un conjunto de estándares y protocolos para ser implementados por los fabricantes de estaciones de carga. La cantidad de componentes interconectados en EVSE y la conectividad de este con otros subsistemas (vehículos, smartphones, la red eléctrica...), y los mecanismos de seguridad mal implementados hacen que EVSE sea muy vulnerable a los ataques cibernéticos. El Departamento de Energía/Departamento de Transporte de los Estados Unidos (DOE/ DOT) realizó un informe el cual destaca brechas de seguridad cibernética en la infraestructura EVSE actual que incluye ataques de intermediarios o terceras personas, fraude de pagos, privacidad, daños a la batería del vehículo, deegación de servicio (DoS) y el malware se propaga del vehículo eléctrico o PEV al EVSE. El informe antes mencionado y algunos otros estudios \cite{once}\cite{doce}\cite{trece} demostraron algunas brechas y deficiencias en la infraestructura de carga existente por la falta de guías a seguir y pruebas de seguridad cibernética realizadas antes de su implementación. Además también indican algunos estudios cómo la carga descontrolada de EVSE puede crear un desequilibrio o un efecto negativo en la red eléctrica.
+
+
+\section{Seguridad de los dispositivos EVSE desde un punto de vista ciberfísico}
+\label{Seguridad de los dispositivos EVSE desde un punto de vista ciberfísico}
+
+Actualmente, la mayoría de las estaciones de carga ya implementan algún tipo de seguridad de la información. Pero, en cualquier caso, estos métodos basados en tecnología de la información están limitados con respecto a la comprensión de cómo puede verse afectada la seguridad general de CPS. Relacionando los objetivos de ciberseguridad generales con los de este sistema encontramos lo siguiente:
+
+
+\begin{enumerate}
+
+\item \textit{Disponibilidad}: Está determinada por el tiempo activo frente al tiempo de inactividad de los servicios de carga. Es importante que se proporcione un sistema defensivo para monitorizar, detectar y prevenir ataques DoS, entre otros tipos de ataques a las estaciones de carga, para mantener una alta disponibilidad.
+\item \textit{Integridad}: Es la protección contra cambios no autorizados, ya sea en los datos como en la información de control. La protección debe proporcionarse contra la manipulación de la información almacenada o intercambiada entre varias entidades, ya sea la estación de carga, el servidor centralizado o el dispositivo del cliente. 
+\item \textit{Confidencialidad}: Garantiza el mantenimiento del secreto en la transmisión de datos entre las partes, ya sean datos del usuario o información bancaria.
+
+\end{enumerate}
+
+Los principales tipos de EVSE son el Nivel 1 (120V de corriente alterna, en adelante CA,  monofásico de ``carga lenta”), el Nivel 2 (240V de CA de fase dividida) y el Nivel 3 (hasta 500V de corriente continua, en adelante CC).El hardware de los EVSE de nivel 2 diseñados para su uso en estaciones de carga disponibles públicamente es bastante más complejo que los cargadores de nivel 1 y los EVSE de nivel 2 diseñados para uso doméstico privado. La disponibilidad de un hardware informático más sofisticado también permite que el EVSE de nivel 2 tenga un mayor número de protecciones de seguridad para la carga que la mayoría de los EVSE de nivel 1. Más allá del equipo necesario para iniciar la recarga de CA, el EVSE de nivel 2 en las estaciones de carga requiere placas de circuito impreso patentadas para controlar una variedad de componentes y subsistemas. Muchos EVSE de nivel 2 tienen módulos de comunicación que se utilizan para conectarse con una red de comunicaciones de forma inalámbrica, lo que permite a los fabricantes implementar una serie de funciones, como validación y verificación de usuarios, establecimiento de tarifas por parte del administrador de la estación de recarga y el reporte de eventos tales como información de diagnóstico, inicialización y finalización de recargas...
+
+Los EVSE en las estaciones de carga de nivel 2 suelen disponer de indicadores LED y LCD que se utilizan para proporcionar a los usuarios información sobre el estado de la estación y/o la en qué estado se encuentra su proceso de carga, algo similar a las bombas de gasolina modernas. También es común que EVSE venga equipado con escáneres de identificación por radiofrecuencia (RFID) que pueden leer tarjetas de crédito o tarjetas de miembros de la red EVSE para poder procesar pagos. EVSE puede implementar varias placas con algunos propósitos especiales, ya sea una placa de comunicación, una placa de LED o una placa de E/S de usuario. 
+
+El tener un hardware más sofisticado permite que el EVSE de nivel 2 pueda incluir más protecciones de seguridad para el proceso de recarga que la mayoría de los EVSE de nivel 1. Al igual que el EVSE de nivel 1, el EVSE de nivel 2 interactúa con los PEV a través de un conector de cinco conductores. Tres de los cables están conectados para suministrar energía desde la red eléctrica y solo están separados de una conexión directa de red al PEV a través de relés internos del EVSE. Se utiliza una combinación de tres tomas de voltaje conectadas directamente además de tres sensores de transformadores de corriente no invasivos que proporcionan al hardware de la computadora principal del EVSE información sobre la energía entregada a un vehículo conectado al punto de recarga, lo que permite las mediciones necesarias utilizadas para calcular el coste de la sesión de recarga. Los otros dos cables son la línea piloto y la línea de proximidad. La línea de proximidad se conecta solo a una red de resistencia simple dentro del enchufe EVSE que es la que el PEV utiliza para determinar si la conexión está bien realizada. Normalmente no se comunica con el hardware de la computadora EVSE de ninguna manera, aunque algunos modelos incluyen componentes electrónicos en el circuito que evitan que se notifique en el extremo PEV que la conexión se ha realizado correctamente cuando el EVSE no está listo para recargar. El cable más importante es la línea piloto, que es el que utilizan el EVSE y el PEV para comunicarse entre sí. Cuando una estación está inactiva, se aplica una señal de voltaje de 12V CC a la línea piloto, pero cuando un PEV consigue conectarse mediante una conexión física, el EVSE detecta esta acción a través de un detector de voltaje y cambia a una fuente que genera una onda cuadrada de 1kHz de amplitud de 12V en la línea piloto. Después, un circuito eléctrico en el PEV que consta de interruptores y resistencias responde a EVSE cuando se detecta esta onda cuadrada y el EVSE puede comenzar un proceso de recarga. Si se produce un problema eléctrico en el lado de la red del EVSE o si es el propio usuario el que desconecta repentinamente su vehículo del EVSE en medio de una sesión de recarga, el hardware de la computadora EVSE abrirá los relés en una fracción de segundo, eliminando la energía del adaptador para evitar cualquier tipo de daño al usuario.
+
+El hardware de la computadora y el sensor de Level 3 EVSE es como el de Level 2 EVSE. Dos de los tipos principales de estaciones de carga rápida de CC son las que utilizan la expansión del estándar de carga combinada (CCS) y las que siguen el protocolo japonés CHAdeMO, junto con con los supercargadores patentados de Tesla Motor, que solo funcionan con sus propios vehículos, siendo el tercero más influyente. Las principales diferencias entre los EVSE de nivel 2 y 3 se reducen a la ubicación del circuito del cargador, el método de comunicación por cable entre el PEV y el EVSE, y el diseño del adaptador físico. Aunque se utiliza habitualmente de forma errónea el término ``cargador" para referirse a EVSE en publicaciones, todos los EVSE de nivel 3 que están en el mercado ya contienen rectificadores de CA-CC y otros circuitos de carga dentro del propio EVSE, mientras que la recarga de nivel 2 requiere dichos circuitos dentro del PEV. Los conectores físicos para CCS EVSE son esencialmente conectores modificados que incluyen dos pines grandes que se usan para la entrega de energía de CC. CCS EVSE puede utilizar la línea piloto igual que el EVSE de nivel 2, aunque este conductor se puede utilizar también para la comunicación por línea eléctrica (PLC) con la red inteligente. Los conectores CHAdeMO EVSE cuentan con un conjunto similar de dos pines grandes al adaptador CCS, pero también tienen una mayor cantidad de pines en total. Tres de estos son pines de control de sesión de carga que funcionan de igual forma que la línea piloto, pero dos de los pines se usan para facilitar la comunicación de la red de área del controlador con los vehículos, lo que habilita una comunicación por cable más compleja.
+
+\section{Tipos de ataques centrados en dispositivos EVSE}
+\label{Tipos de ataques centrados en dispositivos EVSE}
+
+Una superficie de ataque es un punto de entrada a través del cual se pueden lanzar multitud de ataques. Hay dos categorías diferentes de puntos de entrada que podrían usarse para comprometer la seguridad de un EVSE: los físicos (utilizando el puerto de carga, manipulando el hardware de los dispositivos...) y los basados en la red.
+
+
+\subsection{Ataques basados en la red}
+
+Habitualmente los cargadores de nivel 2 y nivel 3 son equipados con algún módulo de comunicación con una interfaz inalámbrica (Bluetooth, Wi-Fi...) o por cable. Este módulo de comunicación permite a los usuario autorizados iniciar una sesión de recarga y a la propia estación de recarga comunicar su estado propio o el estado de la sesión de recarga al operador de la misma estación. Esta comunicación se produce a través de módulos en el vehículo, un teléfono inteligente o una tarjeta RFID. Las vulnerabilidades de las comunicaciones de corto y largo alcance están bien documentadas en la literatura [11-14]. Poner en peligro la seguridad de cualquiera de estos puntos finales de la red (es decir, BEMS, el servidor del controlador y la interfaz de operación de la estación) debido a una mala autenticación o falta de cifrado tiene el potencial de afectar a todas las estaciones de carga conectadas al nodo final. Esto tiene el potencial de comprometer la confidencialidad e integridad tanto de los datos como de los comandos de control, lo que afecta la disponibilidad de la estación de carga, el controlador de la estación de carga (o interfaz de gestión), el servidor BEMS y/o la red eléctrica. 
+Una lista de posibles ataques basados en la red es la siguiente:
+
+
+
+\begin{enumerate}
+
+\item \textit{Suplantación de identidad}: La mayoría de las comunicaciones basadas en protocolos de comunicación inalámbrica (RFID, Bluetooth, Wi-Fi...) pueden sufrir este tipo de ataques. Una forma común de este ataque es comprometer el identificador único del dispositivo (por ejemplo, el tag RFID) y hacerse pasar por ese usuario (por tanto, un usuario legítimo). Esto suele ocurrir antes de que se establezca el cifrado y se generen las claves. Este tupo de ataques tienen la capacidad de comprometer la identidad del usuario (por tanto, atacar a su privacidad) y de modificar los datos transmitidos (atacar a la integridad de ellos). Para realizar un ataque por ejemplo se utilizaría la identidad del usuario para, por ejemplo, realizar la recarga en el nombre de otra persona o incluso para poder lanzar ataques DoS, los cuales se verán más adelante.
+
+\item \textit{Man-in-the-Middle (Hombre en el medio, MITM)}:  El atacante trata de bloquear el receptor mientras puede acceder al tráfico transmitido, lo que permite que el atacante actúe como un punto intermedio entre el emisor y el receptor sin que ninguna de las partes lo sepa. La mayoría de las comunicaciones basadas en radio son propensas a estos ataques MITM. Estos pueden ocurrir entre los nodos (por ejemplo EVSE y PEV). El atacante podría corromper los datos o tomar el control completo del nodo y alterar el estado de uno de ellos para por ejemplo transmitir información incorrecta (por ejemplo notificar en la estación de recarga un error que no existe). Si las comunicaciones o el código fuente no se ofuscan o encriptan los ataques MITM son más fáciles de ejecutar.
+
+\item \textit{Denegation of Service (Negación de Servicio, DoS)}: Si se comprometen las credenciales del usuario, el propio usuario y la estación se podrían utilizar para lanzar ataques DOS muy sofisticados. Por ejemplo, las credenciales de usuario se pueden usar para lanzar este tipo de ataques contra nodos. Los posibles ataques a considerar son la inundación UDP o TCP/IP, DoS de baja velocidad, inundación de ping o inundación ICMP. Estos ataques son capaces pueden deshabilitar una estación de carga u otros nodos situados en la misma red de la estación de carga.
+
+\item \textit{Ataque de inyección SQL}: Explota una base de datos con una implementación no del todo correcta para insertar, actualizar o eliminar datos de la propia base de datos. Esto haría que un atacante pueda ejecutar comandos que afecten a, entre otras cosas, la capacidad de recarga de los usuarios, imposibilitar el acceso a algún usuario, cambiar la disponibilidad de una estación, robar datos económicos... lo que puede causar problemas de seguridad o económicos.
+
+\item \textit{Ataque de malware}: Explota una mala implementación de seguridad de varios de los módulos de software en la estación de carga y o en la nube para lanzar ataques más sofisticados que instalen algún tipo de malware. Por ejemplo, un malware con potencial de lanzar un ataque más coordinado podría provocar el cierre de una red de estaciones de carga o hasta afectar a toda la red eléctrica porque se podrían activar varias estaciones de carga simultáneamente.
+
+\end{enumerate}
+
+
+
+\subsection{Ataques físicos}
+
+En teoría, un atacante que disponga de acceso físico a un EVSE podría recoger información de la placa de la estación de carga para espiar las comunicaciones entre componentes. Esto se podría hacer manipulando físicamente la estación de carga si la resistencia a ella es débil. Dado que cada tipo de EVSE tiene una arquitectura diferente, el atacante debe estudiar diferentes componentes, comprender varios módulos de comunicación de la estación de carga y tener algún tipo de microcontrolador y varias herramientas de rastreo o sondeo para obtener información valiosa de su acceso físico a la estación de carga. La complejidad de la arquitectura varía mucho entre cada tipo de EVSE. Todas las estaciones de carga de nivel 2 y nivel 3 tienen un microcontrolador para controlar las funciones requeridas por un EVSE, y muchas están equipadas con un sistema operativo en tiempo real que habitualmente ejecuta un núcleo Linux. Existen varias herramientas de hardware para extraer firmware a través de las interfaces \textit{Universal Asynchronous Receiver- Transmitter} (UART) o \textit{Joint Test Action Group} (JTAG). Los tipos específicos de ataques incluyen los siguientes:
+
+
+\begin{enumerate}
+
+\item \textit{Físicos y de canal lateral}: Implican obtener acceso a los componentes de nivel de chip para manipular e interferir con las partes internas del sistema. Junto con este tipo de ataque, los hay de canal lateral que implican la ingeniería inversa de un chip al observar información de tiempo, consumo de energía y fugas electromagnéticas. Con esta información, es posible recuperar datos confidenciales, como por ejemplo claves de cifrado utilizadas en las comunicaciones o datos que se transmiten a través de la electrónica de la estación de recarga. Estos ataques son muy difíciles de implementar y requieren equipos con un coste elevado.
+
+\item \textit{Basados en interceptación}: Implica el espionaje de datos confidenciales, lo que compromete la privacidad y confidencialidad del usuario. Esto se logra mediante el uso de técnicas de sondeo para acceder y monitorear los datos en los puertos del hardware físico. Además se puede usar también para interceptar algún tipo de información enviada al EVSE, lo que podría alterarla antes de que se envíe al sistema.
+
+\item \textit{Basados en modificación}: Compromete integridad del software mediante la explotación de las vulnerabilidades detectadas. Por ejemplo, el acto de usar un desbordamiento de búfer para sobrescribir la memoria de la pila, dirigiendo el control hacia algún programa de tipo malware, constituiría un ataque de modificación.
+
+\end{enumerate}
+
+
+
+\subsection{Ataques híbridos}
+
+Mediante el uso de varias combinaciones de ataques basados en la red red y ataques físicos, es posible lanzar ataques aún más sofisticados. Por ejemplo, si un atacante tuviera acceso al servicio en la nube, se podría autorizar un EVSE para iniciar una sesión de recarga con un vehículo manejado por un usuario no autorizado. Para los EVSE que carecen de un protocolo de enlace PEV-EVSE correctamente implementado al contacto, la modificación física del enchufe del adaptador del EVSE permite activar una sesión de carga de Nivel 2 sin la presencia de l vehículo. La combinación de ambos ataques permite que el enchufe del adaptador de la estación de carga se active remotamente, lo que podría permitir que algunos dispositivos distintos a los PEV reciban energía a través del EVSE, pudiendo utilizarse esto para cualquier fin.
+
+Los diferentes ataques que pueden realizarse a partir de la combinación de ataques físicos y cibernéticos a la red pueden ser increíblemente perjudiciales para el funcionamiento normal de un EVSE y la seguridad de los usuarios.
+
+
+\section{Enfoques para mejorar la seguridad CPS}
+\label{Enfoques para mejorar la seguridad CPS}
+
+Se están implementando e instalando una gran cantidad de puntos de recarga, de momento con estándares limitados para aportar seguridad a este tipo de infraestructuras. Dado que la seguridad y la disponibilidad de las estaciones de carga afectan indirectamente tanto a la red eléctrica como al sector del transporte, es importante disponer de unas bases sólidas de ciberseguridad para poder implementarlas. Algunas de ellas se adoptaron de las mejores prácticas de seguridad del sistema integrado, pero la mayoría de ellas son exclusivas de las propias estaciones de carga.
+
+\subsection{Seguro por diseño}
+
+El diseño de una estación de carga segura va mucho más allá de asegurar los componentes individuales del sistema. Esto se debe a que las estaciones de carga interactúan con múltiples sistemas, entre ellos vehículos, smartphones, la infraestructura energética y la nube. Estolo que hace es aumentar los vectores de amenazas, los cuales los atacantes pueden explotar. El diseño de seguridad de la estación de carga debe identificar todos los posibles vectores de amenazas (tanto cibernéticos como físicos), así como las vulnerabilidades y el riesgo que las amenazas supondrían para las personas, los vehículos y la infraestructura. Este dise;o debe incluir componentes tanto de hardware como de software. Los diseñadores de EVSE deben tener en cuenta la variedad de posibles amenazas y considerar las estrategias necesarias para limitarlas. Varios modelos gráficos y formales como Petrinets, diagramas de flujo de datos, simulaciones de eventos discretos o los modelos CPS \cite{catorce}\cite{quince}\cite{dieciseis}\cite{diecisiete} se pueden utilizar para verificar y evaluar las propiedades de seguridad y protección del diseño. Es necesaria además la existencia de un aislamiento limpio en el hardware y el software para evitar el acceso no autorizado o el espionaje de la información protegida y las señales de control.
+
+
+\subsection{Seguridad del software}
+
+La estación de carga incluye software que se ejecuta en la placa que envía las señales de control a la propia estación de carga, la interfaz de administración de la propia estación de carga, las aplicaciones móviles y la interfaz de programación de aplicaciones proporcionada por las estaciones de carga. La mayoría de estas estaciones también ofrecen un servidor que se comunica con la estación a través de Internet. Los principios de seguridad por diseño se aplican a la arquitectura de software para la estación de carga para identificar las lagunas de seguridad que hacen que estos sistemas sean vulnerables \cite{catorce}. Dada la integración compleja y estrecha de hardware y software, algunos de los ataques de software también se pueden realizar a través del hardware. Hay muchas contramedidas disponibles para autenticar y validar el software en diferentes pasos, como por ejemplo evitar la manipulación del software y asegurar el arranque.
+
+\subsection{Seguridad del hardware}
+
+Los microprocesadores que se utilizan en las estaciones de carga suelen tener una potencia computacional baja la cual es incompatible con implementar un cifrado fuerte. El agregar coprocesadores seguros como aceleradores de hardware criptográfico \cite{quince} reducirá las opciones de manipulación del hardware. Los coprocesadores seguros brindan soporte criptográfico de alto rendimiento que almacena claves de manera mucho más segura a pesar de los posibles ataques físicos o lógicos.
+
+
+\subsection{Supervisión y resistencia a la manipulación}
+
+El software malicioso también puede aprovechar las lagunas del software y del sistema operativo para instalar malware que afecte al funcionamiento normal del sistema. Las medidas de resistencia a la manipulación para proteger contra ataques físicos y de canal lateral incluyen protección física para evitar la manipulación, encriptación de BUS, implementación de circuitos donde las características de potencia son independientes de los datos y blindaje de los chips en la placa. Además de la protección contra manipulaciones, también es importante monitorizar y registrar las actividades críticas para prevenir e investigar algunas vulnerabilidades relacionadas con la seguridad cibernética.
+
+
+
+\section{Estándar de protocolo de punto de recarga abierto (Open Charge Point Protocol, OCPP)}
+\label{Estándar de protocolo de punto de recarga abierto (Open Charge Point Protocol, OCPP)}
+
+La estandarización de los protocolos de comunicación para la movilidad eléctrica es necesaria para garantizar que el rendimiento, la seguridad y la protección sean los mismos que los del vehículo convencional real. Las principales organizaciones que desarrollaron estándares para los PEV son la Comisión Electrotécnica Internacional (IEC), la Sociedad de Ingeniería Automotriz (SAE), y otros consorcios públicos y empresas privadas de vehículos eléctricos que desarrollan estándares abiertos.
+
+Existen diferentes estándares en continuo desarrollo en lo que respecta a la comunicación entre los PEV y los EVSE. Los principales estándares son \cite{quinceuno}\cite{quincedos}:
+
+\begin{enumerate}
+
+\item \textit{SAE J2931, SAE J2836, SAE J2847, SAE J1772}
+\item \textit{CEI 61850-7-420, CEI 62196, CEI 61851, CEI 15118}
+\item \textit{OCPP, OICP, OCHP}
+
+\end{enumerate}
+
+Para la realización del trabajo se utilizará el protocolo OCPP. OCPP \cite{quincedos}\cite{quincetres} es un estándar abierto creado por Open Charge Alliance (OCA), que consiste en un consorcio de varias organizaciones públicas y privadas.
+
+OCPP es el estándar respaldado de facto por la industria para la comunicación entre una estación de carga y un sistema de gestión de estaciones de carga (CSMS) y está diseñado para adaptarse a cualquier tipo de técnica de carga \cite{quincetres}.
+
+El objetivo de OCA es favorecer el desarrollo de una infraestructura de red con la creación de un protocolo abierto, libre e independiente de las características de cada fabricante individual, y que permita la gestión de todas las situaciones de una operación de recarga. El OCPP tiene como objetivo realizar una serie de operaciones entre componentes que representan dispositivos físicos involucrados en la operación de recarga. Estas operaciones se realizan mediante el intercambio de uno o más mensajes denominados Protocol Data Unity (Unidad de Datos de Protocolo, PDU).
+
+La versión 1.5 de OCPP, de junio de 2012, es capaz de:
+
+\begin{enumerate}
+
+\item Monitorizar y controlar el acceso a las estaciones de carga individuales.
+\item Consultar y gestionar el estado de la recarga.
+\item Enviar datos a usuarios y administradores.
+\item Permitir el procedimiento de pago.
+\item Permitir mecanismos de reserva y gestión eléctrica.
+
+\end{enumerate}
+
 
 \chapter{Gestión de proyecto software}
 \label{Gestión de proyecto software}
@@ -704,11 +881,30 @@ Se debe seguir la norma ISO 690 (buscar en google ISO 690 ugr)
 \bibitem{uno} \textit P. V. Nikitin, K. V. S. Rao y S. Lazar, ``An overview of near field UHF RFID", IEEE RFID. Conferencia, 2007, p\'ags.167-174.
 \bibitem{dos} \textit M. M. Singh, K. A. A. K. Adzman, y R. Hassan, ``Near Field Communication (NFC) Technology Security Vulnerabilities and Countermeasures", International Journal of Engineering \& Technology Vol.7, N\textdegree 4.31, p\'ags.298-305, 2018.
 \bibitem{tres} \textit ISO/IEC 18092. ``Near Field Comunication: interface and protocolo", 2004.
-\bibitem{cuatro} \textit ECMA International (2005). ``Near Field Communication - White Paper”, Ecma/TC32-TG19/2005/ 012, Internet: www.ecma international.org, 2005.
-\bibitem{cinco} \textit ``NFC Data Exchange Format (NDEF), NFC Forum Technical Specification"
+\bibitem{cuatro} \textit ECMA International (2005). ``Near Field Communication - White Paper”, Ecma/TC32-TG19/2005/ 012, 2005.
+\bibitem{cinco} \textit ``NFC Data Exchange Format (NDEF), NFC Forum Technical Specification”
 \bibitem{seis} \textit ``NFC-Near Field Communication, Reader/Writer Operating Mode”
-\bibitem{siete} \textit F. Fahrianto, M. F. Lubis, and A. Fiade, ``Denial-of-service attack possibilities on NFC technology”, 2016 4th International Conference on Cyber and IT Service Management, IEEE, págs.1-5, 2016
-\bibitem{ocho} \textit H. Eun, H. Lee, and H. Oh, ``Conditional privacy preserving security protocol for NFC applications”, IEEE T. Cons. Electr., Vol.59, N\textdegree.1, págs.153-160, 2013
+\bibitem{siete} \textit Fahrianto F., Lubis M. F. y Fiade A., ``Denial-of-service attack possibilities on NFC technology”, 2016 4th International Conference on Cyber and IT Service Management, IEEE, págs.1-5, 2016
+\bibitem{ocho} \textit Eun H., Lee H. y Oh H., ``Conditional privacy preserving security protocol for NFC applications”, IEEE T. Cons. Electr., Vol.59, N\textdegree.1, págs.153-160, 2013
+\bibitem{nueve} \textit Kitchenham, B.A., Budgen, D., Brereton, P. ``Evidence-Based Software Engineering and Systematic Reviews”, vol. 4. CRC Press (2016)
+\bibitem{diez} \textit Moher, D., Liberati, A., Tetzlaff, J., Altman, D.G., ATP Group. ``Preferred reporting
+items for systematic reviews and meta-analyses: The PRISMA statement”. Ann. Internal Med. 151(4) (264–269), 2009.
+\bibitem{diezuno} \textit Saalfeld, C. ``E-Mobility–Vehicle2Grid Interface. Vector-Kongress”, 2010
+\bibitem{diezdos} \textit Bedogni, L., Bononi, L., Di Felice, M.; D’Elia, A.; Cinotti, T.S., ``A Route Planner Service with Recharging
+Reservation: Electric Itinerary with a Click”. IEEE Intell. Transp. Syst. Mag. (8, 75–84), 2016.
+\bibitem{dieztres} \textit Bedogni, L., Bononi, L., D’Elia, A., Di Felice, M., Rondelli, S., Cinotti, T.S. ``A Mobile Application to Assist
+Electric Vehicles’ Drivers with Charging Services” (78–83). En las actas de la Eighth International Conference on Next Generation Mobile Apps, Services and Technologies, Oxford, UK, 10 al 12 de septiembre de 2014.
+\bibitem{once} \textit Rhode, K. ``Electric Vehicle Cyber Research SANS Automotive Cybersecurity Workshop”, 2017
+\bibitem{doce} \textit Shezaf, O., ``Who can hack a plug? The Infosec Risks of Charging Electric Cars”, 2013.
+\bibitem{trece} \textit Fearn, F. Kaspersky, V3 news, ``Warning over electric car charging”, Enero de 2018.
+\bibitem{catorce} \textit Kocher, Paul, et al. ``Security as a new dimension in embedded system design.” Actas de la 41.ª Conferencia anual de Automatización del Diseño. ACM, 2004.
+\bibitem{quince} \textit Khelladi, Lyes, et al. ``On security issues in embedded systems: challenges and solutions.” International Journal of Information and Computer Security 2.2, 2008.
+\bibitem{quinceuno} \textit Buamod I., Abdelmoghith E.,  Mouftah H.T., ``A review of OSI-based charging standards and eMobility open protocols”. En actas de la 2015 International Conference on the Network of the Future, NOF 2015, Montreal, QC, Canada, del 30 de septiembre al 2 de octubre del 2015.
+\bibitem{quincedos} \textit Schmutzler J., Andersen C.A., Wietfeld C., ``Evaluation of OCPP and IEC 61850 for smart charging electric
+vehicles”. World Electr. Veh. J., 2013
+\bibitem{quincetres} \textit Home - Open Charge Alliance. Web: https://www.openchargealliance.org/.
+\bibitem{dieciseis} \textit Wan, Kaiyu, K. L. Man, y D. Hughes. ``Specification, Analyzing Challenges and Approaches for Cyber-Physical Systems (CPS).” Engineering Letters 18.3, 2010.
+\bibitem{diecisiete} \textit Orojloo, Hamed, y Mohammad Abdollahi Azgomi. ``A method for modeling and evaluation of the security of cyber-physical systems.” Information Security and Cryptology (ISCISC), 11ª Conferencia Internacional ISC sobre IEEE, 2014.
 
 \bibitem{CSSP}
 {CSSP, D.}:
