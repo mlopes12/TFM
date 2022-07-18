@@ -649,6 +649,134 @@ La versión 1.5 de OCPP, de junio de 2012, es capaz de:
 
 \end{enumerate}
 
+En estos últimos años, el protocolo OCPP se ha ido modificando para tener en cuenta los requisitos emergentes de las redes inteligentes, además de para aumentar la participación del usuario en el proceso de carga.
+
+Una característica fundamental añadida en la versión 1.6, la cual fue lanzada en octubre de 2015, es ``Smart Charging” (carga inteligente”). Con ``Smart Charging”,  el Sistema Central es capaz de modificar la potencia de carga de un PEV específico o el consumo total de energía permitido en todo un punto de recarga siempre en base a la disponibilidad de energía en la red. El Sistema Central recibe el pronóstico de demanda/solicitud de energía del operador de la red y, tras ello, modifica los tiempos de carga para algunas o todas las transacciones de carga. Las características de carga y los tiempos se definen en el tipo de ``ChargingProfile” (perfil de carga), el cuál describe el cantidad de corriente o potencia que se puede entregar en un intervalo de tiempo. Aunque el ``ChargingProfile” puede estar relacionado con una sola transacción de carga, el usuario no tiene un rol activo en su definición.
+
+Algunas de las mejoras más relevantes de OCPP 2.0, lanzado en marzo de 2018, son las siguientes:
+
+\begin{enumerate}
+
+\item Ciberseguridad.
+\item Soporte de la norma ISO 15118.
+\item Se obligó a la existencia de diferentes opciones de autorización del cliente (tarjeta/token RFID, ISO 15118-1 Plug and Charge, terminales de pago, llave mecánica local, teléfonos inteligentes, etc.).
+\item Se obliga a mostrar mensajes en la estación de carga para que los vean a los conductores de PEV (relacionados con la transacción, el idioma que se utilizará, sobre la tarifa aplicable antes de que el conductor de EV comience a cargar, para mostrar el coste de funcionamiento durante y al final de una transacción de carga...).
+\item ``Smart Charging” extendida.
+
+\end{enumerate}
+
+El Extended Smart Charging intenta optimizar la gestión de la energía teniendo en cuenta los límites del proveedor de energía, o las limitaciones de una energía sostenible a partir de paneles solares en el caso de que hablemos de un suministro local. Esta gestión inteligente se obtiene gracias a la flexibilidad del ``ChargingProfile” . La versión 2.0 del protocolo OCPP amplía las características del ``ChargingProfile”. Un CSMS puede enviar un ``ChargingProfile” a una estación de carga, usando el mensaje ``SetChargingProfileRequest” (establecimiento de solicitud de perfil de carga) en estas situaciones:
+
+\begin{enumerate}
+
+\item Al comienzo de una transacción para establecer el perfil de cobro para la misma.
+\item En una petición RequestStartTransaction (petición de inicio de transacción) enviada a una estación de carga.
+\item Durante una transacción para cambiar el perfil activo para la misma
+\item Fuera de un proceso de transacción como un mensaje separado.
+
+\end{enumerate}
+
+Sin embargo, el protocolo OCPP 2.0 todavía no considera las solicitudes del conductor en el ``ChargingProfile”. OCPP 2.0.1, publicado el 8 de abril de 2020, reemplaza a OCPP 2.0 y presenta varias correcciones de errores y mejoras basadas en las experiencias adquiridas en el funcionamiento de OCPP 2.0. Algunas de estas mejoras están a nivel de mensaje. Se han realizado mejoras en el área de seguridad, en el cumplimiento de ISO 15118, en Smart Charging y en la extensibilidad de OCPP.
+
+\begin{enumerate}
+
+\item Smart charging: siguiendo las funciones de carga inteligente, el PEV proporcionará las necesidades de carga (hora de finalización de la recarga y energía solicitada). El CSMS puede proporcionar hasta tres horarios con diferentes tarifas y el PEV elige un horario. El perfil de carga se puede cambiar durante la transacción (esto recibe el nombre de ``renegociación”).
+\item Reserva: el protocolo OCPP le permite hacer una reserva de un EVSE o un tipo de conector de un EVSE específico. La reserva se realiza hasta una hora determinada. El usuario puede realizar una reserva sobre los recursos del EVSE que estén disponibles en el momento de la reserva. El usuario no puede realizar una reserva anticipada, es decir, reservar por ejemplo para dentro de una hora durante las tres horas siguientes.
+\item Tarifa y coste: el protocolo OCPP permite mostrar la tarifa al usuario antes de iniciar la transacción, durante y al final de la misma.
+
+\end{enumerate}
+
+En esta última versión de OCPP (2.0.1), el CSMS es capaz de proporcionar hasta tres horarios con tarifas diferentes, puede mostrar tarifas y puede aceptar también reservas de tiempo reducido. No se permite, como se explicó anteriormente, la reserva anticipada, algo que es probablemente debido a la complejidad de la gestión de la programación de la reserva anticipada y también a la prioridad que se da al usuario que está realmente presente en el punto de recarga respecto de una reserva remota.
+
+Este trabajo utilizará el protocolo OCPP 1.6, ya que es la que dispone de un uso más extendido actualmente en las plataformas de gestión de los EVSE. La mayor parte de los puntos de recarga que se utilizan actualmente en la red disponen de la posibilidad de aplicar este protocolo.
+
+\chapter{Arquitectura del sistema}
+\label{Arquitectura del sistema}
+
+El protocolo OCPP utilizará WebSocket (WS) como protocolo de comunicación entre las estaciones de carga individuales y el sistema central. Los datos que pasan por WebSocket se pueden formatear en diferentes formatos incluyendo el Simple Object Access Protocol (Protocolo Simple de Acceso a Objetos, SOAP) o el JavaScript Object Notation (Notación de objetos de JavaScript, JSON). Utilizamos la implementación JSON, que es un formato ampliamente utilizado en varios campos, y se presta para interactuar con aplicaciones web escritas en lenguaje Java y aplicaciones en la plataforma Android. Se puede interactuar también con aplicaciones de otro tipo de lenguaje, como el PHP, desarrollado mayoritariamente en este sistema. El sistema desarrollado para la infraestructura de la recarga del coche eléctrico consta de la propia estación de carga, el sistema de gestión de las estaciones de carga, la base de datos que almacena los datos, el PEV y el conductor del EV a través de una aplicación o de un entorno web, en un dispositivo como puede ser un smartphone, una tablet o incluso un PC, o a través de una tarjeta que preguntará al servidor si está o no autorizada.
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=.75\textwidth]{figuras/esquema.png}
+  \caption[Arquitectura del sistema propuesto]{Arquitectura del sistema propuesto\\
+  }
+  \label{fig:arquitectura}
+\end{figure}
+
+
+\begin{enumerate}
+
+\item \textit{Vehículo eléctrico}: El PEV crea una comunicación con la estación de carga a través de la línea eléctrica, basándose en el estándar ISO/IEC 15118. En ella, intercambian información sobre la potencia máxima permitida, la capacidad de la batería del vehículo...
+
+\item \textit{Usuario}: El conductor inicia el proceso de recarga a través de una interfaz en el punto de recarga, el uso de algún tipo de tarjeta de fidelización, la utilización de un smartphone o tablet, incluso a distancia desde una interfaz web (también utilizable en un spartphone o tablet) o en algunos casos con un protocolo inalámbrico de amplio rango (por ejemplo, conexión 4G/5G) ya existente en el PEV. Además, en algunos casos el conductor puede definir los parámetros de la recarga directamente con el EVSE y monitorear la recarga real. En el caso que se trata, se utilizarán tan solo smartphone (con interfaz web) o con el paso de una tarjeta.
+
+\item \textit{Punto de recarga}: Permite la interoperabilidad con todo tipo de PEV, proporciona al usuario distinta información sobre el estado actual del mismo, de la recarga que está realizando o acaba de realizar..., e intercambia información con la base de datos a través del sistema de gestión de puntos de recarga.
+
+\item \textit{Base de datos}: La base de datos almacena datos de los puntos de recargas disponibles en el sistema o en otros sistemas con los que haya algún tipo de acuerdo, de los usuarios autorizados para usar los puntos de recarga, de todas las reservas en estos mismos y la información de facturación... La estructura de la base de datos se tratará más adelante.
+
+\item \textit{Sistema de gestión de estaciones de carga (CSMS)}: Coordina todas las operaciones. Consiste en una aplicación web que maneja las solicitudes tanto del punto de recarga como de la aplicación del usuario del PEV e intercambia datos con la base de datos.  El servicio de atención al cliente de la estación central es responsable de proporcionar y recibir información de la aplicación del usuario. En particular, la aplicación envía solicitudes HTTP POST al servidor web, que contiene los datos enviados por parte de los puntos de recarga en formato JSON.
+
+\end{enumerate}
+
+
+\subsection{Protocolo OCPP 1.6}
+\label{Protocolo OCPP 1.6}
+
+En este apartado se definirán en profundidad algunos de los conceptos básicos, en especial en torno a algunas características del funcionamiento, el modelo de intercambio de mensajes, la forma de comunicación... del protocolo OCPP 1.6.
+
+
+\subsubsection{Ejemplos de funcionamiento}
+\label{Ejemplos de funcionamiento}
+
+Hay dos posibilidades de comunicación entre el punto de recarga y el CSMS en este protocolo. En el primero, es el punto de recarga el que inicia el proceso de comunicación y en la segunda es el CSMS el que lo hace. Dos ejemplos de esto son los siguientes:
+
+\begin{enumerate}
+
+\item En el primero, un punto de recarga solicita la autenticación de una tarjeta o de un identificador enviado por el propio CSMS y envía el estado de la transacción de carga.
+
+\item En el segundo caso, es el CSMS inicia la actualización del firmware de un punto de recarga.
+
+\end{enumerate}
+
+El proceso para el inicio y la detención de una recarga se puede ver en el siguiente diagrama:
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramainiciofincarga.png}
+  \caption[Diagrama de secuencia de una recarga]{Diagrama de secuencia de una recarga\\
+  }
+  \label{fig:diagramarecarga}
+\end{figure}
+
+Cuando un punto de recarga va a cargar a un PEV, primero debe autenticar al usuario antes de que se pueda iniciar la carga. Si este está autorizado, el punto de recarga inicia la carga e informa al CSMS que ha iniciado la carga.
+
+Cuando un usuario desea finalizar la recarga y desenchufar el PEV del punto de recarga, este debe verificar que es el usuario que inició la carga o que es un usuario distinto pero con permiso para finalizar la recarga. Una vez autorizado, el punto de Recarga informa al CSMS de que se ha finalizado la recarga.
+
+El proceso de actualización de firmware es como el visto a continuación:
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramaactualizacionfirmware.png}
+  \caption[Diagrama de actualizaión de firmware]{Diagrama de actualizaión de firmware\\
+  }
+  \label{fig:diagramaactualizacionfirmware}
+\end{figure}
+
+Cuando un punto de recarga necesita una actualización de firmware, el CSMS informa al punto de recarga de la hora en la que este puede comenzar a descargar el nuevo firmware. El punto de recarga debe notificar al CSMS cada paso realizado a medida que se va descargando e instalando el nuevo firmware.
+
+\subsubsection{Modos de autorización local y funcionamiento sin conexión}
+\label{Modos de autorización local y funcionamiento sin conexión}
+
+En caso de no disponibilidad de las comunicaciones a través de internet o una caída del CSMS, el punto de recarga está diseñado para poder funcionar de forma autónoma. En este caso, se considera al punto de recarga \textit{desconectado} y se marca como tal si funciona el CSMS.
+
+Para mejorar la experiencia de los usuarios, se puede configurar un punto de recarga para admitir la autorización local de identificadores a través una caché de autorizacióny/o una lista de autorizaciones locales (\textit{whitelist}). Otra opción es el permitir recargar a todo el mundo en caso de que no haya conexión entre punto de recarga y CSMS. 
+
+Esto permite la autorización de un usuario cuando el punto de recarga está desconectado y mejora el tiempo de respuesta de autorización cuando la comunicación entre el punto de recarga y el CSMS es lenta.
+
+
+
+
 
 \chapter{Gestión de proyecto software}
 \label{Gestión de proyecto software}
