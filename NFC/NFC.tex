@@ -777,7 +777,6 @@ Esto permite la autorización de un usuario cuando el punto de recarga está des
 
 
 
-
 \chapter{Gestión de proyecto software}
 \label{Gestión de proyecto software}
 
@@ -913,6 +912,200 @@ Breve descripción del tipo de solución adoptada: si es una aplicación y qué 
 \section{El proceso de desarrollo}
 
 Explicar el modelo de proceso y la estructura de la sección.
+
+\subsection{Prueba de concepto}
+
+La prueba de concepto o PoC (Proof of Concept) es la implementación de un método o de una idea que trata de verificar que el concepto o teoría en cuestión es susceptible de ser explotada de una forma realista.
+
+En este apartado se desccribirá un posible caso real de robo del identificador de una tarjeta de fidelización de un cliente y los pasos seguidos para el mismo. Se dispone de un smartphone modelo Xiaomi Redmi Note 8T, mediante el cuál se procederá a leer una tarjeta con un tag RFID. Desde ese mismo teléfono móvil se simulará la emisión del mismo código para que, con el propio móvil se pueda recargar como si fuese el usuario al cuál se le han robado los datos.
+
+Es necesario conseguir \textit{rootear} en primer lugar el dispositivo dado que es la única opción de simular la emisión de códigos de tarjetas distintos a los generados por el propio dispositivo. Este es el proceso que permite a los usuarios de dispositivos Android obtener algunos privilegios para modificar algunas funciones que vienen por defecto en estos dispositivos.
+
+Para ello, en el caso de el dispositivo que se va a utilizar para esta prueba se deben activar, en primer lugar, las opciones de desarrollador. Se hace en la pantalla de ajustes, en el apartado \textit{Mi dispositivo}, pulsando siete veces en \textit{Versión de MIUI}.
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.4\textwidth]{figuras/root1.png}
+  \caption[Pantalla de \textit{Mi Dispositivo}]{Pantalla de \textit{Mi Dispositivo}\\
+  }
+  \label{fig:root1}
+\end{figure}
+
+Posteriormente se debe desbloquear el \textit{bootloader} (gestor de arranque) para poder instalar una \textit{ROM} (versiones modificadas de Android) o rootear el dispositivo, y para ello se deben en primer lugar activar tanto la \textit{depuración USB} como el \textit{desbloqueo OEM}. Esto se hace nuevamente en los ajustes del dispositivo dentro de las opciones de \textit{Ajustes adicionales} en los botones \textit{Opciones de desarrollador} y \textit{desbloqueo de OEM}. Se activan y dentro del desbloqueo OEM pedirá una cuenta de usuario del fabricante Xiaomi y disponer de una tarjeta SIM para continuar el proceso.
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.4\textwidth]{figuras/root2.png}
+  \caption[Pantalla de \textit{Opciones de desarrollador}]{Pantalla de \textit{Opciones de desarrollador}\\
+  }
+  \label{fig:root2}
+\end{figure}
+
+Para realizar este desbloqueo se necesita disponer de un ordenador con sistema operativo Windows, dado que el programa que permite realizar este proceso (\textit{Mi Unlock}) funciona en este tipo de sistemas, además de un cable USB para conectar el smartphone al mismo.
+
+Se debe, por tanto, instalar ese programa e iniciar sesión en él con la cuenta de Xiaomi del propio dispositivo. Se apaga el teléfono y se enciende pulsando tanto el botón de encendido como el de volumen arriba para iniciarlo en un modo llamado \textit{fastboot}. Se conecta al ordenador y se espera que el botón \textit{Unlock} se sitúe en verde.
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.8\textwidth]{figuras/root3.png}
+  \caption[Pantalla de advertencia previa a desbloqueo de \textit{Mi Unlock}]{Pantalla de advertencia previa a desbloqueo de \textit{Mi Unlock}\\
+  }
+  \label{fig:root3}
+\end{figure}
+
+Tras aceptar, \textit{Mi Unlock} comprueba que tanto cuenta como dispositivo son aptos. Si eso es así, el programa envía una petición a los servidores de Xiaomi con el dispositivo asociado. Tras ello, en la pantalla del programa aparecerá el tiempo que se debe esperar hasta el desbloqueo del dispositivo (siete días).
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.7\textwidth]{figuras/root4.png}
+  \caption[Pantalla de aviso de tiempo a esperar para desbloqueo de dispositivo mediante \textit{Mi Unlock}]{Pantalla de aviso de tiempo a esperar para desbloqueo de dispositivo mediante \textit{Mi Unlock}\\
+  }
+  \label{fig:root4}
+\end{figure}
+
+Tras transcurrir esa semana, se puede retomar el proceso de desbloqueo. Se repiten los mismos pasos con \textit{Mi Unlock} y se espera a que finalice el proceso. En el caso de que no se hubiera cumplido el tiempo de espera la aplicación informa de cuántas horas quedan para retomar este proceso. Antes de iniciar con el desbloqueo se deben hacer copias de seguridad dado que este proceso reestablece el dispositivo a los valores de fábrica.
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.7\textwidth]{figuras/root5.png}
+  \caption[Pantalla de aviso de de dispositivo correcto en \textit{Mi Unlock}]{Pantalla de aviso de de dispositivo correcto en \textit{Mi Unlock}\\
+  }
+  \label{fig:root5}
+\end{figure}
+
+Se debe volver a iniciar el dispositivo en modo \textit{fastboot} para instalar el modo \textit{recovery} (recuperador del sistema operativo) \textit{TWRP} (\textit{Team Win Recovery Project}, un recovery personalizado para instalar ROM, restaurar copias de seguridad, rootear el dispositivo...) para poder continuar con la prueba.
+
+Además, hay que instalar el \textit{Android Debug Bridge} (ADB), una herramienta de línea de comandos que permite realizar algunas acciones en el dispositivo, tales como instalar o depurar apps, y proporciona acceso a un shell para poder ejecutar distintos comandos en un smartphone.
+
+Se vuelve a conectar el PC y se conecta el dispositivo a mediante un cable USB al PC con la depuración USB del mismo activada. En una ventana del símbolo del sistema, en la carpeta en la que se encuentran los drivers ADB se ejecuta el siguiente comando.
+
+\textit{adb reboot bootloader}
+
+Con ello se inicia el dispositivo en modo \textit{fastboot}.
+
+Posteriormente, tras descargar la versión correspondiente de TWRP, se introducen los siguientes comandos desde el símbolo de sistema para actualizar al nuevo \textit{recovery TWRP}.
+
+fastboot flash recovery twrp.img
+
+fastboot boot twrp.img
+
+Tras ello, el nuevo modo \textit{recovery} de este dispositivo será el de TWRP.
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.4\textwidth]{figuras/root51.png}
+  \caption[Pantalla principal de TWRP]{Pantalla principal de TWRP\\
+  }
+  \label{fig:root51}
+\end{figure}
+
+
+Ya desde \textit{TWRP} en primer lugar se formatea el equipo y se reinicia en modo \textit{recovery} después para que quede correctamente instalado.
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.4\textwidth]{figuras/root52.png}
+  \caption[Proceso para formatear el dispositivo]{Proceso para formatear el dispositivo\\
+  }
+  \label{fig:root52}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.4\textwidth]{figuras/root53.png}
+  \caption[Proceso para reiniciar en modo recovery]{Proceso para reiniciar en modo recovery\\
+  }
+  \label{fig:root53}
+\end{figure}
+
+
+En último lugar, se deben descargar y copiar al dispositivo las versiones correctas, según el dispositivo que se utilice, en extensión ZIP de los ficheros de instalación de Magisk y Disable\_DM-Veritypor ese orden  para poder rootear el dispositivo.
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.4\textwidth]{figuras/root54.png}
+  \caption[Proceso para instalar ficheros zip para rootear]{Proceso para instalar ficheros zip para rootear\\
+  }
+  \label{fig:root54}
+\end{figure}
+
+Con todo ello, el smartphone quedará rooteado y ya se puede pasar a realizar la prueba.
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.4\textwidth]{figuras/root55.png}
+  \caption[Proceso para inciar el móvil en funcionamiento normal]{Proceso para inciar el móvil en funcionamiento normal\\
+  }
+  \label{fig:root55}
+\end{figure}
+
+Para ello, se instala la aplicación llamada \textit{Emulador de tarjetas Pro (NFC Card Emulator Pro)}. 
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.4\textwidth]{figuras/root6.png}
+  \caption[Pantalla de \textit{Emulador de tarjetas Pro} tras instalar la app]{Pantalla de \textit{Emulador de tarjetas Pro} tras instalar la app\\
+  }
+  \label{fig:root6}
+\end{figure}
+
+Desde la app se incica que se coloque la tarjeta en la parte posterior del equipo para leerla tras pulsar al primer botón de la parte superior izquierda de la pantalla. Se lee la tarjeta para disponer del tag de la misma y se guarda en \textit{Aceptar}.
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.4\textwidth]{figuras/root7.png}
+  \caption[Pantalla de \textit{Emulador de tarjetas Pro} tras leer una tarjeta]{Pantalla de \textit{Emulador de tarjetas Pro} tras leer una tarjeta\\
+  }
+  \label{fig:root7}
+\end{figure}
+
+Se pulsa en el icono inferior derecho del interior de la tarjeta para emularla. Se acepta la solicitud de cualquier tipo de permiso. Con ello la tarjeta se emulará durante un tiempo en intervalos temporales cortos pero alternos, por lo que en varios momentos la tarjeta queda correctamente \textit{copiada} para simular el número de tag de la tarjeta.
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.4\textwidth]{figuras/root8.png}
+  \caption[Pantalla de \textit{Emulador de tarjetas Pro} durante la emulación de una tarjeta]{Pantalla de \textit{Emulador de tarjetas Pro} durante la emulación de una tarjeta\\
+  }
+  \label{fig:root8}
+\end{figure}
+
+Para comprobar que esto funciona correctamente, se realiza una prueba pasando la tarjeta sobre el cargador, el cuál envía al servidor Websocket un paquete de tipo \textit{Authorize}. Las operaciones del cargador utilizado (\textit{Alfen EVe mini}) se pueden revisar con el programa \textit{Ace Service Installer} siempre y cuando este se encuentre en la misma red que el ordenador desde el que se accede a este programa.
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=1\textwidth]{figuras/authorize1.png}
+  \caption[Pantalla de logs de \textit{Ace Service Installer} tras el paso de tarjeta]{Pantalla de logs de \textit{Ace Service Installer} tras el paso de tarjeta\\
+  }
+  \label{fig:authorize1}
+\end{figure}
+
+Ahora, durante la emulación de la tarjeta, se pasa el smartphone por encima del punto de recarga para ver si el paso se produce correctamente. Se ve que, efectivamente, es así.
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=1\textwidth]{figuras/authorize2.png}
+  \caption[Pantalla de logs de \textit{Ace Service Installer} tras el paso del smartphone que simula la tarjeta]{Pantalla de logs de \textit{Ace Service Installer} tras el paso del smartphone que simula la tarjeta\\
+  }
+  \label{fig:authorize2}
+\end{figure}
+
+
+Un caso similar a este se puede ver en el siguiente ejemplo de la página de \textit{eventos de los cargadores} de la web.
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=1\textwidth]{figuras/authorize3.png}
+  \caption[Pantalla de eventos de la web tras los pasos de los tags]{Pantalla de eventos de la web tras los pasos de los tags\\
+  }
+  \label{fig:authorize3}
+\end{figure}
+
 
 \subsection{Análisis}
 
