@@ -774,7 +774,47 @@ Para mejorar la experiencia de los usuarios, se puede configurar un punto de rec
 
 Esto permite la autorización de un usuario cuando el punto de recarga está desconectado y mejora el tiempo de respuesta de autorización cuando la comunicación entre el punto de recarga y el CSMS es lenta.
 
+Por otro lado, un punto de recarga puede configurarse para admitir la autorización (automática) de cualquier identificador cuando el estado del mismo es de desconectado, para evitar la denegación de servicio y posterior cobro a usuarios de buena fe que no pueden ser autorizados explícitamente por las entradas de la lista de autorización local/caché de autorización. En este caso se desactivará esta autorización automática por motivos de seguridad.
 
+
+\subsubsection{Numeración de conectores}
+\label{Numeración de conectores}
+
+Para que el CSMS pueda comunicarse con todos los conectores de un punto de recarga, los ConnectorIds deben estar siempre numerados de la siguiente manera:
+
+\begin{enumerate}
+
+\item El identificador (ConnectorId) del primer conector debe ser 1.
+\item Los conectores adicionales deben numerarse de forma secuencial, sin omitir números.
+\item Los ConnectorIds nunca deben ser superiores al número total de conectores de un punto de recarga. Si hay tres conectores el número máximo es 3.
+item Para operaciones iniciadas por el CSMS o por el punto, se reserva el número 0 de ConnectorId para enviar información general al punto de recarga.
+\item Para las operaciones iniciadas por el punto de recarga (informativas), el número 0 de ConnectorId está reservado para el controlador principal del punto de recarga.
+
+\end{enumerate}
+
+
+\subsubsection{Identificadores}
+\label{Identificadores}
+
+Los datos adquiridos a través del hardware del lector local de tarjetas suelen ser un valor UID (4 o 7 bytes) de una tarjeta RFID física, representado como 8 o 14 caracteres de dígitos hexadecimales. 
+
+Sin embargo, estos identificadores cuando son enviados a los puntos de recarga por los CSMS para las sesiones de carga iniciadas de forma remota pueden ser códigos de autorización de transacciones virtuales (de un solo uso) o tokens RFID virtuales que utilizan deliberadamente un formato de UID no estándar para evitar posibles conflictos con los valores de UID reales que se utilizan al iniciar la recarga con un paso de tarjeta.
+
+También, en el caso que se verá después de identificadores superiores o de grupo, se puede utilizar otro identificador superior con otro formato cuando hay una cuenta central en la que unos usuarios tienen permiso para detener las recargas de otros usuarios.
+
+Mientras cumpla un formato de \textit{CiString20Type} (cadena de texto de tamaño máximo 20 caracteres) se puede enviar cualquier cosa siempre que se trate de un identificador significativo (que identifique al usuario que inicia o finaliza carga).
+
+Esta parte de la autorización es la que puede estar más comprometida y es en la que se tratará de fortalecer su seguridad a lo largo de este trabajo. Además, se recomienda la representación de estos identificadores en hexadecimal, como ya se mencionó antes.
+
+
+\subsubsection{Identificadores superiores}
+\label{Identificadores superiores}
+
+Un CSMS tiene la capacidad de tratar un conjunto de identificadores como un grupo, lo que permite que cualquier identificador de ese grupo inicie una transacción y que el mismo token u otro token del mismo grupo pueda detenerla. Esto es compatible con los casos de uso comunes de familias o empresas con múltiples conductores para una flota de vehículos compartidos que usan en una sola cuenta de contrato de recarga.
+
+Se agrupan con fines de autorización especificando un identificador de grupo superior. Se considera que dos identificadores están en el mismo grupo si disponen de una etiqueta superior que coincida en ambos.
+
+Se trata del mismo caso que un identificador único de un usuario por lo que, al fortalecer la seguridad de este, la protección frente a posibles robos del identificador aplica también en este caso.
 
 
 \chapter{Gestión de proyecto software}
