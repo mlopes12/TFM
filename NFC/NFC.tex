@@ -6,10 +6,44 @@
 \documentclass[12pt,a4paper,onecolumn,oneside]{report}
 \newcommand{\mychapter}[2]{
 	\setcounter{chapter}{#1}
-	\setcounter{section}{0}
+	\setcounter{section}{1}
 	\chapter*{#2}
 	\addcontentsline{toc}{chapter}{#2}
 }
+\usepackage{titlesec}
+
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
 
 
 
@@ -46,6 +80,8 @@
 %\def\spanishrefname{Bibliografía} % Para que ponga "Bibliografía" en lugar de "Referencias". SÓLO se aplica a formato "article". En "report" ya pone "Bibliografía".
 
 \usepackage{fancyhdr}
+
+\usepackage{longtable}
 
 
 \setlength{\unitlength}{1 cm} % Unidad de trabajo de medidas.
@@ -670,7 +706,7 @@ El Extended Smart Charging intenta optimizar la gestión de la energía teniendo
 \begin{enumerate}
 
 \item Al comienzo de una transacción para establecer el perfil de cobro para la misma.
-\item En una petición RequestStartTransaction (petición de inicio de transacción) enviada a una estación de carga.
+\item En una solicitud RequestStartTransaction (solicitud de inicio de transacción) enviada a una estación de carga.
 \item Durante una transacción para cambiar el perfil activo para la misma
 \item Fuera de un proceso de transacción como un mensaje separado.
 
@@ -720,13 +756,13 @@ El protocolo OCPP utilizará WebSocket (WS) como protocolo de comunicación entr
 \end{enumerate}
 
 
-\subsection{Protocolo OCPP 1.6}
+\section{Protocolo OCPP 1.6}
 \label{Protocolo OCPP 1.6}
 
 En este apartado se definirán en profundidad algunos de los conceptos básicos, en especial en torno a algunas características del funcionamiento, el modelo de intercambio de mensajes, la forma de comunicación... del protocolo OCPP 1.6.
 
 
-\subsubsection{Ejemplos de funcionamiento}
+\subsection{Ejemplos de funcionamiento}
 \label{Ejemplos de funcionamiento}
 
 Hay dos posibilidades de comunicación entre el punto de recarga y el CSMS en este protocolo. En el primero, es el punto de recarga el que inicia el proceso de comunicación y en la segunda es el CSMS el que lo hace. Dos ejemplos de esto son los siguientes:
@@ -758,14 +794,14 @@ El proceso de actualización de firmware es como el visto a continuación:
 \begin{figure}[h] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramaactualizacionfirmware.png}
-  \caption[Diagrama de actualizaión de firmware]{Diagrama de actualizaión de firmware\\
+  \caption[Diagrama de actualización de firmware]{Diagrama de actualización de firmware\\
   }
   \label{fig:diagramaactualizacionfirmware}
 \end{figure}
 
 Cuando un punto de recarga necesita una actualización de firmware, el CSMS informa al punto de recarga de la hora en la que este puede comenzar a descargar el nuevo firmware. El punto de recarga debe notificar al CSMS cada paso realizado a medida que se va descargando e instalando el nuevo firmware.
 
-\subsubsection{Modos de autorización local y funcionamiento sin conexión}
+\subsection{Modos de autorización local y funcionamiento sin conexión}
 \label{Modos de autorización local y funcionamiento sin conexión}
 
 En caso de no disponibilidad de las comunicaciones a través de internet o una caída del CSMS, el punto de recarga está diseñado para poder funcionar de forma autónoma. En este caso, se considera al punto de recarga \textit{desconectado} y se marca como tal si funciona el CSMS.
@@ -777,7 +813,7 @@ Esto permite la autorización de un usuario cuando el punto de recarga está des
 Por otro lado, un punto de recarga puede configurarse para admitir la autorización (automática) de cualquier identificador cuando el estado del mismo es de desconectado, para evitar la denegación de servicio y posterior cobro a usuarios de buena fe que no pueden ser autorizados explícitamente por las entradas de la lista de autorización local/caché de autorización. En este caso se desactivará esta autorización automática por motivos de seguridad.
 
 
-\subsubsection{Numeración de conectores}
+\subsection{Numeración de conectores}
 \label{Numeración de conectores}
 
 Para que el CSMS pueda comunicarse con todos los conectores de un punto de recarga, los ConnectorIds deben estar siempre numerados de la siguiente manera:
@@ -793,7 +829,7 @@ item Para operaciones iniciadas por el CSMS o por el punto, se reserva el númer
 \end{enumerate}
 
 
-\subsubsection{Identificadores}
+\subsection{Identificadores}
 \label{Identificadores}
 
 Los datos adquiridos a través del hardware del lector local de tarjetas suelen ser un valor UID (4 o 7 bytes) de una tarjeta RFID física, representado como 8 o 14 caracteres de dígitos hexadecimales. 
@@ -807,7 +843,7 @@ Mientras cumpla un formato de \textit{CiString20Type} (cadena de texto de tamañ
 Esta parte de la autorización es la que puede estar más comprometida y es en la que se tratará de fortalecer su seguridad a lo largo de este trabajo. Además, se recomienda la representación de estos identificadores en hexadecimal, como ya se mencionó antes.
 
 
-\subsubsection{Identificadores superiores}
+\subsection{Identificadores superiores}
 \label{Identificadores superiores}
 
 Un CSMS tiene la capacidad de tratar un conjunto de identificadores como un grupo, lo que permite que cualquier identificador de ese grupo inicie una transacción y que el mismo token u otro token del mismo grupo pueda detenerla. Esto es compatible con los casos de uso comunes de familias o empresas con múltiples conductores para una flota de vehículos compartidos que usan en una sola cuenta de contrato de recarga.
@@ -815,6 +851,490 @@ Un CSMS tiene la capacidad de tratar un conjunto de identificadores como un grup
 Se agrupan con fines de autorización especificando un identificador de grupo superior. Se considera que dos identificadores están en el mismo grupo si disponen de una etiqueta superior que coincida en ambos.
 
 Se trata del mismo caso que un identificador único de un usuario por lo que, al fortalecer la seguridad de este, la protección frente a posibles robos del identificador aplica también en este caso.
+
+
+
+\subsection{Operaciones iniciadas por el punto de recarga}
+\label{Operaciones iniciadas por el punto de recarga}
+
+En este apartado se tratarán los modos de comunicación entre punto de recarga y CSMS más relevantes.
+
+\subsubsection{Authorize (autorizar)}
+\label{Authorize (Autorizar)}
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramaauthorize.png}
+  \caption[Diagrama de \textit{Authorize}]{Diagrama de Authorize\\
+  }
+  \label{fig:diagramaauthorize}
+\end{figure}
+
+
+Antes de que el propietario de un vehículo eléctrico sea capaz de iniciar o detener la carga, el punto de recarga tiene que autorizar la operación. Este solo debería suministrar energía previa autorización. Al detener una transacción, el punto de recarga sólo debería enviar un paquete de autorización cuando el identificador utilizado para detener la transacción es diferente del que inició la transacción.
+
+Un punto de recarga podría autorizar al identificador localmente sin involucrar al CSMS, como se describe en \textit{Modos de autorización local y funcionamiento sin conexión} (\ref{Modos de autorización local y funcionamiento sin conexión}). Si una etiqueta de identificación presentada por el usuario no está en la lista de autorización local o en la memoria caché de autorización el punto de recarga debería enviar una solicitud de autorización al CSMS para solicitar autorización. Si, en caso contrario, está presente en la lista de autorización local o en la memoria caché de autorización, el punto de recarga simplemente podría enviar una solicitud de autorización al CSMS. Si el punto de recarga dispone de una caché de autorización, al recibir una confirmación de autorización, el punto de recarga debe actualizar la entrada de caché dependiendo de si esta tiene permiso o no. En el caso que se trata esta configuración está desactivada.
+
+Al recibir una solicitud de autorización, el CSMS debería responder con una confirmación de autorización. Esta última debe indicar si el CSMS acepta o no la etiqueta de identificación. Si el CSMS acepta esta etiqueta, la confirmación podría incluir una etiqueta de identificación superior y debe incluir un valor de estado de autorización que indique la aceptación o el motivo del rechazo.
+
+
+\subsubsection{BootNotificacion (notificación de arranque)}
+\label{BootNotificacion (notificación de arranque)}
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramabootnotification.png}
+  \caption[Diagrama de \textit{BootNotification}]{Diagrama de BootNotification\\
+  }
+  \label{fig:diagramabootnotification}
+\end{figure}
+
+
+Después de la puesta en marcha un punto de recarga debe enviar una solicitud al CSMS con información sobre su configuración (marca, proveedor, etc.). El CSMS debería responder para indicar si lo acepta en el sistema o no.
+
+El punto de recarga debería enviar una solicitud \textit{BootNotification} cada vez que arranca o reinicia. Entre el encendido/reinicio físico y la finalización exitosa de una \textit{BootNotification}, donde el CSMS devuelve o aceptado o pendiente, el punto de recarga no enviará ninguna solicitud distinta al CSMS. Esto incluye los mensajes antiguos todavía almacenados en la caché del punto de recarga.
+
+Cuando el CSMS responde al \textit{BootNotification} con el estado aceptado, el punto de recarga ajustará el intervalo de Heartbeat (que consisten en avisos periódicos al CSMS de que sigue en funcionamiento y con conexuón) de acuerdo con el intervalo que recibe en la confirmación y se recomienda sincronizar su reloj interno con la hora actual del CSMS suministrado. Si el CSMS responde a la solicitud \textit{BootNotification} algo que no sea del valor aceptado, el valor del campo de intervalo indica el tiempo de espera mínimo antes de enviar una próxima solicitud \textit{BootNotification}. Si ese valor de intervalo es cero, el punto de recarga lo elige por su cuenta, para evitar inundar el CSMS con estas solicitudes. Un punto de recarga debe enviar una solicitud \textit{BootNotification} antes de que se supere este tiempo a menos que el CSMS le solicite hacerlo con un mediante una solicitud llamada \textit{TriggerMessage}.
+
+Si el CSMS devuelve el estado rechazado, el punto de recarga no enviará ningún mensaje OCPP al CSMS hasta que haya expirado el mencionado intervalo de reintento. Durante este, es posible que ya no se pueda acceder al punto de recarga desde el CSMS. Este podría cerrar su canal de comunicación o apagar el hardware de comunicación, por ejemplo, para liberar recursos del sistema. Si el estado es rechazado, el punto de recarga no debe responder a ningún mensaje iniciado por el CSMS ni este último debe iniciar ninguna comunicación.
+
+El CSMS podría devolver también un estado pendiente de registro para indicar que se busca recuperar o configurar algún parámetro en el punto de recarga antes de que el CSMS acepte el punto de recarga. Si este devuelve el estado pendiente de registro, el canal de comunicación no debería ser cerrado ni por el punto de recarga ni por el CSMS. El punto de recarga debería responder a estos mensajes y no debería enviar mensajes de solicitud al CSMS a menos que, como se dice anteriormente, este le haya dado instrucciones para hacerlo con una solicitud \textit{TriggerMessage}.
+
+En este estado pendiente de registro, el CSMS no puede iniciar ni una solicitud \textit{RemoteStartTransaction} ni una \textit{RemoteStopTransaction}. Sí debría aceptar transacciones autorizadas mediante caché, aunque estas puedan no entregarse al sistema central. Igualmente, en el caso que se estudia en este trabajo no va a aplicar.
+
+\subsubsection{Heartbeat (latido)}
+\label{Heartbeat (latido)}
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramaheartbeat.png}
+  \caption[Diagrama de \textit{Heartbeat}]{Diagrama de Heartbeat\\
+  }
+  \label{fig:diagramaheartbeat}
+\end{figure}
+
+
+Para que el CSMS sepa que un punto de recarga se mantiene activo y conectado, un punto de recarga deberá enviar una solicitud \textit{Heartbeat} después de un intervalo de tiempo configurable.
+
+Al recibir una solicitud \textit{Heartbeat}, el CSMS debería responder con una confirmación \textit{Heartbeat}. La confirmación contendrá la hora actual del CSMS, la cual se recomienda utilizar por parte del punto de recarga para sincronizar su reloj interno.
+
+El punto de recarga podría omitir el envío de una solicitud \textit{Heartbeat} cuando se ha enviado otra solicitud al CSMS dentro del intervalo de \textit{Heartbeat} configurado. Esto implica que un CSMS debería asumir la disponibilidad de un punto de recarga siempre que haya recibido una solicitud, de la misma manera que lo habría hecho cuando recibió una solicitud \textit{Heartbeat}.
+
+Con JSON sobre WebSocket el envío de este tipo de paquetes no es obligatorio. Sin embargo, por sincronización horaria, se recomienda enviar al menos uno cada día.
+
+
+\subsubsection{MeterValues (valores del medidor)}
+\label{MeterValues (valores del medidor)}
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramametervalues.png}
+  \caption[Diagrama de \textit{MeterValues}]{Diagrama de MeterValues\\
+  }
+  \label{fig:diagramametervalues}
+\end{figure}
+
+
+Un punto de recarga debe muestrear el medidor de energía u otro tipo de hardware sensor o transductor para proporcionar algún tipo de información adicional sobre los valores de este. Depende del punto de recarga la decisión de cuándo enviará los valores del medidor. Esto se puede configurar usando una solicitud llamada \textit{ChangeConfiguration} para configurar los intervalos de adquisición de datos y especificar los datos que se adquirirán y reportarán.
+
+El punto de recarga debe enviar una solicitud \textit{MeterValues} para descargar los valores de contadores. Debe contener el id del conector del que se tomaron las muestras, el id de la transacción a la que se relacionan, si corresponde, y los elementos de valores de \textit{MeterValues}.
+
+En primer lugar, si el \textit{ConnectorId} es 0, el mensaje se asocia a todo el punto de recarga. Si el \textit{ConectorId} es 0 y la magnitud está relacionada con la energía, esta muestra debe tomarse del medidor de energía principal.
+
+Por otro lado, si no hay una transacción en curso o si los valores se toman del medidor principal se puede omitir el \textit{TransactionId}. 
+
+Finalmente, los valores del \textit{MeterValues}, cada uno de los cuales representa un conjunto de uno o más valores de datos recogidos en un momento determinado.
+
+Cada elemento \textit{MeterValues} contiene una marca de tiempo y un conjunto de uno o más elemento de valor de muestreo, todos capturados en el mismo momento. Cada elemento de valor muestreado contiene un único dato de valor. La naturaleza de cada valor muestreado está determinada por los opcionales \textit{magnitud}, \textit{contexto}, \textit{ubicación}, \textit{unidad}, \textit{fase}, y el \textit{formato de campos}.
+
+El campo opcional \textit{magnitud} especifica el tipo de valor que se mide/informa.
+
+El campo opcional \textit{contexto} especifica el motivo/evento que desencadena la lectura del medidor.
+
+El campo opcional \textit{ubicación} especifica dónde se toma la medición (p. ej., entrada, salida).
+
+El campo opcional fase especifica a qué fase o fases de la instalación eléctrica se aplica el valor. El punto de recarga debería informar de todos los valores dependientes del número de fase desde el punto de vista del medidor de energía (o la conexión a la red cuando esté ausente). Igualmente, este campo no es aplicable a todos los tios de medidas. Por otro lado, hay están dos valores disponibles que estrictamente hablando no se refieren a valores medidos en ningún momento puntual. Estos se refieren a la cantidad máxima de corriente/potencia que se ofrece al PEV y están destinados para su uso en aplicaciones de carga inteligente.
+
+Para la información de rotación de fase de un conector individual, el CSMS puede consultar la configuración del mismo en el punto de recarga con la opción \textit{ConnectorPhaseRotation} mediante un paquete llamado \textit{GetConfiguration}. El punto de recarga debe informar de la rotación de fases con respecto a la conexión a la red. Los valores configurables por conector son \textit{NotApplicable}, \textit{Unknown}, \textit{RST}, \textit{RTS}, \textit{SRT}, \textit{STR}, \textit{TRS} y \textit{TSR}. 
+
+El campo experimental \textit{formato} especifica si los datos se representan en la forma normal (predeterminada) como un valor numérico simple (\textit{crudo}), o como \textit{datos firmados}, un bloque de datos binarios con firma digital opaca, representado como datos hexadecimales. Este campo experimental podría quedar obsoleto y más adelante eliminado en versiones posteriores cuando se proporcione una alternativa de solución más madura.
+
+Para mantener la compatibilidad con versiones anteriores, los valores predeterminados de todos los campos opcionales en un elemento de valor muestreado son tales que un valor sin ningún campo adicional se interpretará como una lectura de registro de energía de importación activa en unidades de Wh (watios hora).
+
+Es probable que el CSMS haga alguna comprobación sobre los datos obtenidos de una solicitud \textit{MeterValues}. El resultado de tales comprobaciones no debe generar que el CSMS no responda con una confirmación \textit{MeterValues}. No responder correctamente hará que el punto de recarga vuelva a intentar el mismo mensaje.
+
+
+
+\subsubsection{StartTransaction (iniciar transacción)}
+\label{StartTransaction (iniciar transacción)}
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramastarttransaction.png}
+  \caption[Diagrama de \textit{StartTransaction}]{Diagrama de StartTransaction\\
+  }
+  \label{fig:diagramastarttransaction}
+\end{figure}
+
+
+El punto de recarga debe enviar una solicitud StartTransaction al CSMS para informar sobre el inicio de una transacción. Si esta transacción se corresponde con una reserva, la solicitud \textit{StartTransaction} tendrá que contener el identificador de la reserva.
+
+Al recibir una solicitud \textit{StartTransaction}, el CSMS deberá de responder con una confirmación \textit{StartTransaction}. Este mensaje de confirmación debe incluir una identificación de transacción y un valor de estado de autorización.
+
+El CSMS debería verificar la validez del identificador en la solicitud \textit{StartTransaction} recibida, porque el identificador podría haber sido autorizado localmente por la caché de autorización existente en el punto de recarga utilizando información desactualizada. El identificado, por ejemplo, puede haber sido bloqueado en el CSMS en el intervalo en la última conexión del punto de recarga con él y en la llegada del \textit{StartTransaction}. Tras recibir un \textit{StartTransaction} debe actualizar la entrada de caché si es que ese identificador no está en la misma. En cualquier caso, en este trabajo no va a aplicarse esta configuración.
+
+Es probable que el CSMS haga alguna comprobación sobre los datos obtenidos de una solicitud \textit{StartTransaction}. El resultado de tales comprobaciones no debe generar que el CSMS no responda con una confirmación \textit{StartTransaction}. No responder correctamente hará que el punto de recarga vuelva a intentar el mismo mensaje.
+
+
+\subsubsection{StatusNotification (notificación de estado)}
+\label{StatusNotification (notificación de estado)}
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramastatusnotification.png}
+  \caption[Diagrama de \textit{StatusNotification}]{Diagrama de StatusNotification\\
+  }
+  \label{fig:diagramastatusnotification}
+\end{figure}
+
+
+
+Un punto de recarga envía una notificación al CSMS para informarle sobre un cambio de estado o un error dentro del punto de recarga. La siguiente tabla muestra todos los posibles estados con los cambios de un estado anterior (columna izquierda) a un estado nuevo (fila superior) en el que un punto de recarga puede enviar una solicitud \textit{StatusNotification} al CSMS.
+
+Los posibles estados del punto de recarga y su denominación en la tabla de estados son:
+
+
+\begin{enumerate}
+
+\item Available (A, 1): disponible.
+\item Preparing (B, 2): preparando.
+\item Charging (C, 3): cargando.
+\item Suspended EV (D, 4): EV suspendido.
+\item Suspended EVSE (E, 5): EVSE suspendido.
+\item Finishing (F, 6): Finalizando.
+\item Reserved (G, 7): Reservado.
+\item Unavailable (H, 8): No disponible.
+\item Faulted (I, 9): Fallado.
+
+\end{enumerate}
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{longtable}{|p{0.05\textwidth}|p{0.05\textwidth}|p{0.05\textwidth}|p{0.05\textwidth}|p{0.05\textwidth}|p{0.05\textwidth}|p{0.05\textwidth}|p{0.05\textwidth}|p{0.05\textwidth}|p{0.05\textwidth}|p{0.05\textwidth}|}
+\caption{Estados del punto de recarga y su tabla de flujo}
+\label{tablaestadospuntoderecarga}
+\endfirsthead
+\endhead
+\hline
+ & \hspace{0pt}1 & \hspace{0pt}2 & \hspace{0pt}3 & \hspace{0pt}4 & \hspace{0pt}5 & \hspace{0pt}6 &  & \hspace{0pt}7 & \hspace{0pt}8 & \hspace{0pt}9 \\ \hline
+ A & - & A2 & A3 & A4 & A5 & - &  & A7 & A8 & A9 \\
+ B & B1 & - & B3 & B4 & B5 & - &  & - & - & B9 \\
+ C & C1 & - & - &  C4 & C5 & C6 &  & - & C8 & C9 \\ 
+ D & D1 & - & D3 & - & D5 & D6 &  & - & D8 & D9 \\ 
+ E & E1 & - & E3 & E4 & - & E6 &  & - & E8 & E9 \\ 
+ F & F1 & F2 & - & - & - & - &  & - & F8 & F9 \\ 
+  &  &  &  &  &  &  &  &  &  &  \\ 
+ G & G1 & G2 & - & - & - & - &  & - & G8 & G9 \\ 
+ H & H1 & H2 & H3 & H4 & H5 & - &  & - & - & H9 \\ 
+ I & I1 & I2 & I3 & I4 & I5 & I6 &  & I7 & I8 & - \\ \hline
+\end{longtable}
+
+La siguiente tabla describe los eventos que pueden llevar a un cambio de estado:
+
+\begin{longtable}{|p{1cm}|p{14cm}|}
+\caption{my caption}
+\label{variability_impl_mech}
+\endfirsthead
+\endhead
+\hline
+- & No es posible \\ 
+ & \\
+A2 & Se inicia el uso (por ejemplo, se enchufa el vehículo, se pasa una etiqueta de identificación, se recibe una solicitud de RemoteStartTransaction...) \\ 
+A3 & Podría ser posible en un punto de recarga sin la obligación de autorizarse activa \\ 
+A4 & Similar al A3 pero el EV no comienza a cargar \\ 
+A5 & Similar al A3 pero el EVSE no comienza a cargar \\ 
+A7 & Se recibe un mensaje \textit{Reserve Now} (reservar ahora) \\ 
+A8 & Se recibe un mensaje \textit{Change Availability} (cambio de disponibilidad) que marca el conector como \textit{Unavailable} \\
+A9 & Se detecta un fallo que impide posteriores operaciones de carga \\ 
+ & \\
+B1 & Se finaliza el uso previsto (por ejemplo, se desenchufa el vehículo, se pasa por segunda vez una etiqueta de identificación, se agota el tiempo de espera hasta una acción del usuario...) \\
+B3 & Se cumplen todos los requisitos previos para iniciar la carga y comienza el proceso\\
+B4 & Se cumplen todos los requisitos previos para la carga, pero el EV no comienza a cargar \\
+B5 & Se cumplen todos los requisitos previos para la carga, pero el EVSE no comienza a cargar \\
+B9 & Se detecta un fallo que impide posteriores operaciones de carga \\
+ & \\
+C1 & La sesión de carga finaliza sin haberse requerido ninguna acción por parte del usuario (por ejemplo, se quitó la manguera en el lado del EV)\\
+C4 & La carga se detiene cuando lo solicita el EV\\
+C5 & La carga se detiene cuando lo solicita el EVSE (por ejemplo, restricción de carga inteligente, la transacción es invalidada por una solicitud AuthorizationStatus en una confirmación StartTransaction)\\
+C6 & La sesión de carga es detenida por el usuario o un RemoteStopTransaction y se requiere una acción adicional del usuario consitente en quitar el cable\\
+C8 & La sesión de carga finaliza, no se requiere ninguna acción del usuario y el conector está programado para ponerse en el estado \textit{Unavailable}\\
+C9 & Se detecta un fallo que impide posteriores operaciones de carga \\
+ & \\
+D1 & La sesión de carga finaliza sin haberse requerido ninguna acción por parte del usuario (por ejemplo, se quitó la manguera en el lado del EV)\\
+D3 & La carga se reanuda a petición del EV\\
+D5 & EVSE suspende la carga\\
+D6 & La sesión de carga se detiene y se requiere más acción del usuario (quitar el cable)\\
+D8 & La sesión de carga finaliza, no se requiere ninguna acción del usuario y el conector está programado para ponerse en el estado \textit{Unavailable}\\
+D9 & Se detecta un fallo que impide posteriores operaciones de carga \\
+ & \\
+E1 & La sesión de carga finaliza sin haberse requerido ninguna acción por parte del usuario (por ejemplo, se quitó la manguera en el lado del EV)\\
+E3 & La carga se reanuda porque se levanta la petición EVSE\\
+E4 & Se levanta la petición EVSE pero el EV no comienza a cargar\\
+E6 & La sesión de carga se detiene y se requiere más acción del usuario (quitar el cable)\\
+E8 & La sesión de carga finaliza, no se requiere ninguna acción del usuario y el conector está programado para ponerse en el estado \textit{Unavailable}\\
+E9 & Se detecta un fallo que impide posteriores operaciones de carga \\
+ & \\
+F1 & Completadas todas las acciones del usuario \\
+F2 & El usuario reinicia la sesión de carga (por ejemplo, se vuelve a enchufar el vehículo, se vuelve a pasar una etiqueta de identificación...) \\ 
+F8 & Se completan todas las acciones del usuario y el conector está programado para ponerse en el estado \textit{Unavailable}\\
+F9 & Se detecta un fallo que impide posteriores operaciones de carga \\
+ & \\
+G1 & La reserva caduca o se recibe un mensaje \textit{Cancel Reservation} (cancelación de reserva)\\
+G2 & Se presenta la identidad de la reserva\\
+G8 &  La reserva caduca o se recibe un mensaje \textit{Cancel Reservation} (cancelación de reserva) y el conector está programado para ponerse en el estado \textit{Unavailable}\\
+G9 & Se detecta un fallo que impide posteriores operaciones de carga \\
+ & \\
+H1 & El conector se configura como \textit{Disponible} después de que llegase un mensaje \textit{Change Availability} (cambiar disponibilidad)\\
+H2 & El conector se configura como \textit{Disponible} después de que el usuario haya interactuado con el punto de recarga\\
+H3 & El conector se configura como \textit{Disponible} y no se requiere ninguna acción del usuario para comenzar a cargar\\
+H4 & Similar a H3 pero el EV no comienza a cargar\\
+H5 & Similar a H3 pero el EVSE no comienza a cargar\\
+H9 & Se detecta un fallo que impide posteriores operaciones de carga \\
+ & \\
+I1-I8 & El fallo se resuelve y el estado vuelve al estado previo al fallo \\
+\hline
+\end{longtable}
+
+
+Estas tablas solo aplican cuando el \textit{ConnectorId} es mayor que 0. Para el \textit{ConnectorId} 0, que se refiere al general del punto, solo están disponibles los estados \textit{Available}, \textit{Unavailable}, \textit{Faulted}. El estado de \textit{ConnectorId} 0 no tiene conexión directa con el estado de los conectores individuales mayores que 0.
+
+Por otro lado, si tanto el EV como el EVSE suspenden la carga, el estado \textit{SuspendedEVSE} tendrá prioridad sobre el estado SuspendedEV.
+
+Cuando un punto de recarga o un conector cambian su estado a \textit{Unavailable} por una solicitud \textit{ChangeAvailability}, el estado \textit{Unavailable} debería ser persistente en todos los reinicios. El punto de recarga puede utilizar el estado \textit{Unavailable} internamente para otros fines (por ejemplo, mientras se actualiza el firmware)
+
+Ya que el estado \textit{Occupied} se ha subdividido en cinco nuevos estados (\textit{Preparing}, \textit{Charging}, \textit{SuspendedEV}, \textit{SuspendedEVSE} y \textit{Finishing}), se envían más solicitudes StatusNotification. Estas se enviarán desde el punto de recarga al CSMS. Por ejemplo, cuando se inicia una transacción, el estado del conector cambiaría sucesivamente de \textit{Preparing} a \textit{Charging} con un corto \textit{SuspendedEV} y/o \textit{SuspendedEVSE} en el medio, con una duración de en torno a un par de segundos.
+
+Para limitar el número de cambios de estado, el punto de recarga puede omitir el envío de una solicitud \textit{StatusNotification} si estuvo activo menos tiempo del definido en la clave de configuración opcional \textit{MinimumStatusDuration} (duración mínima del estado). De esta forma, un punto de recarga puede optar por no enviar algunas solicitudes \textit{StatusNotification}. Por otro lado, un fabricante de puntos de recarga puede haber implementado una duración de estado mínima (retardo) para ciertas transiciones de estado separadas de la opción \textit{MinimumStatusDuration}. El tiempo establecido en \textit{MinimumStatusDuration} se agregará a este retraso predeterminado. Ajustar \textit{MinimumStatusDuration} a cero no anula la duración de estado mínima predeterminada del fabricante. Establecer un valor alto de este parámetro podría retrasar todas las notificaciones de estado, ya que el punto de recarga solo lo mandaría después de que pasase ese tiempo.
+
+El punto de recarga puede enviar una solicitud \textit{StatusNotification} para informar al CSMS de algunas condiciones que producen unfallo. Cuando el campo estado no está \textit{Faulted} esa condición debe considerarse una advertencia, ya que las operaciones de carga aún son posibles.
+
+El \textit{ChargePointErrorCode} (código de error de punto de carga \textit{EVCommunicationError} solo deberá usarse con el estado \textit{Preparing}, \textit{SuspendedEV}, \textit{SuspendedEVSE} y \textit{Finishing} y se tratará como si fuese una advertencia.
+
+Cuando un punto de recarga está configurado con \textit{StopTransactionOnEVSideDisconnect} (detener la transacción tras desconexión del lado EV) configurado a falso, se está realizando una carga y esta se desconecta del lado del EV, el estado \textit{SuspendedEV} debería enviarse al CSMS mediante una solicitud \textit{StatusNotification}, con el campo \textit{errorCode} establecido en \textit{NoError}. El punto de recarga entonces tiene que añadir información adicional en el campo \textit{info}, notificando al CSMS con el motivo de la suspensión de la recarga, que sería \textit{EV side disconnected} (lado EV desconectado). La transacción actual no se detiene.
+
+Sin embargo, cuando un punto de recarga está configurado con \textit{StopTransactionOnEVSideDisconnect} fijado a verdadero, se
+está ejecutando una carga y el EV se desconecta del lado del EV, se debería enviar al CSMS una solicitud \textit{StatusNotification} con el estado \textit{Finishing}, con el campo \textit{errorCode} establecido en \textit{NoError}. El punto de recarga debería añadir información adicional en el campo \textit{info}, notificando al CSMS con el motivo de la suspensión de la recarga, que sería \textit{EV side disconnected} (lado EV desconectado). La transacción actual no se detiene.
+
+Cuando un punto de recarga se conecta a un CSMS después de haber sido desconectado, actualiza al CSMS sobre su estado de acuerdo a las siguientes reglas:
+
+\begin{itemize}
+\item El punto de recarga debería enviar una solicitud \textit{StatusNotification} con su estado actual si es que este cambió mientras el punto de recarga estaba desconectado.
+\item El punto de recarga puede enviar una solicitud \textit{StatusNotification} para informar de un error que sucedió cuando el punto de recarga estaba desconectado.
+\item El punto de recarga no debe enviar una solicitud \textit{StatusNotification} para eventos de cambio de estado históricos que
+ocurrieron mientras el pPunto de recarga estaba fuera de línea y que no informan al CSMS de errores del propio punto de recarga o de su estado actual.
+\item Las solicitudes \textit{StatusNotification} deben enviarse en el orden en el que ocurrieron los eventos que se describen en ellos.
+
+\end{itemize}
+
+Al recibir una solicitud \textit{StatusNotification} el CSMS debería responder con una confirmación \textit{StatusNotification}
+
+\subsubsection{StopTransaction (detener transacción)}
+\label{StopTransaction (detener transacción)}
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramastoptransaction.png}
+  \caption[Diagrama de \textit{StopTransaction}]{Diagrama de StopTransaction\\
+  }
+  \label{fig:diagramastoptransaction}
+\end{figure}
+
+Cuando se detiene una carga, el punto de recarga debe enviar una solicitud \textit{StopTransaction}, notificando al CSMS que esta se ha detenido.
+
+A una solicitud \textit{StopTransaction} puede contener un opcional \textit{TransactionData} (datos de la transacción) para proporcionar más detalles sobre el uso de transacciones. Este elemento es un contenedor para cualquier número de \textit{MeterValues}, utilizando la misma estructura de datos que los elementos \textit{meterValue} de la solicitud \textit{MeterValues}.
+
+Al recibir una solicitud \textit{StopTransaction}, el CSMS debería responder con una confirmación \textit{StopTransaction}.
+
+El CSMS no puede evitar que una transacción se detenga. Únicamente puede informar al punto de recarga que ha recibido la solicitud \textit{StopTransaction} y puede enviar información sobre la etiqueta de identificación utilizada para detener la transacción. Esta información se utilizará para actualizar la caché de autorización, si se implementa. En este trabajo no se va a implementar.
+
+La etiqueta de identificación en la solicitud puede omitirse cuando el punto de recarga necesita detener la transacción. Por ejemplo, cuando se solicita el reinicio del punto de recarga.
+
+Si una transacción finaliza de forma normal, el elemento \textit{Razón} se puede omitir y debería asumirse como \textit{Local}. Si la transacción no finaliza normalmente, este debe establecerse en un valor correcto. Como parte de la finalización normal de la transacción, el punto de recarga debería desbloquear el cable si es que este no está conectado permanentemente.
+
+El punto de recarga puede detener una transacción en curso cuando se desconecta el cable del vehículo eléctrico. Si esta funcionalidad es compatible, es informada y controlada por la clave de configuración \textit{StopTransactionOnEVSideDisconnect}. Si se establece en falso, la transacción no se debe detener cuando el cable se desconecta del PEV. Si se vuelve a conectar el EV, se permitiría nuevamente la transferencia de energía. En este caso, no hay ningún tipo de mecanismo para evitar que otros vehículos eléctricos distintos se carguen y desconecten durante la misma transacción en curso. Con \textit{UnlockConnectorOnEVSideDisconnect} ajustado a falso, el conector debería permanecer bloqueado en el punto de recarga hasta que el usuario detenga la recarga. En caso de que \textit{StopTransactionOnEVSideDisconnect} sea falso, tiene prioridad sobre \textit{UnlockConnectorOnEVSideDisconnect}. En otras palabras, los cables siempre permanecen bloqueados cuando el cable está desconectado en el lado EV al estar fijado \textit{StopTransactionOnEVSideDisconnect} en falso. Configurando \textit{StopTransactionOnEVSideDisconnect} a verdadero, la transacción se debería detener cuando el cable se desconecte del EV. Si se vuelve a conectar el EV, no se permitiría la transferencia de energía hasta que se detenga la transacción y se iniciará una nueva transacción. Si \textit{UnlockConnectorOnEVSideDisconnect} se configura a verdadero, también se desbloqueará el conector del punto de recarga. En este trabajo, \textit{StopTransactionOnEVSideDisconnect} se configurará a verdadero y  \textit{UnlockConnectorOnEVSideDisconnect} a falso. Esto evitará que ún usuario no autorizado libere un vehículo conectado al punto de recarga para posteriormente conectar el suyo y cargar sin permiso.
+
+Es probable que el CSMS aplique controles de cordura a los datos contenidos en una solicitud \textit{StopTransaction} recibida. El resultado de tales verificaciones de cordura no puede provocar que el CSMS no responda con una confirmación StopTransaction. No responder con ella solo hará que el punto de recarga vuelva a intentar el mismo mensaje.
+
+Si el punto de recarga ha implementado un caché de autorización, luego de recibir una solicitud \textit{StopTransaction}, el punto de recarga debe actualizar la entrada de caché, si la etiqueta de identificación no está en la lista de autorizaciones locales, con elvalor \textit{IdTagInfo} de la confirmación como se describe en la caché de autorización. En este caso no aplica.
+
+
+
+\subsection{Operaciones iniciadas por el CSMS}
+\label{Operaciones iniciadas por el CSMS}
+
+
+\subsubsection{ChangeConfiguration (cambiar configuración)}
+\label{ChangeConfiguration (cambiar configuración)}
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramachangeconfiguration.png}
+  \caption[Diagrama de \textit{ChangeConfiguration}]{Diagrama de ChangeConfiguration\\
+  }
+  \label{fig:diagramachangeconfiguration}
+\end{figure}
+
+El CSMS puede hacer una solicitud a un punto de recarga para cambiar los parámetros de configuración. Para lograr esto, el CSMS debe enviar una solicitud llamada \textit{ChangeConfiguration}. Esta solicitud contiene un par \textit{key-value}, donde \textit{key} (clave) es el nombre de la configuración que se va a cambiar y \textit{value} (valor) contiene el nuevo valor para la configuración.
+
+Al recibir una solicitud \textit{ChangeConfiguration} el punto de recarga deberá enviar una confirmación \textit{CambiarConfiguración} indicando si fue capaz de ejecutar el cambio. El contenido de \textit{key} y \textit{valor} no está predefinido. Si \textit{key} no corresponde a un ajuste de configuración compatible con el punto de recarga, este responderá con un estado \textit{NotSupported} (no compatible). Si por el contrario el cambio se ejecutó de manera exitosa se responderá con un estado \textit{Accepted} (aceptado). Si el cambio se ejecutó correctamente, pero es necesario reiniciar el punto de recarga para aplicarlo, la confirmación contendrá el estado \textit{RebootRequired} (reinicio requerido). En caso de no establecer la nueva configuración, el punto de recarga deberá responder con el estado \textit{Rejected} (rechazado).
+
+
+\subsubsection{ClearCache (limpiar caché)}
+\label{ClearCache (limpiar caché)}
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramaclearcache.png}
+  \caption[Diagrama de \textit{ClearCache}]{Diagrama de ClearCache\\
+  }
+  \label{fig:diagramaclearcache}
+\end{figure}
+
+El CSMS puede solicitar a un punto de recarga que borre su caché de autorización. El CSMS tiene que enviar una solicitud \textit{ClearCache} para borrar la memoria de la caché de autorización del punto de recarga. El punto de recarga tendrá que responder con una confirmación \textit{ClearCache}, la cual debe indicar si el punto de recarga pudo borrar esta caché de autorización. En este trabajo no será necesario al no estar configurada.
+
+
+\subsubsection{GetConfiguration (obtener configuración)}
+\label{GetConfiguration (obtener configuración)}
+
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramagetconfiguration.png}
+  \caption[Diagrama de \textit{GetConfiguration}]{Diagrama de GetConfiguration\\
+  }
+  \label{fig:diagramagetconfiguration}
+\end{figure}
+
+
+Para recuperar el valor de los ajustes de configuración, el CSMS enviará una solicitud \textit{GetConfiguration} al punto de recarga. Si la lista de claves en la PDU está vacía o falta (es opcional), el punto de recarga debe devolver una lista de todos los ajustes de configuración en la confirmación \textit{GetConfiguration}. De lo contrario, el punto de recarga deberá devolver una lista de claves reconocidas y sus valores correspondientes y estado de solo lectura. Las claves no reconocidas deberían colocarse en la confirmación del punto de recarga como parte del elemento opcional de la lista de claves desconocidas.
+
+El punto de recarga podría limitar el número de claves de configuración solicitadas en una sola solicitud. Este máximo se podría recuperar leyendo la clave de configuración \textit{GetConfigurationMaxKeys}.
+
+
+\subsubsection{RemoteStartTransaction (inicio de recarga remoto)}
+\label{RemoteStartTransaction (inicio de recarga remoto)}
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramaremotestarttransaction.png}
+  \caption[Diagrama de \textit{RemoteStartTransaction}]{Diagrama de RemoteStartTransaction\\
+  }
+  \label{fig:diagramaremotestarttransaction}
+\end{figure}
+
+
+
+El CSMS puede solicitar un punto de recarga para iniciar una transacción enviando una solicitud \textit{RemoteStartTransaction}. Tras la recepción, el punto de recarga deberá responder con una confirmación \textit{RemoteStartTransaction} y un estado que indica si puede iniciar una transacción o no.
+
+El funcionamiento del mensaje de solicitud \textit{RemoteStartTransaction} depende del valor de la clave de configuración \textit{AuthorizeRemoteTxRequestsclave} de configuración en el punto de recarga.
+
+Si el valor de esta clave \textit{AuthorizeRemoteTxRequests} es verdadero, el punto de recarga debería comportarse como si respondiera a una acción local en el punto de recarga para iniciar una transacción con la etiqueta de identificación proporcionada en el mensaje de solicitud de \textit{RemoteStartTransaction}. Esto significa por tanto que el punto de recarga primero intentará autorizar la etiqueta de identificación, utilizando o la lista de autorizaciones locales, o la caché de autorización y/o una solicitud \textit{Authorize}. Una transacción solo se iniciará después de que se haya obtenido esta autorización. Por otro lado, si el valor de esta clave es falso, el punto de recarga debe intentar inmediatamente iniciar una transacción para la etiqueta de identificación proporcionada en el mensaje de solicitud de \textit{RemoteStartTransaction}. Tenga en cuenta que una vez iniciada la transacción, el punto de recarga le enviará un \textit{StartTransaction} al CSMS, y el CSMS verificará el estado de autorización de la etiqueta de identificación al procesar esta solicitud de \textit{StartTransaction}.
+
+Estos son los casos más habituales de \textit{RemoteStartTransaction}:
+\begin{itemize}
+\item Permitir que un operador de CPO ayude a un conductor de EV que tiene problemas para iniciar una transacción.
+\item Habilitar aplicaciones móviles para controlar transacciones de cobro a través del CSMS.
+\item Habilitar el uso de SMSpara controlar transacciones de cobro a través del CSMS.
+
+\end{itemize}
+
+Las solicitudes \textit{RemoteStartTransaction} deben contener un identificador (\textit{idTag}) que el punto de recarga debe utilizar, si puede iniciar una transacción, para enviar una solicitud \textit{StartTransaction} al CSMS. La transacción se inicia de la misma manera que se describe en \textit{StartTransaction}. Las solicitudes \textit{RemoteStartTransaction} pueden contener una identificación de conector si la transacción se va a iniciar en un conector específico. Cuando no se proporciona una identificación de conector, el punto de recarga tiene el control de la selección del mismo. Un punto de recarga podría rechazar un \textit{RemoteStartTransaction} sin una identificación del conector.
+
+
+\subsubsection{RemoteStopTransaction (detención de recarga remoto)}
+\label{RemoteStopTransaction (detención de recarga remoto)}
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramaremotestoptransaction.png}
+  \caption[Diagrama de \textit{RemoteStopTransaction}]{Diagrama de RemoteStopTransaction\\
+  }
+  \label{fig:diagramaremotestoptransaction}
+\end{figure}
+
+
+El CSMS puede solicitar a un punto de recarga que detenga una transacción enviando una solicitud \textit{RemoteStopTransaction} al punto de recarga con el identificador de la transacción. El punto de recarga debería responder con una confirmación \textit{RemoteStopTransaction} para indicar si está capacitado para detener la transacción.
+
+Esta solicitud remota para detener una transacción es igual a una acción local para detener una transacción. Por tanto, si la transacción es detenida, el punto de recarga enviará una solicitud \textit{StopTransaction} y, en su caso, desbloquear el conector.
+
+Estos son los casos más habituales de \textit{RemoteStopTransaction}:
+\begin{itemize}
+\item Permitir que un operador de CPO ayude a un conductor de EV que tiene problemas para detener una transacción.
+\item Habilitar aplicaciones móviles para controlar transacciones de cobro a través del CSMS.
+
+\end{itemize}
+
+
+\subsubsection{Reset (reiniciar)}
+\label{Reset (reiniciar)}
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramareset.png}
+  \caption[Diagrama de \textit{Reset}]{Diagrama de Reset\\
+  }
+  \label{fig:diagramareset}
+\end{figure}
+
+
+El CSMS debería enviar una solicitud \textit{Reset} para solicitar que un punto de recarga se reinicie. El CSMS puede solicitar un restablecimiento completo o parcial. Al recibir una solicitud \textit{Reset}, el punto de recarga debería responder con una confirmación \textit{Reset}. La confirmación debe incluir si el punto de recarga acepta y, por tanto, intenta el reincio.
+
+Al recibir un restablecimiento parcial, el punto de recarga debería volver a un estado en el que se comporte como si acabara de arrancar. Si alguna transacción está en progreso, debería terminarse normalmente, antes del reinicio, como en un \textit{StopTransaction}.
+
+Al recibir un restablecimiento completo, el punto de recarga debería intentar finalizar cualquier transacción en curso normalmente como en \textit{StopTransaction} y luego realizar un reinicio.
+
+
+\subsubsection{UnlockConnector (desbloqueo de conector)}
+\label{UnlockConnector (desbloqueo de conector)}
+
+
+\begin{figure}[h] 
+\centering
+  \includegraphics[width=0.9\textwidth]{figuras/diagramaunlockconnector.png}
+  \caption[Diagrama de \textit{UnlockConnector}]{Diagrama de UnlockConnector\\
+  }
+  \label{fig:diagramaunlockconnector}
+\end{figure}
+
+
+El CSMS puede solicitar a un punto de recarga desbloquear un conector. Para ello, el punto de recarga debería enviar una solicitud \textit{UnlockConnector}
+
+El objetivo de este mensaje es el de ayudar a los conductores de PEV que tienen problemas para desconectar el cable del punto de carga en caso de algún tipo de mal  no esperado funcionamiento de la retención del cable del conector. Cuando un conductor de un EV llama al \textit{help-desk} de CPO, un operador podría activar manualmente el envío de una solicitud \textit{UnlockConnector} al punto de recarga, obligando a un nuevo intento de desbloqueo del conector. Si todo va según lo previsto esta vez el conector se desbloqueará y el conductor del vehículo eléctrico podrá desconectar el cable y marcharse.
+
+Al recibir una solicitud \textit{UnlockConnector}, el punto de recarga responderá con una confirmación \textit{UnlockConnector}. La confirmación debe indicar si el punto de recarga pudo desbloquear su conector. 
+
+Si existe una transacción en curso en el conector específico, el punto de recarga deberá finalizar la transacción igual que se hace en \textit{StopTransaction}.
+
+\textit{UnlockConnector} está diseñado solo para desbloquear el bloqueo destinado a retener el cable en el conector, no para desbloquear la puerta de acceso al mismo.
+
+
+
+
+
 
 
 \chapter{Gestión de proyecto software}
@@ -994,7 +1514,7 @@ Se debe, por tanto, instalar ese programa e iniciar sesión en él con la cuenta
   \label{fig:root3}
 \end{figure}
 
-Tras aceptar, \textit{Mi Unlock} comprueba que tanto cuenta como dispositivo son aptos. Si eso es así, el programa envía una petición a los servidores de Xiaomi con el dispositivo asociado. Tras ello, en la pantalla del programa aparecerá el tiempo que se debe esperar hasta el desbloqueo del dispositivo (siete días).
+Tras aceptar, \textit{Mi Unlock} comprueba que tanto cuenta como dispositivo son aptos. Si eso es así, el programa envía una solicitud a los servidores de Xiaomi con el dispositivo asociado. Tras ello, en la pantalla del programa aparecerá el tiempo que se debe esperar hasta el desbloqueo del dispositivo (siete días).
 
 \begin{figure}[h] 
 \centering
