@@ -264,104 +264,7 @@ Catálogo de términos específicos del contexto del trabajo.
 \mychapter{0}{Introducción}
 \label{Introducción}
 
-NFC significa Near Field Communication, comunicación de campo cercano. Es una plataforma abierta de comunicación pensada para enviar datos de un dispositivo a otro, pensada desde un inicio para sistemas móviles. Utiliza esquemas básicos de comunicación de identificación por radiofrecuencia (RFID). Opera en una frecuencia de 13,56 MHz con una tasa de datos de hasta 424 kilobits por segundo a una distancia de 10 centímetros \cite{uno}. Tiene además la posibilidad de tener una comunicación bidireccional o en modo P2P (peer-to-peer).
 
-Esta tecnología es una extensión de RFID. Ambas funcionan a la misma frecuencia. NFC es una RFID muy similar, pero existen algunas diferencias entre estas tecnologías, como la distancia de escaneo y las formas de comunicación. A diferencia de NFC, la etiqueta RFID, se puede escanear a una distancia de hasta 100 centímetros \cite{dos}. EN el caso de RFID solo hay comunicación unidireccional que opera solo activa (de 0 a 10 centímetros de distancia) y pasiva (de 10 a 100 centímetros de distancia).
-
-Los dispositivos habilitados para NFC pueden comunicarse entre sí cuando se encuenftran dentro del rango operativo antes mencionado. La tecnología NFC ha sido la fuente de muchas implementaciones en varios negocios, por ejemplo en los sistemas de control de acceso, identificación personal o de activos, pagos… todo ello mediante el uso de tarjetas de identidad, pasaportes o algunos dispositivos móviles.
-NFC tiene tres modos de funcionamiento de dispositivo típicos: modo de emulación de tarjeta, modo de lector/grabador y modo de igual a igual \cite{tres}. Este modelo involucra dos dispositivos para la comunicación, uno que la inicia y otro que funciona a modo de objetivo. El dispositivo iniciador inicia la comunicación siendo este habitualmente un dispositivo NFC activo. El iniciador es el dispositivo responsable de dar energía al dispositivo objetivo en caso de que este último sea un dispositivo pasivo, ya que el primero posee un componente de energía que también puede generarla para el objetivo. El dispositivo de destino puede ser una etiqueta RFID, o un dispositivo o una tarjeta basada en ello. Los dispositivos de destino responden a las solicitudes.
-
-La comunicación entre los dispositivos se realiza a través de una única banda de RF compartida por los dispositivos en modo semidúplex \cite{cuatro}. Un dispositivo transmite en un momento y el otro dispositivo está en modo de escucha. El segundo dispositivo inicia su transmisión una vez que el primer dispositivo la ha finalizado. Los dispositivos móviles basados en NFC, habitualmente smartphones (teléfonos inteligentes), se pueden usar tanto en el modo inciador como objetivo simultáneamente mediante el uso sencillo de la interfaz disponible en la pantalla del propio smartphone. Las aplicaciones desarrolladas para ellos tienen una gran variedad de usos de esta tecnología NFC, como por ejemplo identificación o operaciones bancarias.
-
-Los dispositivos NFC deben cumplir con las normas ISO/IEC 18092 e ISO/IEC 14443. El primero define los modos de comunicación para la interfaz y el protocolo de comunicación de campo cercano y el otro es para tarjetas de identificación u objetos de intercambio internacional.
-
-\section*{Modos de operación de NFC}
-
-\begin{enumerate}
-
-\item Emulación de tarjeta:\\
-Los dispositivos de los smartphones actúan como una smartcard sin contacto cuando se usan en el modo de emulación de tarjeta,  utilizándose por ejemplo en sistemas de pago y emisión de entrada. Las aplicaciones de los smartphones utilizan bibliotecas de la infraestructura existente de smartcards (tarjetas inteligentes). Estos dispositivos móviles se pueden usar en lugar de las smartcards que se usan para pagos o control de acceso físico, etc. El controlador NFC actúa como una puerta de enlace para dirigir los datos y comandos desde la aplicación de la tarjeta en el smartphone hasta el hardware receptor. El controlador NFC en sí mismo no realiza ningún cálculo. Esta implementación ahora se conoce como emulación de tarjeta basada en host, generando respuesta el sistema operativo al tráfico NFC recibido de lectores externos.
-
-\item Lector/grabador:\\
-Permite que los smartphones lean datos de dispositivos NFC o tarjetas inteligentes que contienen etiquetas RFID. También se pueden usar en el modo de escritura donde se usa para escribir datos de información de etiquetas en las etiquetas en blanco y no inicializadas. Un dispositivo inteligente habilitado para NFC puede leer etiquetas NFC. Un usuario puede recuperar la información de los datos almacenados en la etiqueta para otras acciones posteriores.
-
-\item Igual a igual:\\
-Dos dispositivos pueden actuar como dispositivo activo y pasivo. La comunicación bidireccional tiene lugar entre dos teléfonos móviles habilitados para NFC para intercambiar información. La comunicación entre se realiza en modos semidúplex por el mismo canal. El formato de intercambio de datos NFC o NDEF \cite{cinco} es un formato estandarizado que se utiliza para almacenar datos en etiquetas. También especifica los estándares para el transporte de datos entre dos dispositivos NFC en modo P2P (Peer-to-Peer) \cite{seis}. 
-
-\end{enumerate}
-
-\section*{Aplicaciones de NFC}
-
-La clasificación de las aplicaciones NFC depende del comportamiento de la comunicación. Se puede dividir en cuatro tipos.
-
-\begin{enumerate}
-
-\item \textit{Touch and go}: Requiere que el consumidor acerque o toque con el dispositivo NFC al lector NFC para que las tareas se ejecuten en la aplicación. 
-\item \textit{Touch and confirm}: Requiere que el consumidor confirme la interacción aceptando la transacción de pago o ingresando una contraseña para la confirmación del sistema.
-\item \textit{Touch and connect}: Conectarse para habilitar la transferencia de datos punto a punto entre dos dispositivos habilitados para NFC. 
-\item \textit{Touch and explore}: El consumidor podrá encontrar y explorar aplicaciones y funcionalidades del sistema.
-
-\end{enumerate}
-
-
-\section*{Posibles amenazas}
-
-\begin{enumerate}
-
-\item \textit{Eavesdropping} (escucha a escondidas):\\
-La comunicación NFC se lleva a cabo en modo inalámbrico, algo que siempre aumenta las posibilidades de espionaje en las comunicaciones. Es una amenaza muy importante en este tipo de comunicaciones, implicando el uso de recursos adicionales para frenar este tipo de ataques.  La comunicación entre dos dispositivos a través del canal NFC puede ser interceptada o recibida por un atacante que se encuentre con proximidad geográfica a estos dispositivos. EL atacante podría utilizar antenas receptoras más potentes y grandes que las de los dispositivos móviles para recibir la comunicación, lo que facilita que estas escuchas se puedan realizar a grandes distancias, mayores a los 10 centímetros para la comunicación de este tipo de dispositivos. 
-
-La tecnología NFC no tiene ninguna protección específica o particular contra esta posibilidad. Aunque la transmisión de datos en modo pasivo es más difícil de atacar que en modo activo, no se puede recurrir únicamente al uso del modo pasivo, ya que muchas aplicaciones actualmente transmiten los datos en modo activo. La única solución a este tipo de vulnerabilidad es utilizar un canal seguro, basando la comunicación a través del canal NFC con un tipo de autenticación que utilice esquemas de autenticación y cifrado.
-
-
-\item Ataques que afectan a la integridad:\\
-\begin{enumerate}
-
-\item Corrupción de datos:\\
-Los datos transmitidos a través de la interfaz NFC pueden ser modificados por un atacante si consigue interceptarlos. La corrupción de datos se puede considerar como DoS (denegación de servicio) si el atacante los cambia a algo no reconocido por el receptor, perturbando la comunicación desde el emisor. Esta perturbación puede ser temporal si el atacante se ha centrado en el medio de transmisión entre los dispositivos. Si los datos almacenados en las etiquetas o en el almacenamiento de los dispositivos móviles se dañan, esa etiqueta en particular no será válida y se requerirá que el dispositivo móvil obtenga los datos otra vez.
-
-Otro modo de corrupción de datos puede ser mediante la transmisión de frecuencias iguales o válidas en el momento en que los dispositivos legítimos intentan comunicarse entre sí. Este ataque puede ser realizado por software malicioso que se ejecuta en el mismo teléfono inteligente en segundo plano. Este tipo de ataque no corrompe los datos originales, pero los datos recibidos en el extremo del receptor sí se corrompen, siendo un ataque DoS. 
-
-Los dispositivos NFC están diseñados para poder detectar los campos de RF en los que se comunican. Si estos dispositivos pueden detectar la fuerza de un campo de RF y la diferencia cuando hay algún RF adicional en el mismo campo, se puede contrarrestar a este tipo de amenaza de forma efectiva. Se requiere una cantidad de potencia superior a la potencia del campo de RF para corromper los datos que se transmiten. Los dispositivos NFC deberían poder detectar fácilmente el aumento de potencia. Estos tipos de ataques se pueden detectar con relativa facilidad y, por tanto, pueden contrarrestarse.
-
-\item Modificación de datos:\\
-En este caso el atacante también cambia los datos reales, pero no con datos desconocidos como en el primer caso de corrupción de datos, sino con datos válidos pero incorrectos. El receptor en este caso recibe datos manipulados por el atacante durante su transmisión. El ataque requiere que el atacante tenga experiencia en el campo de la comunicación inalámbrica y de radio donde pueda controlar y manejar de algún modo la transmisión.
-
-Las modificaciones de datos se pueden proteger de varias maneras. Una de las formas es cambiar la tasa de baudios. Ello puede detener las modificaciones en el modo activo y hacer imposible que un atacante modifique los datos. Sin embargo, esta implementación requeriría el uso del modo activo en ambos extremo. Esto es práctico, pero aumenta las posibilidades de \textit{eavesdropping}.
-
-Los dispositivos NFC son capaces de verificar el campo de RF antes de transmitir los datos. El dispositivo de envío necesita monitorearlo continuamente para detectar la posibilidad de tal ataque y contrarrestar sus efectos. La mejor solución para defenderse de los ataques de modificación de datos es utilizar un canal seguro para la transmisión y recepción de los datos.
-
-\item Inserción de datos:\\
-Un atacante puede insertar datos falsos no deseados en forma de mensajes en los datos legítimos mientras se produce la comunicación entre dos dispositivos. El éxito del atacante en esta manipulación depende de la duración de la comunicación y el tiempo de respuesta del receptor (el atacante necesita responder a los dispositivos antes de que el dispositivo legítimo quiera establecer su comunicación), dado que si ambos dispositivos, el legítimo y el falsificado, transmitieran a la vez, los datos recibidos en el extremo del receptor se corromperían. 
-
-Una posible contramedida es posible si el dispositivo que responde contesta al primer dispositivo sin ninguna demora. El atacante no tiene ninguna ventana temporal para insertar datos maliciosos o manipulados. 
-
-Se puede lograr otra contramedida a la inserción de datos por parte del atacante si el segundo dispositivo, que está en el extremo de escucha, escucha y monitorea continuamente el canal. Los intentos de inserción de datos por parte del atacante pueden ser detectados por el dispositivo que responde. La mejor manera de contrarrestar el ataque de inserción de datos es también el uso de un canal seguro para la comunicación.
-
-\item Ataque \textit{Man-in-the-middle}:\\
-En el ataque \textit{Man-in-the-Middle} (MITM), un tercero engaña a las dos partes legítimas de la comunicación para hacerles creer que él es la otra parte legítima respectivamente de las dos partes legítimas y, por lo tanto, enruta la comunicación entre las dos partes para que pase por ese tercero. 
-Las dos partes legítimas no saben que están hablando entre ellas a través del tercero, quien escucha su conversación completa sin que nadie se dé cuenta. Si reemplazamos el enlace entre los dos comunicantes legítimos por NFC, este puede interceptar fácilmente la comunicación entre las dos partes legítimas. La recepción de datos por parte de las dos partes legítimas de la comunicación queda a discreción del dispositivo NFC, quien si lo desea puede bloquear la comunicación entre ellas y, alternativamente, puede enviar mensajes de su elección a cualquier lado, sumando además que puede almacenar, siempre de forma silenciosa,  los datos que se transmiten entre las dos partes.
-Como se vio anteriormente, la distancia a la que operan los dispositivos NFC es muy corta es decir, 10 cm. Por ello, un ataque MITM es prácticamente imposible de llevarse a cabo a una distancia tan corta. Se recomienda entonces que el modo de comunicación para la NFC sea activo-pasivo, estando evidentemente un dispositivo en cada estado. El dispositivo activo debe monitorear el campo de RF en busca de cualquier posible perturbación o escenario de ataque
-
-
-\end{enumerate}
-
-
-\item Ataques que afectan a la disponibilidad:\\
-\begin{enumerate}
-
-\item Denegación de servicio:\\
-La denegación de servicio es un ataque cuyos objetivos son los recursos del servidor de red o la memoria \cite{siete}. En este caso se impide el acceso a información o servicios del usuario autorizado \cite{ocho}. Los patrones más reconocibles de este ataque son irrumpir en el sistema y hacer que no esté disponible y luego intentar robar información valiosa, como la información de la tarjeta de crédito.
-
-\item Ataque de destrucción:\\
-Es el ataque más simple que podría ocurrirle a la etiqueta NFC que es su inutilización. Después de este ataque, la etiqueta ya no puede comunicarse con un dispositivo NFC. Se puede destruir la tarjeta tanto cortando la conexión a su antena o destruyendo los circuitos eléctricos de la etiqueta. Este tipo de ataque también afecta a la disponibilidad del sistema.
-
-\item Ataque de interferencia:\\
-Interferencia del sistema NFC mediante el envío de una señal que se sitúa cerca del sistema o usando antenas. Este ataque ocurre en el medio inalámbrico y hace que el sistema no esté disponible. No deja de ser un modo de corrupción de datos.
-
-\end{enumerate}
-
-\end{enumerate}
 
 
 \section*{Metodología}
@@ -533,6 +436,192 @@ Los equipos de suministro de vehículos eléctricos (EVSE), también conocidos c
 Por todo ello, hay muchos componentes de detección, comunicación y computación en los EVSE que son potencialmente vulnerables a los ataques de ciberseguridad. Como en todos los ataques, los piratas informáticos tratan de explotar estas vulnerabilidades para comprometer la disponibilidad, la integridad y la confidencialidad de la red. En este caso, se habla de una red de estaciones de carga o incluso la red eléctrica. Dado el tremendo crecimiento del mercado de vehículos eléctricos en los próximos años, es importante diseñar estaciones de carga confiables. El diseño de estaciones de carga confiables necesita una comprensión más profunda de las interacciones ciberfísicas dentro de la estación de carga, así como de las relaciones entre los componentes cibernéticos y físicos. 
 
 Se presenta un enfoque de sistema para comprender los posibles ataques a este tipo de sistemas. Además se tratará el estado de los sistemas de carga inteligente y de los sistemas de comunicaciones NFC. Se propone una estructura de sistema basica para dirimir las autorizaciones para poder recargar basada en un servidor web y una base de datos. Finalmente se propondrá un sistema conceptual para evitar los ataques de acceso no autorizado a nivel físico al punto de recarga (robo de datos NFC o denegación de servicio (DoS) para mejorar la seguridad de estos sistemas.
+
+
+
+
+\chapter{Tecnologías NFC y RFID}
+\label{Tecnologías NFC y RFID}
+
+NFC significa Near Field Communication, comunicación de campo cercano. Es una plataforma abierta de comunicación pensada para enviar datos de un dispositivo a otro, pensada desde un inicio para sistemas móviles. Utiliza esquemas básicos de comunicación de identificación por radiofrecuencia (RFID). Opera en una frecuencia de 13,56 MHz con una tasa de datos de hasta 424 kilobits por segundo a una distancia de 10 centímetros \cite{uno}. Tiene además la posibilidad de tener una comunicación bidireccional o en modo P2P (peer-to-peer).
+
+Esta tecnología es una extensión de RFID. Ambas funcionan a la misma frecuencia. NFC es una RFID muy similar, pero existen algunas diferencias entre estas tecnologías, como la distancia de escaneo y las formas de comunicación. 
+
+Los dispositivos habilitados para NFC pueden comunicarse entre sí cuando se encuenftran dentro del rango operativo antes mencionado. La tecnología NFC ha sido la fuente de muchas implementaciones en varios negocios, por ejemplo en los sistemas de control de acceso, identificación personal o de activos, pagos… todo ello mediante el uso de tarjetas de identidad, pasaportes o algunos dispositivos móviles.
+
+NFC tiene tres modos de funcionamiento de dispositivo típicos: modo de emulación de tarjeta, modo de lector/grabador y modo de igual a igual \cite{tres}. Este modelo involucra dos dispositivos para la comunicación, uno que la inicia y otro que funciona a modo de objetivo. El dispositivo iniciador inicia la comunicación siendo este habitualmente un dispositivo NFC activo. El iniciador es el dispositivo responsable de dar energía al dispositivo objetivo en caso de que este último sea un dispositivo pasivo, ya que el primero posee un componente de energía que también puede generarla para el objetivo. El dispositivo de destino puede ser una etiqueta RFID, o un dispositivo o una tarjeta basada en ello. Los dispositivos de destino responden a las solicitudes.
+
+La comunicación entre los dispositivos se realiza a través de una única banda de RF compartida por los dispositivos en modo semidúplex \cite{cuatro}. Un dispositivo transmite en un momento y el otro dispositivo está en modo de escucha. El segundo dispositivo inicia su transmisión una vez que el primer dispositivo la ha finalizado. Los dispositivos móviles basados en NFC, habitualmente smartphones (teléfonos inteligentes), se pueden usar tanto en el modo inciador como objetivo simultáneamente mediante el uso sencillo de la interfaz disponible en la pantalla del propio smartphone. Las aplicaciones desarrolladas para ellos tienen una gran variedad de usos de esta tecnología NFC, como por ejemplo identificación o operaciones bancarias.
+
+Los dispositivos NFC deben cumplir con las normas ISO/IEC 18092 e ISO/IEC 14443. El primero define los modos de comunicación para la interfaz y el protocolo de comunicación de campo cercano y el otro es para tarjetas de identificación u objetos de intercambio internacional.
+
+Esta tecnología es una de las más importantes de IoT (\textit{Internet of Things}, internet de las cosas), ya que permite una interconexión fácil y segura entre objetos. IoT es una agrupación e interconexión de dispositivos y objetos a través de una red (bien sea privada o Internet), dónde todos ellos podrían ser visibles e interactuar entre sí. Todo lo que se necesitaría para utilizarla en los smartphones más modernos es encender la conectividad NFC del mismo y escanearlo en un lector de dispositivo.
+
+Por otro lado, RFID (\textit{ Radio Frequency IDentification}, identificación por radiofrecuencia), es igualmente tecnología inalámbrica como NFC. En este caso se utiliza, a menudo, en tarjetas o etiquetas de acceso. Tiene dos componentes: etiquetas y lectores. El lector es un dispositivo con antenas. Emite ondas de radio y recibe señales de la etiqueta RFID. Cuando el lector reconozca la etiqueta, confirmará la identidad y le dará acceso. 
+
+Si bien estas dos tecnologías tienen casi la misma funcionalidad, y para el uso del trabajo que se describirá más adelante la misma, son diferentes. 
+
+
+\section{Diferencias entre NFC y RFID}
+\label{Diferencias entre NFC y RFID}
+
+Son varias las diferencias existentes entre ambas tecnologías. Sin embargo, se pueden considerar a los sistemas NFC como un subgrupo de la tecnología RFID, siendo en realidad parte de estas tecnologías RFID.
+
+La diferencia más importante es que los componentes RFID pueden operar y comunicarse entre sí a una distancia mayor que los NFC. Aunque ambos procesos se pueden utilizar para transmitir datos de forma remota, RFID en su conjunto se refiere a la tecnología de identificación inalámbrica por radiofrecuencia. En cambio, los dispositivos NFC están dedicados a la comunicación inalámbrica de corto alcance mediante tarjetas de proximidad. A diferencia de NFC, la etiqueta RFID, se puede escanear a una distancia de hasta 100 centímetros \cite{dos}. EN el caso de RFID solo hay comunicación unidireccional que opera solo activa (de 0 a 10 centímetros de distancia) y pasiva (de 10 a 100 centímetros de distancia).
+
+Por otro lado, los sistemas RFID son muy útiles en los entornos industriales para recoger información, entre otras cosas, de paquetes e inventarios, recopilando estadísticas e información relevante sobre los objetos. También se utilizan en el cronometraje de carreras y y en algunos eventos para control de acceso y seguimiento de los asistentes. Además, también se emplean por ejemplo en tiendas de ropa para identificar las prendas y su ubicación, estableciendo una medida extra de seguridad. Sin embargo, las etiquetas NFC se utilizan en tan habituales como los teléfonos móviles y las tarjetas bancarias \textit{conctactless}, con las que se paga en los TPV de los comercios. Algo similar puede ocurrir con las tarjetas que permiten la entrada de las personas autorizadas a los edificios mediante sistemas de control de acceso y también para abrir cerraduras electrónicas de hoteles y alojamientos similares.
+
+Una de las características fundamentales de NFC es la comunicación entre pares. Un dispositivo NFC puede actuar tanto como lector como etiqueta. Eso significa que puede transferir y recibir datos de otro dispositivo que también sea NFC. Simplemente se necesitan tener los dos dispositivos juntos. Por ejemplo, pueden convertirse en dispositivos para compartir datos. Al final de esta comunicación, ambos teléfonos tendrán la misma copia de la información. Sin embargo, RFID solo puede leer datos e interpretarlos. Por ejemplo, el recorrido de un paquete en una planta industrial. Esto se puede conocer viendo a qué horas y a qué lectores se acercó el paquete con la etiqueta RFID, conociendo su comportamiento. Pero, por tanto, no puede transferir o extraer estos datos a otro dispositivo RFID.
+
+
+\section{Ventajas y desventajas}
+\label{Ventajas y desventajas}
+
+Las tecnologías RFID pueden aportar grandes ventajas. Esta tecnología inalámbrica ofrece beneficios para empresas de todos los tamaños y para los clientes. Las empresas con tecnología RFID pueden mejorar el uso de activos y la calidad, mejorar la eficiencia y reducir los costes de producción al automatizar procesos. Las siguientes son algunas de las ventajas de RFID que hacen que sea buena la inversión en estas tecnologías.
+
+\subsection{Ventajas de RFID}
+\begin{itemize}
+\item RFID ofrece una forma rápida y confiable de rastrear activos. Se puede aplicar a varios componentes en una línea de producción. Puede usarlo para rastrear equipos o contenedores de alto valor que necesitan tener algún tipo de seguimiento.
+\item Se puede utilizar RFID para instalar lectores fijos en puntos clave. Elimina la necesidad de presentar algún tipo de identificación manualmente. En una línea de producción eliminaría la necesidad de intervención manual. RFID promueve la eficiencia y la precisión.
+\item RFID mejora la salud y la seguridad. Las empresas pueden usarlo para rastrear qué activos necesitan una inspección. También pueden usarlo para restringir el acceso a estos activos cuando no se cumplen estas condiciones de acceso. RFID agiliza los las inspección y la generación de informes.
+\item La tecnología RFID se puede integrar con otras tecnologías. Se puede integrar con la automatización de entregas y sistemas de elección de stocks, ahorrando tiempo desde el pedido hasta el envío de artículos.
+\item La mejora de todo esto mediante RFID provoca un aumento de los ingresos en una empresa que lo implemente dado que mejora la gestión y la organización. Con ello, se aumenta la satisfacción de los clientes, lo que hace que una empresa sea más competitiva. Esto, lógicamente, produce mayores ventas y mejores márgenes.
+\end{itemize}
+
+\subsection{Desventajas de RFID}
+\begin{itemize}
+\item El coste de RFID puede ser diez veces más que algunos sistemas anteriores, como el código de barras, lo que evita que algunas empresas o sistemas eviten su uso (por ejemplo, el acceso a algunos eventos). 
+\item En el caso de las tarjetas de acceso, estas deben ser tenidas en cuenta para su uso. Sin embargo, no hay capacidad de seguimiento en caso de que se pierdan. Las tarjetas de acceso extraviadas son una pérdida para las empresass, organizadores de eventos... y un riesgo de seguridad para los mismos. El usuario final también debe averiguar cómo acceder en caso de que pierda su tarjeta de acceso.
+\item Otra desventaja es que RFID no puede funcionar cuando no hay energía. Algunas empresas con generadores aún pueden utilizar sistemas RFID en estos casos (por ejemplo, el acceso a alguna sala de hospitales), pero otras que no lo tienen pueden necesitar cambiar al bloqueo manual o permitir el acceso libre eventualmente hasta que se recupere la energía, con el riesgo de seguridad que eso conlleva.
+\end{itemize}
+
+\subsection{Ventajas de NFC}
+\begin{itemize}
+\item NFC simplifica los procesos de pago. Con un teléfono inteligente o una tablet, los clientes pueden pagar fácilmente al finalizar una compra. Los clientes pueden usar una billetera móvil como las que ofrecen Google o Apple. Con solo unas pocas órdenes se pueden realizar transacciones. Dado que no es necesario llevar dinero en efectivo, protege contra algunos tipos de robos a la fuerza.
+\item NFC usa códigos pin. En el peor de los casos los ladrones pueden robar el teléfono pero no el dinero. Sin un código especial como el pin no pueden ni obtener ni transferir el dinero, por ello a los clientes también les pueden dar una mayor confianza las empresas que permiten este tipo de pagos inteligentes.
+\item Los pagos con NFC son más seguros que el uso de la banda magnética de una tarjeta de crédito. El primero tiene una seguridad más estricta, por lo que los clientes pueden estar seguros de que sus transacciones de dinero están seguras, además de sus datos personales.
+\item NFC es versátil, cubriendo una amplia gama de servicios. Las empresas lo utilizan para la implementación de plataformas de pago, banca móvil y reservas en eventos u hostelería, o billetes de tren. También se puede utilizar para entregar actualizaciones de algunos datos (por ejemplo, presencia) en tiempo real.
+\end{itemize}
+
+\subsection{Desventajas de NFC}
+\begin{itemize}
+\item Estas tecnologías NFC podrían ser excesivamente caras para algunas empresas, dado que requiere el uso de un conjunto de dispositivos y equipos que pueden elevarse en coste, además de incluir también estándares que dependen de la actualización. Algunos grandes minoristas han incorporado ya estos sistemas para su proceso de pago. Por el contrario, algunas pequeñas tiendas todavía los pueden encontrar demasiado caros. Además, el coste de contratar técnicos e instaladores de software puede aumentar rápidamente, por lo que este tipo de empresas deben buscar otras formas de prepararse para la aplicación de NFC.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+\section{Modos de operación de NFC}
+
+\begin{enumerate}
+
+\item Emulación de tarjeta:\\
+Los dispositivos de los smartphones actúan como una smartcard sin contacto cuando se usan en el modo de emulación de tarjeta,  utilizándose por ejemplo en sistemas de pago y emisión de entrada. Las aplicaciones de los smartphones utilizan bibliotecas de la infraestructura existente de smartcards (tarjetas inteligentes). Estos dispositivos móviles se pueden usar en lugar de las smartcards que se usan para pagos o control de acceso físico, etc. El controlador NFC actúa como una puerta de enlace para dirigir los datos y comandos desde la aplicación de la tarjeta en el smartphone hasta el hardware receptor. El controlador NFC en sí mismo no realiza ningún cálculo. Esta implementación ahora se conoce como emulación de tarjeta basada en host, generando respuesta el sistema operativo al tráfico NFC recibido de lectores externos.
+
+\item Lector/grabador:\\
+Permite que los smartphones lean datos de dispositivos NFC o tarjetas inteligentes que contienen etiquetas RFID. También se pueden usar en el modo de escritura donde se usa para escribir datos de información de etiquetas en las etiquetas en blanco y no inicializadas. Un dispositivo inteligente habilitado para NFC puede leer etiquetas NFC. Un usuario puede recuperar la información de los datos almacenados en la etiqueta para otras acciones posteriores.
+
+\item Igual a igual:\\
+Dos dispositivos pueden actuar como dispositivo activo y pasivo. La comunicación bidireccional tiene lugar entre dos teléfonos móviles habilitados para NFC para intercambiar información. La comunicación entre se realiza en modos semidúplex por el mismo canal. El formato de intercambio de datos NFC o NDEF \cite{cinco} es un formato estandarizado que se utiliza para almacenar datos en etiquetas. También especifica los estándares para el transporte de datos entre dos dispositivos NFC en modo P2P (Peer-to-Peer) \cite{seis}. 
+
+\end{enumerate}
+
+\section{Aplicaciones de NFC}
+
+La clasificación de las aplicaciones NFC depende del comportamiento de la comunicación. Se puede dividir en cuatro tipos.
+
+\begin{enumerate}
+
+\item \textit{Touch and go}: Requiere que el consumidor acerque o toque con el dispositivo NFC al lector NFC para que las tareas se ejecuten en la aplicación. 
+\item \textit{Touch and confirm}: Requiere que el consumidor confirme la interacción aceptando la transacción de pago o ingresando una contraseña para la confirmación del sistema.
+\item \textit{Touch and connect}: Conectarse para habilitar la transferencia de datos punto a punto entre dos dispositivos habilitados para NFC. 
+\item \textit{Touch and explore}: El consumidor podrá encontrar y explorar aplicaciones y funcionalidades del sistema.
+
+\end{enumerate}
+
+
+\section{Posibles amenazas y contramedidas}
+
+\begin{enumerate}
+
+\item Ataques que afectan a la confidencialidad:\\
+\begin{enumerate}
+
+\item \textit{Eavesdropping} (escucha a escondidas):\\
+La comunicación NFC se lleva a cabo en modo inalámbrico, algo que siempre aumenta las posibilidades de espionaje en las comunicaciones. Es una amenaza muy importante en este tipo de comunicaciones, implicando el uso de recursos adicionales para frenar este tipo de ataques.  La comunicación entre dos dispositivos a través del canal NFC puede ser interceptada o recibida por un atacante que se encuentre con proximidad geográfica a estos dispositivos. EL atacante podría utilizar antenas receptoras más potentes y grandes que las de los dispositivos móviles para recibir la comunicación, lo que facilita que estas escuchas se puedan realizar a grandes distancias, mayores a los 10 centímetros para la comunicación de este tipo de dispositivos. 
+
+La tecnología NFC no tiene ninguna protección específica o particular contra esta posibilidad. Aunque la transmisión de datos en modo pasivo es más difícil de atacar que en modo activo, no se puede recurrir únicamente al uso del modo pasivo, ya que muchas aplicaciones actualmente transmiten los datos en modo activo. La única solución a este tipo de vulnerabilidad es utilizar un canal seguro, basando la comunicación a través del canal NFC con un tipo de autenticación que utilice esquemas de autenticación y cifrado.
+
+\item Ataque de confianza:\\
+Este ataque explota el cumplimiento del protocolo de NFC. Lo que realiza el atacante es intentar robar la información de la tarjeta de la víctima haciéndose pasar por el propietario de la misma. El sistema de acceso de la víctima no podrá revelar el ataque porque pensará que hay una tarjeta frente a él.
+
+\item Lectura de larga distancia:\\
+Se basa en una modificación del dispositivo NFC. Lo que hace es aumentar el alcance de la alta frecuencia, por lo que el atacante podría leer las etiquetas desde una distanca segura.
+
+\end{enumerate}
+
+\item Ataques que afectan a la integridad:\\
+\begin{enumerate}
+
+\item Corrupción de datos:\\
+Los datos transmitidos a través de la interfaz NFC pueden ser modificados por un atacante si consigue interceptarlos. La corrupción de datos se puede considerar como DoS (denegación de servicio) si el atacante los cambia a algo no reconocido por el receptor, perturbando la comunicación desde el emisor. Esta perturbación puede ser temporal si el atacante se ha centrado en el medio de transmisión entre los dispositivos. Si los datos almacenados en las etiquetas o en el almacenamiento de los dispositivos móviles se dañan, esa etiqueta en particular no será válida y se requerirá que el dispositivo móvil obtenga los datos otra vez.
+
+Otro modo de corrupción de datos puede ser mediante la transmisión de frecuencias iguales o válidas en el momento en que los dispositivos legítimos intentan comunicarse entre sí. Este ataque puede ser realizado por software malicioso que se ejecuta en el mismo teléfono inteligente en segundo plano. Este tipo de ataque no corrompe los datos originales, pero los datos recibidos en el extremo del receptor sí se corrompen, siendo un ataque DoS. 
+
+Los dispositivos NFC están diseñados para poder detectar los campos de RF en los que se comunican. Si estos dispositivos pueden detectar la fuerza de un campo de RF y la diferencia cuando hay algún RF adicional en el mismo campo, se puede contrarrestar a este tipo de amenaza de forma efectiva. Se requiere una cantidad de potencia superior a la potencia del campo de RF para corromper los datos que se transmiten. Los dispositivos NFC deberían poder detectar fácilmente el aumento de potencia. Estos tipos de ataques se pueden detectar con relativa facilidad y, por tanto, pueden contrarrestarse.
+
+\item Modificación de datos:\\
+En este caso el atacante también cambia los datos reales, pero no con datos desconocidos como en el primer caso de corrupción de datos, sino con datos válidos pero incorrectos. El receptor en este caso recibe datos manipulados por el atacante durante su transmisión. El ataque requiere que el atacante tenga experiencia en el campo de la comunicación inalámbrica y de radio donde pueda controlar y manejar de algún modo la transmisión.
+
+Las modificaciones de datos se pueden proteger de varias maneras. Una de las formas es cambiar la tasa de baudios. Ello puede detener las modificaciones en el modo activo y hacer imposible que un atacante modifique los datos. Sin embargo, esta implementación requeriría el uso del modo activo en ambos extremo. Esto es práctico, pero aumenta las posibilidades de \textit{eavesdropping}.
+
+Los dispositivos NFC son capaces de verificar el campo de RF antes de transmitir los datos. El dispositivo de envío necesita monitorearlo continuamente para detectar la posibilidad de tal ataque y contrarrestar sus efectos. La mejor solución para defenderse de los ataques de modificación de datos es utilizar un canal seguro para la transmisión y recepción de los datos.
+
+\item Inserción de datos:\\
+Un atacante puede insertar datos falsos no deseados en forma de mensajes en los datos legítimos mientras se produce la comunicación entre dos dispositivos. El éxito del atacante en esta manipulación depende de la duración de la comunicación y el tiempo de respuesta del receptor (el atacante necesita responder a los dispositivos antes de que el dispositivo legítimo quiera establecer su comunicación), dado que si ambos dispositivos, el legítimo y el falsificado, transmitieran a la vez, los datos recibidos en el extremo del receptor se corromperían. 
+
+Una posible contramedida es posible si el dispositivo que responde contesta al primer dispositivo sin ninguna demora. El atacante no tiene ninguna ventana temporal para insertar datos maliciosos o manipulados. 
+
+Se puede lograr otra contramedida a la inserción de datos por parte del atacante si el segundo dispositivo, que está en el extremo de escucha, escucha y monitorea continuamente el canal. Los intentos de inserción de datos por parte del atacante pueden ser detectados por el dispositivo que responde. La mejor manera de contrarrestar el ataque de inserción de datos es también el uso de un canal seguro para la comunicación.
+
+\item Ataque \textit{Man-in-the-middle}:\\
+En el ataque \textit{Man-in-the-Middle} (MITM), un tercero engaña a las dos partes legítimas de la comunicación para hacerles creer que él es la otra parte legítima respectivamente de las dos partes legítimas y, por lo tanto, enruta la comunicación entre las dos partes para que pase por ese tercero. 
+Las dos partes legítimas no saben que están hablando entre ellas a través del tercero, quien escucha su conversación completa sin que nadie se dé cuenta. Si reemplazamos el enlace entre los dos comunicantes legítimos por NFC, este puede interceptar fácilmente la comunicación entre las dos partes legítimas. La recepción de datos por parte de las dos partes legítimas de la comunicación queda a discreción del dispositivo NFC, quien si lo desea puede bloquear la comunicación entre ellas y, alternativamente, puede enviar mensajes de su elección a cualquier lado, sumando además que puede almacenar, siempre de forma silenciosa,  los datos que se transmiten entre las dos partes.
+Como se vio anteriormente, la distancia a la que operan los dispositivos NFC es muy corta es decir, 10 cm. Por ello, un ataque MITM es prácticamente imposible de llevarse a cabo a una distancia tan corta. Se recomienda entonces que el modo de comunicación para la NFC sea activo-pasivo, estando evidentemente un dispositivo en cada estado. El dispositivo activo debe monitorear el campo de RF en busca de cualquier posible perturbación o escenario de ataque
+
+
+\end{enumerate}
+
+
+\item Ataques que afectan a la disponibilidad:\\
+\begin{enumerate}
+
+\item Denegación de servicio:\\
+La denegación de servicio es un ataque cuyos objetivos son los recursos del servidor de red o la memoria \cite{siete}. En este caso se impide el acceso a información o servicios del usuario autorizado \cite{ocho}. Los patrones más reconocibles de este ataque son irrumpir en el sistema y hacer que no esté disponible y luego intentar robar información valiosa, como la información de la tarjeta de crédito.
+
+\item Ataque de destrucción:\\
+Es el ataque más simple que podría ocurrirle a la etiqueta NFC que es su inutilización. Después de este ataque, la etiqueta ya no puede comunicarse con un dispositivo NFC. Se puede destruir la tarjeta tanto cortando la conexión a su antena o destruyendo los circuitos eléctricos de la etiqueta. Este tipo de ataque también afecta a la disponibilidad del sistema.
+
+\item Ataque de eliminación:\\
+Se elimina la etiqueta NFC del objeto portador de la misma. Afecta, efectivamente, a la disponibilidad del sistema.
+
+\item Ataque de interferencia:\\
+Interferencia del sistema NFC mediante el envío de una señal que se sitúa cerca del sistema o usando antenas. Este ataque ocurre en el medio inalámbrico y hace que el sistema no esté disponible. No deja de ser un modo de corrupción de datos.
+
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+
+
 
 \chapter{Estaciones de recarga del coche eléctrico (EVSE)}
 \label{Estaciones de recarga del coche eléctrico (EVSE)}
@@ -1330,9 +1419,6 @@ Al recibir una solicitud \textit{UnlockConnector}, el punto de recarga responder
 Si existe una transacción en curso en el conector específico, el punto de recarga deberá finalizar la transacción igual que se hace en \textit{StopTransaction}.
 
 \textit{UnlockConnector} está diseñado solo para desbloquear el bloqueo destinado a retener el cable en el conector, no para desbloquear la puerta de acceso al mismo.
-
-
-
 
 
 
