@@ -406,26 +406,114 @@ Breve descripción del contexto de realización del trabajo. Sirve para situar a
 
 \section{El estado del arte}
 
+\subsection{Metodología}
+
+\subsubsection{Planificación de búsqueda}
+
 Para conocer el punto en el que se encuentran las investigaciones relacionadas con este trabajo que han sido realizadas anteriormente se realizará el estado del arte. La metodología de investigación se divide en las siguientes tres fases: planificación de búsqueda, proceso de búsqueda y selección de muestras, y extracción de datos y preparación de informes. Para realizar el estudio seguimos las recomendaciones de Kitchenham \cite{nueve}, así como la guía PRISMA \cite{diez}. 
 
-\subsection{Definición del proyecto}
+Tras comprobar que no se ha realizado un estudio centrado exactamente en el campo de interés de nuestro trabajo que responda a las preguntas planteadas en él, se ha procedido a la búsqueda de artículos de los que conforman el universo de estudio con el que se trabajará. Se ha considerado como fuente de información IEEE Digital Library.
 
-Tras comprobar que no se ha realizado un estudio centrado exactamente en el campo de interés de nuestro trabajo que responda a las preguntas planteadas en él, se ha procedido a la búsqueda de artículos de los que conforman el universo de estudio con el que se trabajará. Se han considerado varias fuentes de información tales como IEEE Digital Library y Scopus.
+\subsubsection{Proceso de búsqueda}
 
-Una vez decididas las bases de datos en las que se van a realozar las búsquedas, es necesario construir cadenas de búsqueda adecuadas que permitan obtener resultados satisfactorios. Para la realización de la búsqueda se han construido XXX cadenas que se aplican a cada una de las bases de datos indicadas anteriormente. Se utilizarán artículos de acceso libre.
+Una vez decididas las bases de datos en las que se van a realozar las búsquedas, es necesario construir cadenas de búsqueda adecuadas que permitan obtener resultados satisfactorios. Para la realización de la búsqueda se han construido varias cadenas que se aplican a cada una de las bases de datos indicadas anteriormente. Se utilizarán artículos de acceso libre.
 
 La primera de ellas juntando a todas las tecnologías para conocer si hay alguna información combinada de ambas
 
 SS1('charging station' AND 'vehicle' AND ('security' OR 'cybersecurity') AND ('RFID' OR 'NFC'))
 
-Mediante esta cadena de búsqueda se intentó recopilar un conjunto de artículos en los que se encuentren todos los términos del trabajo. Uno de los filtros que se aplican durante la búsqueda es el relacionado con la fecha de publicación del artículo. Al ser campos tecnológicos, con cambios muy veloces, como es la ciberseguridad, nos centraremos únicamente en artículos recientes. En este caso, la búsqueda se centra en artículos publicados entre el año 2019 a hoy.
+Mediante esta cadena de búsqueda se intentó recopilar un conjunto de artículos en los que se encuentren todos los términos del trabajo. Uno de los filtros que se aplican durante la búsqueda es el relacionado con la fecha de publicación del artículo. Al ser campos tecnológicos, con cambios muy veloces, como es la ciberseguridad, nos centraremos únicamente en artículos recientes. En este caso, la búsqueda se centra en artículos publicados entre el año 2019 a hoy. En esta búsqueda se obtuvieron 2 artículos, recogiendo ambos. 
 
-Por otro lado se han realizado otras dos búsquedas separando las cadenas anteriores para conocer el estado de ambas tecnologías por separado dado que no hay una gran cantidad de artículos en la búsqueda anterior.
+Al tratarse de poca información, se decide ampliar la búsqueda y separarlo en dos búsquedas. Se realiza de este modo para conocer el estado de ambas tecnologías por separado. 
 
 SS2(('security' OR 'cybersecurity') AND ('RFID' OR 'NFC'))
-SS3('charging station' AND 'vehicle')
+SS3('charging station' AND 'vehicle' AND 'security')
 
-En este caso el tiempo de búsqueda es menor, ya que hay un mayor número de artículos y, como se ha mencionado anteriormente, las tecnologías NFC y los cargadores de coche eléctrico tienen una evolución muy rápida y constante.
+Con la primera de las búsquedas se pretenden encontrar, además de datos de los posibles ataques y vulnerabilidades de ambas tecnologías, algún procedimiento que reduzca las que se relacionan con el problema que se trata en este trabajo para poder adaptarlo o recoger alguna idea relacionada con los mismos.
+
+En la segunda de las búsquedas el objetivo es más simple, basado en entender mejor la tecnología de los puntos de recarga del coche eléctrico y en algunos procedimientos para complementar y mejorar y completar las medidas de seguridad aplicadas en relación a las tecnologías RFID/NFC y al propio entorno de funcionamiento del punto de recarga.
+
+En este caso el tiempo de búsqueda es menor, ya que hay un mayor número de artículos y, como se ha mencionado anteriormente, las tecnologías NFC y los cargadores de coche eléctrico tienen una evolución muy rápida y constante. Por ello y, tras filtrar la búsqueda por año de publicación a partir del año 2021 hasta la actualidad, se obtuvieron en la primera de las búsquedas 233 resultados, mientras que en la segunda búsqueda 83 resultados. 
+
+
+\subsubsection{Selección de muestras}
+
+Para seleccionar las muestras obtenidas se va a realizar un proceso de filtrado. Se realiza en primer lugar un filtrado en base a la lectura del título y del resumen de cada uno de los artículos. Para decidir si un determinado artículo se marca como aceptado o rechazado, se han establecido una serie de criterios. En caso de que un artículo comparta un criterio de exclusión y un criterio de inclusión se le dará más peso al criterio de exclusión. Así se tratará de eliminar aquellos artículos que cumplan al menos un criterio de exclusión o que no cumplan alguno de los criterios de inclusión. Igualmente, se volverá a revisar el resumen al final para realizar un nuevo filtrado en caso de que quede un gran número de artículos.
+
+Los criterios de inclusión establecidos son los siguientes:
+\begin{itemize}
+\item CI1 El artículo hace algún tipo de revisión de la tecnología a utilizar.
+\item CI2 El artículo trata sobre alguna posible vulnerabilidad.
+\item CI3 El artículo propone algún método para reducir las vulnerabilidades.
+\end{itemize}
+
+Los criterios de exclusión establecidos son los siguientes:
+\begin{itemize}
+\item CE1 El artículo no pertenece al ámbito de la ciberseguridad.
+\item CE2 El artículo es una revisión de la literatura.
+\item CE3 El artículo no es de libre acceso.
+\item CE4 El artículo no está en inglés ni en español.
+\end{itemize}
+
+Para conocer qué cantidad de artículos se deben analizar y qué puntos son los más interesantes a recoger para este trabajo se ha desarrollado un cuestionario de evaluación de la calidad del artículo, en base a ciertos requisitos que son de interés en esta investigación. Este cuestionario se ha realizado a partir de la información obtenida tras la lectura completa de los artículos que se han seleccionado en la fase anterior. El cuestionario que permitirá evaluar los artículos antes de pasar a la extracción de resultados está compuesto por las siguientes preguntas:
+
+\begin{itemize}
+\item P1 ¿Trata el diseño de un método de seguridad?
+\item P2 ¿Reduce la influencia de una vulnerabilidad concreta?
+\item P3 ¿Trata algunos desafíos en materia de seguridad informática?
+\item P4 ¿Trata de forma global de alguna de las tecnologías de las que se pretende hablar en este trabajo?
+\end{itemize}
+
+Las preguntas indicadas han sido escogidas en base a las características de un artículo que tiene mayor interés para la investigación, es decir, en este estudio se trata de obtener la situación actual en la ciberseguridad de las tecnologías NFC y de los puntos de recarga de coche eléctrico, además de métodos que traten de enfrentarse a algunas de las vulnerabilidades actuales.
+
+Una vez elegidas las preguntas, es necesario establecer cuáles son las posibles respuestas a las preguntas antes mencionadas y qué valor tendrá cada una de las respuestas. Para la construcción de este cuestionario se ha tratado de formular todas las preguntas de manera que pudieran tener una respuesta del tipo Sí, o No, otorgando a estas respuestas 1 punto y 0 puntos, respectivamente. De esta forma, la valoración máxima que puede alcanzar un artículo es de tres puntos. En este sentido, se ha establecido un umbral en dos puntos, incluyendo únicamente los artículos con una puntuación de 2 o 3, con el objetivo de que los artículos sean lo más completos posible. 
+
+
+\subsubsection{Extracción de datos}
+
+Como último paso en la metodología propuesta, es necesario establecer el método de extracción de los datos que son de interés para la investigación. Una vez reducido el universo de estudio en los artículos que se ajustan a la investigación que se desea realizar, se ha establecido un formulario de extracción de datos. Las variables que se extraerán de cada uno de los artículos se han obtenido de las preguntas de investigación indicadas en el capítulo de este artículo que sirve de introducción. Los datos se extraerán de la lectura completa y detallada de cada uno de los artículos. Las variables que se desean obtener de cada artículo se han establecido respetando el objetivo de realizar una revisión sistemática y por tanto preservando la posibilidad de que esta extracción sea replicable y objetiva. De esta forma las variables que se extraerán, si procede, son las siguientes:
+
+\begin{itemize}
+\item D1 Tipo y nombre de diseño
+\item D2 Vulnerabilidad que reduce
+\item D3 Desafíos en materia de ciberseguridad en los que influye
+\item D4 Tecnología sobre la que presenta alguna visión global
+\end{itemize}
+
+
+\subsection{Resultados}
+
+Finalmente, el número de artículos se ha reducido a catorce. Se ha podido cubrir de forma global todas las cuestiones y se proceden a comentar estos resultados
+
+Para las tecnologías NFC y RFID se han recogido los siguientes artículos:
+\begin{itemize}
+\item En \cite{eauno} se propone un algoritmo de encriptación ligero llamado ``SWLEA”, en el que la longitud del bloque de datos del algoritmo es de 32 bits y admite claves de 32 bits, aplicándose principalmente al sistema con chip de etiqueta RFID como chip identificador.
+\item En \cite{eados} se diseña una metodología para una comunicación eficiente entre dispositivos NFC activos que utilizan el modo de lectura/escritura NFC, diseñando un sistema seguro de autenticación multifactor (MFA) que requiere comunicación bidireccional para la autenticación mutua de dos dispositivos NFC, verificándose experimentalmente utilizando teléfonos inteligentes \textit{Android} habilitados para NFC y un servidor \textit{Kerberos} como autenticador de terceros.
+\item En \cite{eatres} se propone un esquema de autenticación RFID eficiente (RFID-AS) basado en Signcryption de curva hiperelíptica, el cual proporciona las funciones de seguridad necesarias para el sistema RFID, así como la seguridad frente a posibles ataques.
+\item En \cite{eacuatro} se propone un nuevo mecanismo de seguridad consistente en un protocolo ligero de autenticación mutua y un diseño de etiqueta antifalsificación, basado en combinar el esquema de encriptación de clave pública de \textit{Rabin} con la tecnología de funciones físicamente no clonables (PUF).
+\item En \cite{eacinco} se presenta el diseño y la implementación de Au-Hota, un sistema que puede autenticar la etiqueta y el usuario simultáneamente, y puede resistir el ataque de reproducción y el ataque de suplantación que no pueden resolverse con la mayoría de los métodos de capa física, asignando un identificador único al usuario basado en el acoplamiento inductivo entre dos etiquetas adyacentes.
+\item En \cite{easeis} se propone un nuevo mecanismo de autenticación ligero basado en permutación de esponja sin servidor para probar la autenticidad de las etiquetas RFID a cualquier lector legítimo y viceversa.
+\item En \cite{easiete} se presenta un esquema de diseño que combina tecnología embebida con tecnología biométrica para implementar un sistema de control de acceso RFID basado en Raspberry PI.
+\item En \cite{eaocho} se diseña una función de encriptación ultraligera y se propone un esquema de autenticación RFID basado en esta función para el entorno colaborativo de extremo a extremo en la nube.
+\end{itemize}
+
+Los sguientes artículos han sido seleccionados para el sistema de recarga de vehículos eléctricos:
+\begin{itemize}
+\item En \cite{eanueve} se estudia el panorama actual de las estaciones de carga de vehículos eléctricos en términos de seguridad cibernética, se identifican las vulnerabilidades cibernéticas y se presentan protocolos y estándares que puedan abordar los desafíos de seguridad cibernética en dichos sistemas para proporcionar una infraestructura de carga más segura, además de recomendar el uso de algunas medidas y técnicas de seguridad para mitigar los ataques cibernéticos en la infraestructura de carga de vehículos eléctricos y aliviar el impacto adverso de tales ataques.
+\item En \cite{eadiez} se presentan las entidades que participan en un escenario de carga inteligente basado en OCPP, se identifican problemas y amenazas de seguridad y se presentan soluciones propuestas por académicos, además de problemas de seguridad abiertos para OCPP para los que se proponen direcciones de investigación futuras para la mejora de la seguridad del protocolo.
+\item En \cite{eaonce} se tratan los desafíos en materia de ciberseguridad en la infraestructura del vehículo eléctrico
+\item En \cite{eadoce} se proporcionan un conjunto de protocolos de autenticación livianos que permiten la autenticación mutua y el acuerdo de clave de sesión entre el vehículo eléctrico y el sistema de carga, al tiempo que brinda protección contra numerosos ataques.
+\item En \cite{eatrece} el esquema propuesto implementa un mecanismo de seguridad basado en las características inherentemente únicas de la biometría del ojo humano, que se trata de una autenticación eficiente y de bajo coste, utilizando k-Nearest Neighbors (KNN), que es un algoritmo de cifrado liviano.
+\item En \cite{eacatorce} se propone un mecanismo de autenticación robusto para cargar vehículos eléctricos.
+
+\end{itemize}
+
+Con ello ya se dispone de la información suficiente para poder encontrar algunas soluciones a los problemas de seguridad que presentan este tipo de tecnologías, teniendo un punto de partida con una importante base de posibilidades y datos de las mismas.
+
+
+
+
+\section{Definición del proyecto}
 
 
 
@@ -474,12 +562,37 @@ Por otro lado, los sistemas RFID son muy útiles en los entornos industriales pa
 Una de las características fundamentales de NFC es la comunicación entre pares. Un dispositivo NFC puede actuar tanto como lector como etiqueta. Eso significa que puede transferir y recibir datos de otro dispositivo que también sea NFC. Simplemente se necesitan tener los dos dispositivos juntos. Por ejemplo, pueden convertirse en dispositivos para compartir datos. Al final de esta comunicación, ambos teléfonos tendrán la misma copia de la información. Sin embargo, RFID solo puede leer datos e interpretarlos. Por ejemplo, el recorrido de un paquete en una planta industrial. Esto se puede conocer viendo a qué horas y a qué lectores se acercó el paquete con la etiqueta RFID, conociendo su comportamiento. Pero, por tanto, no puede transferir o extraer estos datos a otro dispositivo RFID.
 
 
+
+
+\section{RFID}
+
+\subsection{Modos de operación}
+
+Hay varios tipos de funcionamiento de las etiquetas RFID dependiendo de cómo la etiqueta se comunica con el lector. Estos modos son pasivo, activo y semipasivo (pasivo asistido por batería).
+
+
+\begin{enumerate}
+
+\item Activo:\\
+Las etiquetas RFID activas tienen tanto su propio transmisor como una fuente de energía (batería) en la etiqueta. Estas son, en su mayoría, soluciones UHF (\textit{Ultra High Frequency}, frecuencia ultraalta), y los rangos de lectura de las mismas pueden extenderse hasta los 100 m en algunos casos. Las etiquetas activas suelen ser más grandes y caras que las pasivas, y se utilizan para rastrear grandes activos (como contenedores de carga, vehículos y máquinas). Además también suelen estar equipadas con sensores que miden y transmiten datos de temperatura, humedad, luz y golpes y vibraciones de los objetos a los que se pegan.
+
+Hay dos tipos de etiquetas activas.Por un lado los transpondedores, los cuales solo se "despiertan" y transmiten datos cuando reciben una señal de radio de un lector. Por ejemplo, al conectar uno de estos dispositivos a un vehículo destinado al pago en telepeajes o al paso por puntos de control este solo se activaría si pasase por un paso o puerta en particular. Esto es algo que ayuda a conservar la vida de la batería. Por otro lado están las balizas, las cuales emiten una señal en un intervalo preestablecido. Este tipo de etiqueta activa se utiliza en en los sistemas de ubicación en tiempo real (RTLS), utilizados para rastrear cualquier cosa, desde contenedores de carga preparados para enviarse en un barco o en dispositivos sanitarios como camas o sillas de ruedas.
+
+\item Pasivo:\\
+En las soluciones basadas en etiquetas RFID pasivas, tanto el lector como su antena envían una señal a la etiqueta, la cual se utiliza para encender la etiqueta y reflejar la energía de regreso al lector. Hay sistemas pasivos de LF (\textit{Low Frecuency}, baja frecuencia), HF (\textit{High Frecuency}, alta frecuencia) y UHF. En este caso los rangos de lectura son más reducidos que los de las etiquetas activas y están limitados por la potencia de la señal que se refleja en el lector (se conoce como retrodispersión de etiquetas).
+
+Habitualmente las etiquetas pasivas son más pequeñas, menos costosas y más flexibles que las activas. Esto significa que se pueden adjuntar o incluso incrustar en una mayor variedad de objetos. Las etiquetas UHF pasivas se utilizan habitualmente, por ejemplo, para el seguimiento a nivel de artículo de algún tipo de bien de consumo y productos farmacéuticos.
+
+\item Semipasivo (pasivo asistido por batería, BAP):\\
+También existe un tercer tipo híbrido de etiqueta RFID. Los sistemas BAP o sistemas RFID semipasivos incorporan una fuente de alimentación en una configuración de etiqueta pasiva. La fuente de alimentación ayuda a garantizar que toda la energía recogida del lector se pueda utilizar para reflejar la señal, lo que hará que mejoren tanto la distancia de lectura como las tasas de transferencia de datos. A diferencia de los activos, estas etiquetas BAP no tienen sus propios transmisores
+
+\end{enumerate}
+
+
 \section{Ventajas y desventajas}
 \label{Ventajas y desventajas}
 
-Las tecnologías RFID pueden aportar grandes ventajas. Esta tecnología inalámbrica ofrece beneficios para empresas de todos los tamaños y para los clientes. Las empresas con tecnología RFID pueden mejorar el uso de activos y la calidad, mejorar la eficiencia y reducir los costes de producción al automatizar procesos. Las siguientes son algunas de las ventajas de RFID que hacen que sea buena la inversión en estas tecnologías.
-
-\subsection{Ventajas de RFID}
+\subsection{Ventajas}
 \begin{itemize}
 \item RFID ofrece una forma rápida y confiable de rastrear activos. Se puede aplicar a varios componentes en una línea de producción. Puede usarlo para rastrear equipos o contenedores de alto valor que necesitan tener algún tipo de seguimiento.
 \item Se puede utilizar RFID para instalar lectores fijos en puntos clave. Elimina la necesidad de presentar algún tipo de identificación manualmente. En una línea de producción eliminaría la necesidad de intervención manual. RFID promueve la eficiencia y la precisión.
@@ -488,36 +601,76 @@ Las tecnologías RFID pueden aportar grandes ventajas. Esta tecnología inalámb
 \item La mejora de todo esto mediante RFID provoca un aumento de los ingresos en una empresa que lo implemente dado que mejora la gestión y la organización. Con ello, se aumenta la satisfacción de los clientes, lo que hace que una empresa sea más competitiva. Esto, lógicamente, produce mayores ventas y mejores márgenes.
 \end{itemize}
 
-\subsection{Desventajas de RFID}
+\subsection{Desventajas}
 \begin{itemize}
 \item El coste de RFID puede ser diez veces más que algunos sistemas anteriores, como el código de barras, lo que evita que algunas empresas o sistemas eviten su uso (por ejemplo, el acceso a algunos eventos). 
 \item En el caso de las tarjetas de acceso, estas deben ser tenidas en cuenta para su uso. Sin embargo, no hay capacidad de seguimiento en caso de que se pierdan. Las tarjetas de acceso extraviadas son una pérdida para las empresass, organizadores de eventos... y un riesgo de seguridad para los mismos. El usuario final también debe averiguar cómo acceder en caso de que pierda su tarjeta de acceso.
 \item Otra desventaja es que RFID no puede funcionar cuando no hay energía. Algunas empresas con generadores aún pueden utilizar sistemas RFID en estos casos (por ejemplo, el acceso a alguna sala de hospitales), pero otras que no lo tienen pueden necesitar cambiar al bloqueo manual o permitir el acceso libre eventualmente hasta que se recupere la energía, con el riesgo de seguridad que eso conlleva.
 \end{itemize}
 
-\subsection{Ventajas de NFC}
+
+\subsection{Posibles amenazas y contramedidas en RFID}
+
+Existen numerosas formas de y atacar a los clientes que utilizan la tecnología RFID tanto a su privacidad y seguridad física como a su privacidad informativa y sus autorizaciones públicas.
+
+La tecnología RFID comprende preocupaciones crecientes de seguridad y privacidad. Todo ello es basado en que en el proceso de radiación de radiofrecuencia que se utiliza para leer etiquetas RFID no intervienen los seres humanos y en que estas etiquetas RFID no son capaces de mantener el historial de lecturas pasadas. Además, estas etiquetas son legibles sin el conocimiento del propietario.
+
+Los ataques que mayormente ocurren son los siguientes.
+
 \begin{itemize}
-\item NFC simplifica los procesos de pago. Con un teléfono inteligente o una tablet, los clientes pueden pagar fácilmente al finalizar una compra. Los clientes pueden usar una billetera móvil como las que ofrecen Google o Apple. Con solo unas pocas órdenes se pueden realizar transacciones. Dado que no es necesario llevar dinero en efectivo, protege contra algunos tipos de robos a la fuerza.
-\item NFC usa códigos pin. En el peor de los casos los ladrones pueden robar el teléfono pero no el dinero. Sin un código especial como el pin no pueden ni obtener ni transferir el dinero, por ello a los clientes también les pueden dar una mayor confianza las empresas que permiten este tipo de pagos inteligentes.
-\item Los pagos con NFC son más seguros que el uso de la banda magnética de una tarjeta de crédito. El primero tiene una seguridad más estricta, por lo que los clientes pueden estar seguros de que sus transacciones de dinero están seguras, además de sus datos personales.
-\item NFC es versátil, cubriendo una amplia gama de servicios. Las empresas lo utilizan para la implementación de plataformas de pago, banca móvil y reservas en eventos u hostelería, o billetes de tren. También se puede utilizar para entregar actualizaciones de algunos datos (por ejemplo, presencia) en tiempo real.
+
+\item Ataque de análisis de energía:\\ 
+Un ataque de análisis de energía se utiliza para robar información y obtener acceso a una red. Estos ataques se pueden montar en los sistemas RFID para la observación del nivel de consumo de energía de una etiqueta. 
+
+Se basan en las propiedades físicas básicas del dispositivo, los cuales se rigen por las leyes de la física. Estas dictan que las variaciones de voltaje dentro del dispositivo se producen debido a movimientos muy pequeños de cargas eléctricas (corrientes). Al medir esas corrientes es posible aprender cierta cantidad de información sobre los datos que se manipulan.
+
+\item \textit{Eavesdropping} (escucha a escondidas):\\
+Este ataque se produce cuando un lector RFID no deseado intercepta una conversación entre un lector y una etiqueta y, gracias a ello, obtiene información. Para los atacantes es necesario tener un buen conocimiento sobre los protocolos específicos de RFID, la etiqueta que se utiliza en la comunicación etiqueta y la información del lector. Este ataque se utiliza tanto para robar información como para obtener acceso.
+
+Para reducir las posibilidades de un ataque de este equipo se recomienda el no utilizar siempre estas etiquetas RFID en caso de datos críticos y el uso de técnicas de encriptación y algún tipo de blindaje.
+
+\item Ataque de reproducción:\\
+Se basa en escuchar a escondidas y atacar cuando una parte de la conservación finaliza en los sistemas RFID, retransmitiéndola a partir de ahí varias veces, pudiendo con ello interceptar la comunicación de los sistemas RFID. 
+
+Para tratar de reducir este tipo de ataques se pueden ir eliminando progresivamente etiquetas (incorporando otras nuevas), bloqueando  accesos cuando hay sospechas de posible robo de claves de acceso y usando sedónimos para reducir el robo de información o utilizar algún tipo de técnica de encriptación. Además se pueden reducir las posibilidades de escucha utilizando protocolos de límite de distancia o reduciendo la intensidad de la señal.
+
+\item Ataque de clonación:\\
+Se basa en reproducir información de una etiqueta/sensor preexistente. Los atacantes pueden clonar cualquier etiqueta o sensor auténtico si cuentan con el equipo adecuado para hacerlo. Tras ello se podrán comunicar con un lector auténtico. El sensor o la etiqueta clonados afirman ser los genuinos y el lector estará dispuesto a aceptarlo, siendo esta falsa.
+
+Igual que en el caso anterior, hay opciones para reducir estos ataques basándose en la eliminación de etiquetas y sustitución de estas mismas por otras cada cierto tiempo, también bloqueando accesos cuando hay sospechas de posible robo de claves de acceso y utilizando sedónimos para reducir el robo de información o encriptando los datos de estas tarjetas. Y, como ya se vio, se podrían reducir las posibilidades de escucha utilizando protocolos de límite de distancia o reduciendo la intensidad de la señal.
+
+\item Ataque de suplantación de identidad:\\
+Cuando un atacante logra con éxito sus objetivos en un ataque de clonación, donde el atacante puede registrar o leer la información entre la etiqueta y el lector. Luego, el atacante emula esta información y la vuelve a transmitir al lector, apareciendo esta información en el lado del propio lector como etiqueta válida.
+
+Dado que son casos similares que los anteriores se utilizarán las mismas estrategias para la defensa contra estos ataques, como la eliminación de etiquetas y sustitución de estas mismas por otras cada cierto tiempo, el bloqueo de los accesos en el momento en el que haya sospechas de posible robo de claves de acceso y la utilización de sedónimos para reducir el robo de información o la encriptación los datos de estas tarjetas. Tambén como en los casos anterioree se pueden reducir las posibilidades de escucha utilizando protocolos de límite de distancia o reduciendo la intensidad de la señal.
+
+\item Ataque de denegación de servicio (DoS):\\
+Se suele realizar ejecutando varias peticiones, en este caso comunicaciones RFID, para desbordar al lector y evitar que los usuarios legítimos puedan acceder Lla interferencia de la señal en el canal radiofrecuencia es un ejemplo común de un ataque DoS para los sistemas RFID. Este ataque trata con datos de etiquetas y tiene lugar cuando un atacante niega el servicio de un usuario válido.
+
+Se pueden utilizar para evitarlo algún mecanismo de control, firewall o con protocolos más eficientes.
+
+\item Ataque físico:\\
+En los ataques físicos, el atacante manipula las etiquetas físicamente, en ocasiones utilizando laboratorios para ello. Las etiquetas RFID suelen ofrecer una resiliencia mínima o incluso nula contra los ataques físicos. 
+
+\item Modificación de datos físicos:\\
+En este caso el atacante trata de alterar los datos almacenados en la memoria de etiquetas RFID. 
+
+Se pueden tratar de evitar estos ataques tanto protegiendo la memoria de estos dispositivos como utilizando protocolos criptográficos seguros. 
+
+\item Inyección de información:\\
+En este caso el atacante trata de introducir en la comunicación algún dato sobrante para evitar el acceso del cliente. 
+
+Este ataque se puede evitar chequeando la información que se envía y recibe cada cierto tiempo.
+
+
 \end{itemize}
 
-\subsection{Desventajas de NFC}
-\begin{itemize}
-\item Estas tecnologías NFC podrían ser excesivamente caras para algunas empresas, dado que requiere el uso de un conjunto de dispositivos y equipos que pueden elevarse en coste, además de incluir también estándares que dependen de la actualización. Algunos grandes minoristas han incorporado ya estos sistemas para su proceso de pago. Por el contrario, algunas pequeñas tiendas todavía los pueden encontrar demasiado caros. Además, el coste de contratar técnicos e instaladores de software puede aumentar rápidamente, por lo que este tipo de empresas deben buscar otras formas de prepararse para la aplicación de NFC.
-\end{itemize}
 
 
 
+\section{NFC}
 
-
-
-
-
-
-
-\section{Modos de operación de NFC}
+\subsection{Modos de operación de NFC}
 
 \begin{enumerate}
 
@@ -532,7 +685,7 @@ Dos dispositivos pueden actuar como dispositivo activo y pasivo. La comunicació
 
 \end{enumerate}
 
-\section{Aplicaciones de NFC}
+\subsection{Aplicaciones de NFC}
 
 La clasificación de las aplicaciones NFC depende del comportamiento de la comunicación. Se puede dividir en cuatro tipos.
 
@@ -546,7 +699,28 @@ La clasificación de las aplicaciones NFC depende del comportamiento de la comun
 \end{enumerate}
 
 
-\section{Posibles amenazas y contramedidas}
+\section{Ventajas y desventajas}
+\label{Ventajas y desventajas}
+
+
+\subsection{Ventajas}
+\begin{itemize}
+\item NFC simplifica los procesos de pago. Con un teléfono inteligente o una tablet, los clientes pueden pagar fácilmente al finalizar una compra. Los clientes pueden usar una billetera móvil como las que ofrecen Google o Apple. Con solo unas pocas órdenes se pueden realizar transacciones. Dado que no es necesario llevar dinero en efectivo, protege contra algunos tipos de robos a la fuerza.
+\item NFC usa códigos pin. En el peor de los casos los ladrones pueden robar el teléfono pero no el dinero. Sin un código especial como el pin no pueden ni obtener ni transferir el dinero, por ello a los clientes también les pueden dar una mayor confianza las empresas que permiten este tipo de pagos inteligentes.
+\item Los pagos con NFC son más seguros que el uso de la banda magnética de una tarjeta de crédito. El primero tiene una seguridad más estricta, por lo que los clientes pueden estar seguros de que sus transacciones de dinero están seguras, además de sus datos personales.
+\item NFC es versátil, cubriendo una amplia gama de servicios. Las empresas lo utilizan para la implementación de plataformas de pago, banca móvil y reservas en eventos u hostelería, o billetes de tren. También se puede utilizar para entregar actualizaciones de algunos datos (por ejemplo, presencia) en tiempo real.
+\end{itemize}
+
+\subsection{Desventajas}
+\begin{itemize}
+\item Estas tecnologías NFC podrían ser excesivamente caras para algunas empresas, dado que requiere el uso de un conjunto de dispositivos y equipos que pueden elevarse en coste, además de incluir también estándares que dependen de la actualización. Algunos grandes minoristas han incorporado ya estos sistemas para su proceso de pago. Por el contrario, algunas pequeñas tiendas todavía los pueden encontrar demasiado caros. Además, el coste de contratar técnicos e instaladores de software puede aumentar rápidamente, por lo que este tipo de empresas deben buscar otras formas de prepararse para la aplicación de NFC.
+\end{itemize}
+
+
+
+
+
+\subsection{Posibles amenazas y contramedidas en NFC}
 
 \begin{enumerate}
 
@@ -554,12 +728,20 @@ La clasificación de las aplicaciones NFC depende del comportamiento de la comun
 \begin{enumerate}
 
 \item \textit{Eavesdropping} (escucha a escondidas):\\
-La comunicación NFC se lleva a cabo en modo inalámbrico, algo que siempre aumenta las posibilidades de espionaje en las comunicaciones. Es una amenaza muy importante en este tipo de comunicaciones, implicando el uso de recursos adicionales para frenar este tipo de ataques.  La comunicación entre dos dispositivos a través del canal NFC puede ser interceptada o recibida por un atacante que se encuentre con proximidad geográfica a estos dispositivos. EL atacante podría utilizar antenas receptoras más potentes y grandes que las de los dispositivos móviles para recibir la comunicación, lo que facilita que estas escuchas se puedan realizar a grandes distancias, mayores a los 10 centímetros para la comunicación de este tipo de dispositivos. 
+La comunicación NFC se lleva a cabo en modo inalámbrico, algo que siempre aumenta las posibilidades de espionaje en las comunicaciones. Es una amenaza muy importante en este tipo de comunicaciones, implicando el uso de recursos adicionales para frenar este tipo de ataques.  La comunicación entre dos dispositivos a través del canal NFC puede ser interceptada o recibida por un atacante que se encuentre con proximidad geográfica a estos dispositivos. El atacante podría utilizar antenas receptoras más potentes y grandes que las de los dispositivos móviles para recibir la comunicación, lo que facilita que estas escuchas se puedan realizar a grandes distancias, mayores a los 10 centímetros para la comunicación de este tipo de dispositivos. 
 
-La tecnología NFC no tiene ninguna protección específica o particular contra esta posibilidad. Aunque la transmisión de datos en modo pasivo es más difícil de atacar que en modo activo, no se puede recurrir únicamente al uso del modo pasivo, ya que muchas aplicaciones actualmente transmiten los datos en modo activo. La única solución a este tipo de vulnerabilidad es utilizar un canal seguro, basando la comunicación a través del canal NFC con un tipo de autenticación que utilice esquemas de autenticación y cifrado.
+La tecnología NFC no tiene ninguna protección específica o particular contra esta posibilidad. Aunque la transmisión de datos en modo pasivo es más difícil de atacar que en modo activo, no se puede recurrir únicamente al uso del modo pasivo, ya que muchas aplicaciones actualmente transmiten los datos en modo activo.
+
+ La única solución a este tipo de vulnerabilidad es utilizar un canal seguro, basando la comunicación a través del canal NFC con un tipo de autenticación que utilice esquemas de autenticación y cifrado.
 
 \item Ataque de confianza:\\
-Este ataque explota el cumplimiento del protocolo de NFC. Lo que realiza el atacante es intentar robar la información de la tarjeta de la víctima haciéndose pasar por el propietario de la misma. El sistema de acceso de la víctima no podrá revelar el ataque porque pensará que hay una tarjeta frente a él.
+Este ataque explota el cumplimiento del protocolo de NFC. Lo que realiza el atacante es intentar robar la información de la tarjeta de la víctima haciéndose pasar por el propietario de la misma. El sistema de acceso de la víctima no podrá revelar el ataque porque pensará que hay una tarjeta frente a él. Al tratarse de un protocolo sin contacto, el atacante necesita una distancia corta.
+
+Hay varias formas posibles para protegerse del ataque de retransmisión. Una de estas formas mediante el uso de un contenedor hecho de algún material que sea impenetrable a través de señales de radio (\textit{Jaula de Faraday}).
+
+Otra forma es usar el protocolo de límite de distancia, basado en la adición de un límite de seguridad adicional al sistema. 
+
+Hay una tercera manera, que es una protección perfecta, basada el uso de un canal seguro igual que en el caso de \textit{Eavesdropping}.
 
 \item Lectura de larga distancia:\\
 Se basa en una modificación del dispositivo NFC. Lo que hace es aumentar el alcance de la alta frecuencia, por lo que el atacante podría leer las etiquetas desde una distanca segura.
@@ -579,6 +761,8 @@ Los dispositivos NFC están diseñados para poder detectar los campos de RF en l
 \item Modificación de datos:\\
 En este caso el atacante también cambia los datos reales, pero no con datos desconocidos como en el primer caso de corrupción de datos, sino con datos válidos pero incorrectos. El receptor en este caso recibe datos manipulados por el atacante durante su transmisión. El ataque requiere que el atacante tenga experiencia en el campo de la comunicación inalámbrica y de radio donde pueda controlar y manejar de algún modo la transmisión.
 
+La posibilidad de transferir ondas de radio sobre la parte superior de la forma de onda "legítima" y sincronizar la transferencia de estas es la vulnerabilidad a explotar.
+
 Las modificaciones de datos se pueden proteger de varias maneras. Una de las formas es cambiar la tasa de baudios. Ello puede detener las modificaciones en el modo activo y hacer imposible que un atacante modifique los datos. Sin embargo, esta implementación requeriría el uso del modo activo en ambos extremo. Esto es práctico, pero aumenta las posibilidades de \textit{eavesdropping}.
 
 Los dispositivos NFC son capaces de verificar el campo de RF antes de transmitir los datos. El dispositivo de envío necesita monitorearlo continuamente para detectar la posibilidad de tal ataque y contrarrestar sus efectos. La mejor solución para defenderse de los ataques de modificación de datos es utilizar un canal seguro para la transmisión y recepción de los datos.
@@ -586,14 +770,24 @@ Los dispositivos NFC son capaces de verificar el campo de RF antes de transmitir
 \item Inserción de datos:\\
 Un atacante puede insertar datos falsos no deseados en forma de mensajes en los datos legítimos mientras se produce la comunicación entre dos dispositivos. El éxito del atacante en esta manipulación depende de la duración de la comunicación y el tiempo de respuesta del receptor (el atacante necesita responder a los dispositivos antes de que el dispositivo legítimo quiera establecer su comunicación), dado que si ambos dispositivos, el legítimo y el falsificado, transmitieran a la vez, los datos recibidos en el extremo del receptor se corromperían. 
 
+Al igual que en la modificación de datos, la posibilidad de transferir ondas de radio sobre la parte superior de la forma de onda "legítima" y sincronizar la transferencia de estas es la vulnerabilidad a explotar.
+
 Una posible contramedida es posible si el dispositivo que responde contesta al primer dispositivo sin ninguna demora. El atacante no tiene ninguna ventana temporal para insertar datos maliciosos o manipulados. 
 
-Se puede lograr otra contramedida a la inserción de datos por parte del atacante si el segundo dispositivo, que está en el extremo de escucha, escucha y monitorea continuamente el canal. Los intentos de inserción de datos por parte del atacante pueden ser detectados por el dispositivo que responde. La mejor manera de contrarrestar el ataque de inserción de datos es también el uso de un canal seguro para la comunicación.
+Se puede lograr otra contramedida a la inserción de datos por parte del atacante si el segundo dispositivo, que está en el extremo de escucha, escucha y monitorea continuamente el canal. Los intentos de inserción de datos por parte del atacante pueden ser detectados por el dispositivo que responde. 
+
+Pero, sin embargo, la mejor manera de contrarrestar el ataque de inserción de datos es también el uso de un canal seguro para la comunicación mediante la aplicación de algoritmos como RSA, SHA, o un canal inseguro 3DES.
 
 \item Ataque \textit{Man-in-the-middle}:\\
 En el ataque \textit{Man-in-the-Middle} (MITM), un tercero engaña a las dos partes legítimas de la comunicación para hacerles creer que él es la otra parte legítima respectivamente de las dos partes legítimas y, por lo tanto, enruta la comunicación entre las dos partes para que pase por ese tercero. 
+
+La vulnerabilidad que se puede explotar en este caso es que la transacción se produzca sin ningún tipo de encriptación.
+
 Las dos partes legítimas no saben que están hablando entre ellas a través del tercero, quien escucha su conversación completa sin que nadie se dé cuenta. Si reemplazamos el enlace entre los dos comunicantes legítimos por NFC, este puede interceptar fácilmente la comunicación entre las dos partes legítimas. La recepción de datos por parte de las dos partes legítimas de la comunicación queda a discreción del dispositivo NFC, quien si lo desea puede bloquear la comunicación entre ellas y, alternativamente, puede enviar mensajes de su elección a cualquier lado, sumando además que puede almacenar, siempre de forma silenciosa,  los datos que se transmiten entre las dos partes.
-Como se vio anteriormente, la distancia a la que operan los dispositivos NFC es muy corta es decir, 10 cm. Por ello, un ataque MITM es prácticamente imposible de llevarse a cabo a una distancia tan corta. Se recomienda entonces que el modo de comunicación para la NFC sea activo-pasivo, estando evidentemente un dispositivo en cada estado. El dispositivo activo debe monitorear el campo de RF en busca de cualquier posible perturbación o escenario de ataque
+
+Como se vio anteriormente, la distancia a la que operan los dispositivos NFC es muy corta es decir, 10 cm. Por ello, un ataque MITM es prácticamente imposible de llevarse a cabo a una distancia tan corta. Se recomienda entonces que el modo de comunicación para la NFC sea activo-pasivo, estando evidentemente un dispositivo en cada estado. El dispositivo activo debe monitorear el campo de RF en busca de cualquier posible perturbación o escenario de ataque.
+
+Igualmente, una posible solución es la encriptación de los datos mediante una clave conocida por ambos lados de la comunicación.
 
 
 \end{enumerate}
@@ -605,20 +799,33 @@ Como se vio anteriormente, la distancia a la que operan los dispositivos NFC es 
 \item Denegación de servicio:\\
 La denegación de servicio es un ataque cuyos objetivos son los recursos del servidor de red o la memoria \cite{siete}. En este caso se impide el acceso a información o servicios del usuario autorizado \cite{ocho}. Los patrones más reconocibles de este ataque son irrumpir en el sistema y hacer que no esté disponible y luego intentar robar información valiosa, como la información de la tarjeta de crédito.
 
+Para protegerse de este ataque deberían controlarse varios tipos de técnicas para encender la función de lectura/escritura del dispositivo NFC.
+
 \item Ataque de destrucción:\\
-Es el ataque más simple que podría ocurrirle a la etiqueta NFC que es su inutilización. Después de este ataque, la etiqueta ya no puede comunicarse con un dispositivo NFC. Se puede destruir la tarjeta tanto cortando la conexión a su antena o destruyendo los circuitos eléctricos de la etiqueta. Este tipo de ataque también afecta a la disponibilidad del sistema.
+Es el ataque más simple que podría ocurrirle a la etiqueta NFC que es su inutilización. Después de este ataque, la etiqueta ya no puede comunicarse con un dispositivo NFC. Se puede destruir la tarjeta tanto cortando la conexión a su antena o destruyendo los circuitos eléctricos de la etiqueta. 
+
+Este tipo de ataque también afecta a la disponibilidad del sistema, interrumpiendo o corrompiendo los datos para así bloquear el canal de comunicación.
+
+Para protegerse de estos ataques debe incorporarse un cifrado o una forma de controles de validación de datos.
 
 \item Ataque de eliminación:\\
-Se elimina la etiqueta NFC del objeto portador de la misma. Afecta, efectivamente, a la disponibilidad del sistema.
+Se elimina la etiqueta NFC del objeto portador de la misma. 
+
+Afecta, efectivamente, a la disponibilidad del sistema. También  interrumpe o corrompe los datos para así bloquear el canal de comunicación.
+
+Para protegerse de estos ataques debe incorporarse un cifrado o una forma de controles de validación de datos.
 
 \item Ataque de interferencia:\\
-Interferencia del sistema NFC mediante el envío de una señal que se sitúa cerca del sistema o usando antenas. Este ataque ocurre en el medio inalámbrico y hace que el sistema no esté disponible. No deja de ser un modo de corrupción de datos.
+Interferencia del sistema NFC mediante el envío de una señal que se sitúa cerca del sistema o usando antenas. Este ataque ocurre en el medio inalámbrico y hace que el sistema no esté disponible, modificando o eliminando la información que se envía. No deja de ser un modo de corrupción de datos que ataca a la integridad, además de un ataque más propiamente a la disponibilidad.
+
+La solución más asumible es el incremento de la potencia de la señal del dispositivo para estar por encima de la potencia del atacante y así poder reducir la influencia de la interferencia.
+
+
 
 \end{enumerate}
 
 
 \end{enumerate}
-
 
 
 
@@ -626,19 +833,19 @@ Interferencia del sistema NFC mediante el envío de una señal que se sitúa cer
 \chapter{Estaciones de recarga del coche eléctrico (EVSE)}
 \label{Estaciones de recarga del coche eléctrico (EVSE)}
 
-En la próxima década se espera un gran crecimiento de los vehículos eléctricos enchufables (PEV) en el mundo. El calcula que en la próxima década habrá en circulación unos 120 millones de coches eléctricos. En lo que corresponde a España, actualmente se calcula que, en el mejor de los casos, no disponemos de más de 674 mil automóviles tanto eléctricos como híbridos. El equipo de carga, también conocido como Equipo de Suministro de Vehículos Eléctricos (EVSE) o estaciones de carga, proporciona carga segura a los vehículos eléctricos, de manera similar a las estaciones de servicio. 
+En la próxima década se espera un gran crecimiento de los vehículos eléctricos enchufables (EV) en el mundo. El calcula que en la próxima década habrá en circulación unos 120 millones de coches eléctricos. En lo que corresponde a España, actualmente se calcula que, en el mejor de los casos, no disponemos de más de 674 mil automóviles tanto eléctricos como híbridos. El equipo de carga, también conocido como Equipo de Suministro de Vehículos Eléctricos (EVSE) o estaciones de carga, proporciona carga segura a los vehículos eléctricos, de manera similar a las estaciones de servicio. 
 
-Actualmente, una de las limitaciones más graves para la difusión de lPEV es la falta de una infraestructura de carga de PEV generalizada, a pesar de la gran difusión de la infraestructura eléctrica. Aunque se espera que el problema del coste de los PEV disminuya con su creciente difusión (lo que va produciendo una mayor investigación y avance en este tipo de tecnologías), la todavía limitada autonomía del automóvil y el aún largo tiempo de carga de la batería, mucho más prolongado en comparación con el que se tarda en rellenar el depósito de combustible de los vehículos de combustión interna \cite{diezuno}, son percibidos actualmente por los compradores como serias barreras a la compra \cite{diezdos}\cite{dieztres}.
+Actualmente, una de las limitaciones más graves para la difusión del EV es la falta de una infraestructura de carga de EV generalizada, a pesar de la gran difusión de la infraestructura eléctrica. Aunque se espera que el problema del coste de los EV disminuya con su creciente difusión (lo que va produciendo una mayor investigación y avance en este tipo de tecnologías), la todavía limitada autonomía del automóvil y el aún largo tiempo de carga de la batería, mucho más prolongado en comparación con el que se tarda en rellenar el depósito de combustible de los vehículos de combustión interna \cite{diezuno}, son percibidos actualmente por los compradores como serias barreras a la compra \cite{diezdos}\cite{dieztres}.
 
 Por ahora, el tiempo de recarga de la batería está limitado principalmente por la capacidad de la conexión a la red. Si bien la recarga mediante enchufes puede realizarse durante la noche en el hogar, es posible realizar una solución de recarga más rápida que requiere una alta potencia para la red eléctrica en estaciones de recarga, en estacionamientos públicos o comerciales, en centros comerciales y en la calle o los lugares de trabajo.
 
-Con una difusión masiva del PEV, las cargas de las baterías tendrán un gran impacto en el funcionamiento de las redes inteligentes, por lo que se debería tener en cuenta la alta potencia necesaria para una carga rápida (por ejemplo, se requieren 150 kW para cargar un Tesla modelo S del 20\% al 80\% en 30 minutos). Los problemas de sobrecarga de la red eléctrica pueden surgir cuando varios vehículos en el mismo vecindario se recargan al mismo tiempo, o durante los picos de carga normales.
+Con una difusión masiva del EV, las cargas de las baterías tendrán un gran impacto en el funcionamiento de las redes inteligentes, por lo que se debería tener en cuenta la alta potencia necesaria para una carga rápida (por ejemplo, se requieren 150 kW para cargar un Tesla modelo S del 20\% al 80\% en 30 minutos). Los problemas de sobrecarga de la red eléctrica pueden surgir cuando varios vehículos en el mismo vecindario se recargan al mismo tiempo, o durante los picos de carga normales.
 
 Los sistemas de carga de coche eléctrico no dejan de ser un tipo de sistema ciberfísico. Estos sistemas ciberfísicos (CPS, por sus siglas en inglés) son sistemas construidos mediante una integración segura y sin inconvenientes físicos y de computación (es decir, detección, computación y redes). Las llamadas tecnologías de sistemas inteligentes, como el transporte inteligente, la red inteligente, los vehículos inteligentes... se basan en los fundamentos de esta integración de CPS. La carga inteligente proporciona un mecanismo de comunicación entre el EVSE y la red que admite el monitoreo y la gestión de energía para mejorar la eficiencia y la personalización de los horarios de carga. A través de una mejor conectividad y control estos protocolos de carga inteligente han sido diseñados para reducir costes, equilibrar las cargas máximas y facilitar una mejor integración con diferentes niveles de operadores de red y fuentes de energía renovable. Los EVSE existentes tienen varios componentes tanto de comunicación como informáticos los cuales se utilizan para gestionar y controlar su funcionamiento. Por otro lado, las tecnologías emergentes de redes inteligentes también tienen como objetivo el facilitar un intercambio de energía bidireccional entre los vehículos eléctricos enchufables y la red a través de EVSE, en particular los cargadores rápidos. Además durante el proceso de autenticación para el inicio de la recarga inteligente se envían tanto la información personal como la financiera. Por todo ello, que la operación de EVSE sea segura es muy importante tanto para los vehículos como para las personas y la infraestructura de la red eléctrica.
 
 Hay varias posibles motivaciones para lanzar un ataque a una estación de carga que van desde el robo de electricidad hasta algunos ataques más sofisticados buscan producir la interrupción de una red de estaciones de carga mediante el uso de un EVSE como punto de entrada a la misma. Los ataques podrían ser aún más graves si el malware consigue propagarse potencialmente a través de una red de estaciones de carga que pudieran afectar la red eléctrica.
 
-La Sociedad de Ingenieros Automotrices (SAE) ha desarrollado un conjunto de estándares y protocolos para ser implementados por los fabricantes de estaciones de carga. La cantidad de componentes interconectados en EVSE y la conectividad de este con otros subsistemas (vehículos, smartphones, la red eléctrica...), y los mecanismos de seguridad mal implementados hacen que EVSE sea muy vulnerable a los ataques cibernéticos. El Departamento de Energía/Departamento de Transporte de los Estados Unidos (DOE/ DOT) realizó un informe el cual destaca brechas de seguridad cibernética en la infraestructura EVSE actual que incluye ataques de intermediarios o terceras personas, fraude de pagos, privacidad, daños a la batería del vehículo, deegación de servicio (DoS) y el malware se propaga del vehículo eléctrico o PEV al EVSE. El informe antes mencionado y algunos otros estudios \cite{once}\cite{doce}\cite{trece} demostraron algunas brechas y deficiencias en la infraestructura de carga existente por la falta de guías a seguir y pruebas de seguridad cibernética realizadas antes de su implementación. Además también indican algunos estudios cómo la carga descontrolada de EVSE puede crear un desequilibrio o un efecto negativo en la red eléctrica.
+La Sociedad de Ingenieros Automotrices (SAE) ha desarrollado un conjunto de estándares y protocolos para ser implementados por los fabricantes de estaciones de carga. La cantidad de componentes interconectados en EVSE y la conectividad de este con otros subsistemas (vehículos, smartphones, la red eléctrica...), y los mecanismos de seguridad mal implementados hacen que EVSE sea muy vulnerable a los ataques cibernéticos. El Departamento de Energía/Departamento de Transporte de los Estados Unidos (DOE/ DOT) realizó un informe el cual destaca brechas de seguridad cibernética en la infraestructura EVSE actual que incluye ataques de intermediarios o terceras personas, fraude de pagos, privacidad, daños a la batería del vehículo, deegación de servicio (DoS) y el malware se propaga del vehículo eléctrico o EV al EVSE. El informe antes mencionado y algunos otros estudios \cite{once}\cite{doce}\cite{trece} demostraron algunas brechas y deficiencias en la infraestructura de carga existente por la falta de guías a seguir y pruebas de seguridad cibernética realizadas antes de su implementación. Además también indican algunos estudios cómo la carga descontrolada de EVSE puede crear un desequilibrio o un efecto negativo en la red eléctrica.
 
 
 \section{Seguridad de los dispositivos EVSE desde un punto de vista ciberfísico}
@@ -659,9 +866,9 @@ Los principales tipos de EVSE son el Nivel 1 (120V de corriente alterna, en adel
 
 Los EVSE en las estaciones de carga de nivel 2 suelen disponer de indicadores LED y LCD que se utilizan para proporcionar a los usuarios información sobre el estado de la estación y/o la en qué estado se encuentra su proceso de carga, algo similar a las bombas de gasolina modernas. También es común que EVSE venga equipado con escáneres de identificación por radiofrecuencia (RFID) que pueden leer tarjetas de crédito o tarjetas de miembros de la red EVSE para poder procesar pagos. EVSE puede implementar varias placas con algunos propósitos especiales, ya sea una placa de comunicación, una placa de LED o una placa de E/S de usuario. 
 
-El tener un hardware más sofisticado permite que el EVSE de nivel 2 pueda incluir más protecciones de seguridad para el proceso de recarga que la mayoría de los EVSE de nivel 1. Al igual que el EVSE de nivel 1, el EVSE de nivel 2 interactúa con los PEV a través de un conector de cinco conductores. Tres de los cables están conectados para suministrar energía desde la red eléctrica y solo están separados de una conexión directa de red al PEV a través de relés internos del EVSE. Se utiliza una combinación de tres tomas de voltaje conectadas directamente además de tres sensores de transformadores de corriente no invasivos que proporcionan al hardware de la computadora principal del EVSE información sobre la energía entregada a un vehículo conectado al punto de recarga, lo que permite las mediciones necesarias utilizadas para calcular el coste de la sesión de recarga. Los otros dos cables son la línea piloto y la línea de proximidad. La línea de proximidad se conecta solo a una red de resistencia simple dentro del enchufe EVSE que es la que el PEV utiliza para determinar si la conexión está bien realizada. Normalmente no se comunica con el hardware de la computadora EVSE de ninguna manera, aunque algunos modelos incluyen componentes electrónicos en el circuito que evitan que se notifique en el extremo PEV que la conexión se ha realizado correctamente cuando el EVSE no está listo para recargar. El cable más importante es la línea piloto, que es el que utilizan el EVSE y el PEV para comunicarse entre sí. Cuando una estación está inactiva, se aplica una señal de voltaje de 12V CC a la línea piloto, pero cuando un PEV consigue conectarse mediante una conexión física, el EVSE detecta esta acción a través de un detector de voltaje y cambia a una fuente que genera una onda cuadrada de 1kHz de amplitud de 12V en la línea piloto. Después, un circuito eléctrico en el PEV que consta de interruptores y resistencias responde a EVSE cuando se detecta esta onda cuadrada y el EVSE puede comenzar un proceso de recarga. Si se produce un problema eléctrico en el lado de la red del EVSE o si es el propio usuario el que desconecta repentinamente su vehículo del EVSE en medio de una sesión de recarga, el hardware de la computadora EVSE abrirá los relés en una fracción de segundo, eliminando la energía del adaptador para evitar cualquier tipo de daño al usuario.
+El tener un hardware más sofisticado permite que el EVSE de nivel 2 pueda incluir más protecciones de seguridad para el proceso de recarga que la mayoría de los EVSE de nivel 1. Al igual que el EVSE de nivel 1, el EVSE de nivel 2 interactúa con los EV a través de un conector de cinco conductores. Tres de los cables están conectados para suministrar energía desde la red eléctrica y solo están separados de una conexión directa de red al EV a través de relés internos del EVSE. Se utiliza una combinación de tres tomas de voltaje conectadas directamente además de tres sensores de transformadores de corriente no invasivos que proporcionan al hardware de la computadora principal del EVSE información sobre la energía entregada a un vehículo conectado al punto de recarga, lo que permite las mediciones necesarias utilizadas para calcular el coste de la sesión de recarga. Los otros dos cables son la línea piloto y la línea de proximidad. La línea de proximidad se conecta solo a una red de resistencia simple dentro del enchufe EVSE que es la que el EV utiliza para determinar si la conexión está bien realizada. Normalmente no se comunica con el hardware de la computadora EVSE de ninguna manera, aunque algunos modelos incluyen componentes electrónicos en el circuito que evitan que se notifique en el extremo EV que la conexión se ha realizado correctamente cuando el EVSE no está listo para recargar. El cable más importante es la línea piloto, que es el que utilizan el EVSE y el EV para comunicarse entre sí. Cuando una estación está inactiva, se aplica una señal de voltaje de 12V CC a la línea piloto, pero cuando un EV consigue conectarse mediante una conexión física, el EVSE detecta esta acción a través de un detector de voltaje y cambia a una fuente que genera una onda cuadrada de 1kHz de amplitud de 12V en la línea piloto. Después, un circuito eléctrico en el EV que consta de interruptores y resistencias responde a EVSE cuando se detecta esta onda cuadrada y el EVSE puede comenzar un proceso de recarga. Si se produce un problema eléctrico en el lado de la red del EVSE o si es el propio usuario el que desconecta repentinamente su vehículo del EVSE en medio de una sesión de recarga, el hardware de la computadora EVSE abrirá los relés en una fracción de segundo, eliminando la energía del adaptador para evitar cualquier tipo de daño al usuario.
 
-El hardware de la computadora y el sensor de Level 3 EVSE es como el de Level 2 EVSE. Dos de los tipos principales de estaciones de carga rápida de CC son las que utilizan la expansión del estándar de carga combinada (CCS) y las que siguen el protocolo japonés CHAdeMO, junto con con los supercargadores patentados de Tesla Motor, que solo funcionan con sus propios vehículos, siendo el tercero más influyente. Las principales diferencias entre los EVSE de nivel 2 y 3 se reducen a la ubicación del circuito del cargador, el método de comunicación por cable entre el PEV y el EVSE, y el diseño del adaptador físico. Aunque se utiliza habitualmente de forma errónea el término ``cargador" para referirse a EVSE en publicaciones, todos los EVSE de nivel 3 que están en el mercado ya contienen rectificadores de CA-CC y otros circuitos de carga dentro del propio EVSE, mientras que la recarga de nivel 2 requiere dichos circuitos dentro del PEV. Los conectores físicos para CCS EVSE son esencialmente conectores modificados que incluyen dos pines grandes que se usan para la entrega de energía de CC. CCS EVSE puede utilizar la línea piloto igual que el EVSE de nivel 2, aunque este conductor se puede utilizar también para la comunicación por línea eléctrica (PLC) con la red inteligente. Los conectores CHAdeMO EVSE cuentan con un conjunto similar de dos pines grandes al adaptador CCS, pero también tienen una mayor cantidad de pines en total. Tres de estos son pines de control de sesión de carga que funcionan de igual forma que la línea piloto, pero dos de los pines se usan para facilitar la comunicación de la red de área del controlador con los vehículos, lo que habilita una comunicación por cable más compleja.
+El hardware de la computadora y el sensor de Level 3 EVSE es como el de Level 2 EVSE. Dos de los tipos principales de estaciones de carga rápida de CC son las que utilizan la expansión del estándar de carga combinada (CCS) y las que siguen el protocolo japonés CHAdeMO, junto con con los supercargadores patentados de Tesla Motor, que solo funcionan con sus propios vehículos, siendo el tercero más influyente. Las principales diferencias entre los EVSE de nivel 2 y 3 se reducen a la ubicación del circuito del cargador, el método de comunicación por cable entre el EV y el EVSE, y el diseño del adaptador físico. Aunque se utiliza habitualmente de forma errónea el término ``cargador" para referirse a EVSE en publicaciones, todos los EVSE de nivel 3 que están en el mercado ya contienen rectificadores de CA-CC y otros circuitos de carga dentro del propio EVSE, mientras que la recarga de nivel 2 requiere dichos circuitos dentro del EV. Los conectores físicos para CCS EVSE son esencialmente conectores modificados que incluyen dos pines grandes que se usan para la entrega de energía de CC. CCS EVSE puede utilizar la línea piloto igual que el EVSE de nivel 2, aunque este conductor se puede utilizar también para la comunicación por línea eléctrica (PLC) con la red inteligente. Los conectores CHAdeMO EVSE cuentan con un conjunto similar de dos pines grandes al adaptador CCS, pero también tienen una mayor cantidad de pines en total. Tres de estos son pines de control de sesión de carga que funcionan de igual forma que la línea piloto, pero dos de los pines se usan para facilitar la comunicación de la red de área del controlador con los vehículos, lo que habilita una comunicación por cable más compleja.
 
 \section{Tipos de ataques centrados en dispositivos EVSE}
 \label{Tipos de ataques centrados en dispositivos EVSE}
@@ -678,9 +885,9 @@ Una lista de posibles ataques basados en la red es la siguiente:
 
 \begin{enumerate}
 
-\item \textit{Suplantación de identidad}: La mayoría de las comunicaciones basadas en protocolos de comunicación inalámbrica (RFID, Bluetooth, Wi-Fi...) pueden sufrir este tipo de ataques. Una forma común de este ataque es comprometer el identificador único del dispositivo (por ejemplo, el tag RFID) y hacerse pasar por ese usuario (por tanto, un usuario legítimo). Esto suele ocurrir antes de que se establezca el cifrado y se generen las claves. Este tupo de ataques tienen la capacidad de comprometer la identidad del usuario (por tanto, atacar a su privacidad) y de modificar los datos transmitidos (atacar a la integridad de ellos). Para realizar un ataque por ejemplo se utilizaría la identidad del usuario para, por ejemplo, realizar la recarga en el nombre de otra persona o incluso para poder lanzar ataques DoS, los cuales se verán más adelante.
+\item \textit{Suplantación de identidad}: La mayoría de las comunicaciones basadas en protocolos de comunicación inalámbrica (RFID, Bluetooth, Wi-Fi...) pueden sufrir este tipo de ataques. Una forma común de este ataque es comprometer el identificador único del dispositivo (por ejemplo, la etiqueta RFID) y hacerse pasar por ese usuario (por tanto, un usuario legítimo). Esto suele ocurrir antes de que se establezca el cifrado y se generen las claves. Este tupo de ataques tienen la capacidad de comprometer la identidad del usuario (por tanto, atacar a su privacidad) y de modificar los datos transmitidos (atacar a la integridad de ellos). Para realizar un ataque por ejemplo se utilizaría la identidad del usuario para, por ejemplo, realizar la recarga en el nombre de otra persona o incluso para poder lanzar ataques DoS, los cuales se verán más adelante.
 
-\item \textit{Man-in-the-Middle (Hombre en el medio, MITM)}:  El atacante trata de bloquear el receptor mientras puede acceder al tráfico transmitido, lo que permite que el atacante actúe como un punto intermedio entre el emisor y el receptor sin que ninguna de las partes lo sepa. La mayoría de las comunicaciones basadas en radio son propensas a estos ataques MITM. Estos pueden ocurrir entre los nodos (por ejemplo EVSE y PEV). El atacante podría corromper los datos o tomar el control completo del nodo y alterar el estado de uno de ellos para por ejemplo transmitir información incorrecta (por ejemplo notificar en la estación de recarga un error que no existe). Si las comunicaciones o el código fuente no se ofuscan o encriptan los ataques MITM son más fáciles de ejecutar.
+\item \textit{Man-in-the-Middle (Hombre en el medio, MITM)}:  El atacante trata de bloquear el receptor mientras puede acceder al tráfico transmitido, lo que permite que el atacante actúe como un punto intermedio entre el emisor y el receptor sin que ninguna de las partes lo sepa. La mayoría de las comunicaciones basadas en radio son propensas a estos ataques MITM. Estos pueden ocurrir entre los nodos (por ejemplo EVSE y EV). El atacante podría corromper los datos o tomar el control completo del nodo y alterar el estado de uno de ellos para por ejemplo transmitir información incorrecta (por ejemplo notificar en la estación de recarga un error que no existe). Si las comunicaciones o el código fuente no se ofuscan o encriptan los ataques MITM son más fáciles de ejecutar.
 
 \item \textit{Denegation of Service (Negación de Servicio, DoS)}: Si se comprometen las credenciales del usuario, el propio usuario y la estación se podrían utilizar para lanzar ataques DOS muy sofisticados. Por ejemplo, las credenciales de usuario se pueden usar para lanzar este tipo de ataques contra nodos. Los posibles ataques a considerar son la inundación UDP o TCP/IP, DoS de baja velocidad, inundación de ping o inundación ICMP. Estos ataques son capaces pueden deshabilitar una estación de carga u otros nodos situados en la misma red de la estación de carga.
 
@@ -711,7 +918,7 @@ En teoría, un atacante que disponga de acceso físico a un EVSE podría recoger
 
 \subsection{Ataques híbridos}
 
-Mediante el uso de varias combinaciones de ataques basados en la red red y ataques físicos, es posible lanzar ataques aún más sofisticados. Por ejemplo, si un atacante tuviera acceso al servicio en la nube, se podría autorizar un EVSE para iniciar una sesión de recarga con un vehículo manejado por un usuario no autorizado. Para los EVSE que carecen de un protocolo de enlace PEV-EVSE correctamente implementado al contacto, la modificación física del enchufe del adaptador del EVSE permite activar una sesión de carga de Nivel 2 sin la presencia de l vehículo. La combinación de ambos ataques permite que el enchufe del adaptador de la estación de carga se active remotamente, lo que podría permitir que algunos dispositivos distintos a los PEV reciban energía a través del EVSE, pudiendo utilizarse esto para cualquier fin.
+Mediante el uso de varias combinaciones de ataques basados en la red red y ataques físicos, es posible lanzar ataques aún más sofisticados. Por ejemplo, si un atacante tuviera acceso al servicio en la nube, se podría autorizar un EVSE para iniciar una sesión de recarga con un vehículo manejado por un usuario no autorizado. Para los EVSE que carecen de un protocolo de enlace EV-EVSE correctamente implementado al contacto, la modificación física del enchufe del adaptador del EVSE permite activar una sesión de carga de Nivel 2 sin la presencia de l vehículo. La combinación de ambos ataques permite que el enchufe del adaptador de la estación de carga se active remotamente, lo que podría permitir que algunos dispositivos distintos a los EV reciban energía a través del EVSE, pudiendo utilizarse esto para cualquier fin.
 
 Los diferentes ataques que pueden realizarse a partir de la combinación de ataques físicos y cibernéticos a la red pueden ser increíblemente perjudiciales para el funcionamiento normal de un EVSE y la seguridad de los usuarios.
 
@@ -744,9 +951,9 @@ El software malicioso también puede aprovechar las lagunas del software y del s
 \section{Estándar de protocolo de punto de recarga abierto (Open Charge Point Protocol, OCPP)}
 \label{Estándar de protocolo de punto de recarga abierto (Open Charge Point Protocol, OCPP)}
 
-La estandarización de los protocolos de comunicación para la movilidad eléctrica es necesaria para garantizar que el rendimiento, la seguridad y la protección sean los mismos que los del vehículo convencional real. Las principales organizaciones que desarrollaron estándares para los PEV son la Comisión Electrotécnica Internacional (IEC), la Sociedad de Ingeniería Automotriz (SAE), y otros consorcios públicos y empresas privadas de vehículos eléctricos que desarrollan estándares abiertos.
+La estandarización de los protocolos de comunicación para la movilidad eléctrica es necesaria para garantizar que el rendimiento, la seguridad y la protección sean los mismos que los del vehículo convencional real. Las principales organizaciones que desarrollaron estándares para los EV son la Comisión Electrotécnica Internacional (IEC), la Sociedad de Ingeniería Automotriz (SAE), y otros consorcios públicos y empresas privadas de vehículos eléctricos que desarrollan estándares abiertos.
 
-Existen diferentes estándares en continuo desarrollo en lo que respecta a la comunicación entre los PEV y los EVSE. Los principales estándares son \cite{quinceuno}\cite{quincedos}:
+Existen diferentes estándares en continuo desarrollo en lo que respecta a la comunicación entre los EV y los EVSE. Los principales estándares son \cite{quinceuno}\cite{quincedos}:
 
 \begin{enumerate}
 
@@ -776,7 +983,7 @@ La versión 1.5 de OCPP, de junio de 2012, es capaz de:
 
 En estos últimos años, el protocolo OCPP se ha ido modificando para tener en cuenta los requisitos emergentes de las redes inteligentes, además de para aumentar la participación del usuario en el proceso de carga.
 
-Una característica fundamental añadida en la versión 1.6, la cual fue lanzada en octubre de 2015, es ``Smart Charging” (carga inteligente”). Con ``Smart Charging”,  el Sistema Central es capaz de modificar la potencia de carga de un PEV específico o el consumo total de energía permitido en todo un punto de recarga siempre en base a la disponibilidad de energía en la red. El Sistema Central recibe el pronóstico de demanda/solicitud de energía del operador de la red y, tras ello, modifica los tiempos de carga para algunas o todas las transacciones de carga. Las características de carga y los tiempos se definen en el tipo de ``ChargingProfile” (perfil de carga), el cuál describe el cantidad de corriente o potencia que se puede entregar en un intervalo de tiempo. Aunque el ``ChargingProfile” puede estar relacionado con una sola transacción de carga, el usuario no tiene un rol activo en su definición.
+Una característica fundamental añadida en la versión 1.6, la cual fue lanzada en octubre de 2015, es ``Smart Charging” (carga inteligente”). Con ``Smart Charging”,  el Sistema Central es capaz de modificar la potencia de carga de un EV específico o el consumo total de energía permitido en todo un punto de recarga siempre en base a la disponibilidad de energía en la red. El Sistema Central recibe el pronóstico de demanda/solicitud de energía del operador de la red y, tras ello, modifica los tiempos de carga para algunas o todas las transacciones de carga. Las características de carga y los tiempos se definen en el tipo de ``ChargingProfile” (perfil de carga), el cuál describe el cantidad de corriente o potencia que se puede entregar en un intervalo de tiempo. Aunque el ``ChargingProfile” puede estar relacionado con una sola transacción de carga, el usuario no tiene un rol activo en su definición.
 
 Algunas de las mejoras más relevantes de OCPP 2.0, lanzado en marzo de 2018, son las siguientes:
 
@@ -785,7 +992,7 @@ Algunas de las mejoras más relevantes de OCPP 2.0, lanzado en marzo de 2018, so
 \item Ciberseguridad.
 \item Soporte de la norma ISO 15118.
 \item Se obligó a la existencia de diferentes opciones de autorización del cliente (tarjeta/token RFID, ISO 15118-1 Plug and Charge, terminales de pago, llave mecánica local, teléfonos inteligentes, etc.).
-\item Se obliga a mostrar mensajes en la estación de carga para que los vean a los conductores de PEV (relacionados con la transacción, el idioma que se utilizará, sobre la tarifa aplicable antes de que el conductor de EV comience a cargar, para mostrar el coste de funcionamiento durante y al final de una transacción de carga...).
+\item Se obliga a mostrar mensajes en la estación de carga para que los vean a los conductores de EV (relacionados con la transacción, el idioma que se utilizará, sobre la tarifa aplicable antes de que el conductor de EV comience a cargar, para mostrar el coste de funcionamiento durante y al final de una transacción de carga...).
 \item ``Smart Charging” extendida.
 
 \end{enumerate}
@@ -805,7 +1012,7 @@ Sin embargo, el protocolo OCPP 2.0 todavía no considera las solicitudes del con
 
 \begin{enumerate}
 
-\item Smart charging: siguiendo las funciones de carga inteligente, el PEV proporcionará las necesidades de carga (hora de finalización de la recarga y energía solicitada). El CSMS puede proporcionar hasta tres horarios con diferentes tarifas y el PEV elige un horario. El perfil de carga se puede cambiar durante la transacción (esto recibe el nombre de ``renegociación”).
+\item Smart charging: siguiendo las funciones de carga inteligente, el EV proporcionará las necesidades de carga (hora de finalización de la recarga y energía solicitada). El CSMS puede proporcionar hasta tres horarios con diferentes tarifas y el EV elige un horario. El perfil de carga se puede cambiar durante la transacción (esto recibe el nombre de ``renegociación”).
 \item Reserva: el protocolo OCPP le permite hacer una reserva de un EVSE o un tipo de conector de un EVSE específico. La reserva se realiza hasta una hora determinada. El usuario puede realizar una reserva sobre los recursos del EVSE que estén disponibles en el momento de la reserva. El usuario no puede realizar una reserva anticipada, es decir, reservar por ejemplo para dentro de una hora durante las tres horas siguientes.
 \item Tarifa y coste: el protocolo OCPP permite mostrar la tarifa al usuario antes de iniciar la transacción, durante y al final de la misma.
 
@@ -818,7 +1025,7 @@ Este trabajo utilizará el protocolo OCPP 1.6, ya que es la que dispone de un us
 \chapter{Arquitectura del sistema}
 \label{Arquitectura del sistema}
 
-El protocolo OCPP utilizará WebSocket (WS) como protocolo de comunicación entre las estaciones de carga individuales y el sistema central. Los datos que pasan por WebSocket se pueden formatear en diferentes formatos incluyendo el Simple Object Access Protocol (Protocolo Simple de Acceso a Objetos, SOAP) o el JavaScript Object Notation (Notación de objetos de JavaScript, JSON). Utilizamos la implementación JSON, que es un formato ampliamente utilizado en varios campos, y se presta para interactuar con aplicaciones web escritas en lenguaje Java y aplicaciones en la plataforma Android. Se puede interactuar también con aplicaciones de otro tipo de lenguaje, como el PHP, desarrollado mayoritariamente en este sistema. El sistema desarrollado para la infraestructura de la recarga del coche eléctrico consta de la propia estación de carga, el sistema de gestión de las estaciones de carga, la base de datos que almacena los datos, el PEV y el conductor del EV a través de una aplicación o de un entorno web, en un dispositivo como puede ser un smartphone, una tablet o incluso un PC, o a través de una tarjeta que preguntará al servidor si está o no autorizada.
+El protocolo OCPP utilizará WebSocket (WS) como protocolo de comunicación entre las estaciones de carga individuales y el sistema central. Los datos que pasan por WebSocket se pueden formatear en diferentes formatos incluyendo el Simple Object Access Protocol (Protocolo Simple de Acceso a Objetos, SOAP) o el JavaScript Object Notation (Notación de objetos de JavaScript, JSON). Utilizamos la implementación JSON, que es un formato ampliamente utilizado en varios campos, y se presta para interactuar con aplicaciones web escritas en lenguaje Java y aplicaciones en la plataforma Android. Se puede interactuar también con aplicaciones de otro tipo de lenguaje, como el PHP, desarrollado mayoritariamente en este sistema. El sistema desarrollado para la infraestructura de la recarga del coche eléctrico consta de la propia estación de carga, el sistema de gestión de las estaciones de carga, la base de datos que almacena los datos, el EV y el conductor del EV a través de una aplicación o de un entorno web, en un dispositivo como puede ser un smartphone, una tablet o incluso un PC, o a través de una tarjeta que preguntará al servidor si está o no autorizada.
 
 
 \begin{figure}[h] 
@@ -832,15 +1039,15 @@ El protocolo OCPP utilizará WebSocket (WS) como protocolo de comunicación entr
 
 \begin{enumerate}
 
-\item \textit{Vehículo eléctrico}: El PEV crea una comunicación con la estación de carga a través de la línea eléctrica, basándose en el estándar ISO/IEC 15118. En ella, intercambian información sobre la potencia máxima permitida, la capacidad de la batería del vehículo...
+\item \textit{Vehículo eléctrico}: El EV crea una comunicación con la estación de carga a través de la línea eléctrica, basándose en el estándar ISO/IEC 15118. En ella, intercambian información sobre la potencia máxima permitida, la capacidad de la batería del vehículo...
 
-\item \textit{Usuario}: El conductor inicia el proceso de recarga a través de una interfaz en el punto de recarga, el uso de algún tipo de tarjeta de fidelización, la utilización de un smartphone o tablet, incluso a distancia desde una interfaz web (también utilizable en un spartphone o tablet) o en algunos casos con un protocolo inalámbrico de amplio rango (por ejemplo, conexión 4G/5G) ya existente en el PEV. Además, en algunos casos el conductor puede definir los parámetros de la recarga directamente con el EVSE y monitorear la recarga real. En el caso que se trata, se utilizarán tan solo smartphone (con interfaz web) o con el paso de una tarjeta.
+\item \textit{Usuario}: El conductor inicia el proceso de recarga a través de una interfaz en el punto de recarga, el uso de algún tipo de tarjeta de fidelización, la utilización de un smartphone o tablet, incluso a distancia desde una interfaz web (también utilizable en un spartphone o tablet) o en algunos casos con un protocolo inalámbrico de amplio rango (por ejemplo, conexión 4G/5G) ya existente en el EV. Además, en algunos casos el conductor puede definir los parámetros de la recarga directamente con el EVSE y monitorear la recarga real. En el caso que se trata, se utilizarán tan solo smartphone (con interfaz web) o con el paso de una tarjeta.
 
-\item \textit{Punto de recarga}: Permite la interoperabilidad con todo tipo de PEV, proporciona al usuario distinta información sobre el estado actual del mismo, de la recarga que está realizando o acaba de realizar..., e intercambia información con la base de datos a través del sistema de gestión de puntos de recarga.
+\item \textit{Punto de recarga}: Permite la interoperabilidad con todo tipo de EV, proporciona al usuario distinta información sobre el estado actual del mismo, de la recarga que está realizando o acaba de realizar..., e intercambia información con la base de datos a través del sistema de gestión de puntos de recarga.
 
 \item \textit{Base de datos}: La base de datos almacena datos de los puntos de recargas disponibles en el sistema o en otros sistemas con los que haya algún tipo de acuerdo, de los usuarios autorizados para usar los puntos de recarga, de todas las reservas en estos mismos y la información de facturación... La estructura de la base de datos se tratará más adelante.
 
-\item \textit{Sistema de gestión de estaciones de carga (CSMS)}: Coordina todas las operaciones. Consiste en una aplicación web que maneja las solicitudes tanto del punto de recarga como de la aplicación del usuario del PEV e intercambia datos con la base de datos.  El servicio de atención al cliente de la estación central es responsable de proporcionar y recibir información de la aplicación del usuario. En particular, la aplicación envía solicitudes HTTP POST al servidor web, que contiene los datos enviados por parte de los puntos de recarga en formato JSON.
+\item \textit{Sistema de gestión de estaciones de carga (CSMS)}: Coordina todas las operaciones. Consiste en una aplicación web que maneja las solicitudes tanto del punto de recarga como de la aplicación del usuario del EV e intercambia datos con la base de datos.  El servicio de atención al cliente de la estación central es responsable de proporcionar y recibir información de la aplicación del usuario. En particular, la aplicación envía solicitudes HTTP POST al servidor web, que contiene los datos enviados por parte de los puntos de recarga en formato JSON.
 
 \end{enumerate}
 
@@ -874,9 +1081,9 @@ El proceso para el inicio y la detención de una recarga se puede ver en el sigu
   \label{fig:diagramarecarga}
 \end{figure}
 
-Cuando un punto de recarga va a cargar a un PEV, primero debe autenticar al usuario antes de que se pueda iniciar la carga. Si este está autorizado, el punto de recarga inicia la carga e informa al CSMS que ha iniciado la carga.
+Cuando un punto de recarga va a cargar a un EV, primero debe autenticar al usuario antes de que se pueda iniciar la carga. Si este está autorizado, el punto de recarga inicia la carga e informa al CSMS que ha iniciado la carga.
 
-Cuando un usuario desea finalizar la recarga y desenchufar el PEV del punto de recarga, este debe verificar que es el usuario que inició la carga o que es un usuario distinto pero con permiso para finalizar la recarga. Una vez autorizado, el punto de Recarga informa al CSMS de que se ha finalizado la recarga.
+Cuando un usuario desea finalizar la recarga y desenchufar el EV del punto de recarga, este debe verificar que es el usuario que inició la carga o que es un usuario distinto pero con permiso para finalizar la recarga. Una vez autorizado, el punto de Recarga informa al CSMS de que se ha finalizado la recarga.
 
 El proceso de actualización de firmware es como el visto a continuación:
 
@@ -1046,7 +1253,7 @@ El campo opcional \textit{contexto} especifica el motivo/evento que desencadena 
 
 El campo opcional \textit{ubicación} especifica dónde se toma la medición (p. ej., entrada, salida).
 
-El campo opcional fase especifica a qué fase o fases de la instalación eléctrica se aplica el valor. El punto de recarga debería informar de todos los valores dependientes del número de fase desde el punto de vista del medidor de energía (o la conexión a la red cuando esté ausente). Igualmente, este campo no es aplicable a todos los tios de medidas. Por otro lado, hay están dos valores disponibles que estrictamente hablando no se refieren a valores medidos en ningún momento puntual. Estos se refieren a la cantidad máxima de corriente/potencia que se ofrece al PEV y están destinados para su uso en aplicaciones de carga inteligente.
+El campo opcional fase especifica a qué fase o fases de la instalación eléctrica se aplica el valor. El punto de recarga debería informar de todos los valores dependientes del número de fase desde el punto de vista del medidor de energía (o la conexión a la red cuando esté ausente). Igualmente, este campo no es aplicable a todos los tios de medidas. Por otro lado, hay están dos valores disponibles que estrictamente hablando no se refieren a valores medidos en ningún momento puntual. Estos se refieren a la cantidad máxima de corriente/potencia que se ofrece al EV y están destinados para su uso en aplicaciones de carga inteligente.
 
 Para la información de rotación de fase de un conector individual, el CSMS puede consultar la configuración del mismo en el punto de recarga con la opción \textit{ConnectorPhaseRotation} mediante un paquete llamado \textit{GetConfiguration}. El punto de recarga debe informar de la rotación de fases con respecto a la conexión a la red. Los valores configurables por conector son \textit{NotApplicable}, \textit{Unknown}, \textit{RST}, \textit{RTS}, \textit{SRT}, \textit{STR}, \textit{TRS} y \textit{TSR}. 
 
@@ -1258,7 +1465,7 @@ La etiqueta de identificación en la solicitud puede omitirse cuando el punto de
 
 Si una transacción finaliza de forma normal, el elemento \textit{Razón} se puede omitir y debería asumirse como \textit{Local}. Si la transacción no finaliza normalmente, este debe establecerse en un valor correcto. Como parte de la finalización normal de la transacción, el punto de recarga debería desbloquear el cable si es que este no está conectado permanentemente.
 
-El punto de recarga puede detener una transacción en curso cuando se desconecta el cable del vehículo eléctrico. Si esta funcionalidad es compatible, es informada y controlada por la clave de configuración \textit{StopTransactionOnEVSideDisconnect}. Si se establece en falso, la transacción no se debe detener cuando el cable se desconecta del PEV. Si se vuelve a conectar el EV, se permitiría nuevamente la transferencia de energía. En este caso, no hay ningún tipo de mecanismo para evitar que otros vehículos eléctricos distintos se carguen y desconecten durante la misma transacción en curso. Con \textit{UnlockConnectorOnEVSideDisconnect} ajustado a falso, el conector debería permanecer bloqueado en el punto de recarga hasta que el usuario detenga la recarga. En caso de que \textit{StopTransactionOnEVSideDisconnect} sea falso, tiene prioridad sobre \textit{UnlockConnectorOnEVSideDisconnect}. En otras palabras, los cables siempre permanecen bloqueados cuando el cable está desconectado en el lado EV al estar fijado \textit{StopTransactionOnEVSideDisconnect} en falso. Configurando \textit{StopTransactionOnEVSideDisconnect} a verdadero, la transacción se debería detener cuando el cable se desconecte del EV. Si se vuelve a conectar el EV, no se permitiría la transferencia de energía hasta que se detenga la transacción y se iniciará una nueva transacción. Si \textit{UnlockConnectorOnEVSideDisconnect} se configura a verdadero, también se desbloqueará el conector del punto de recarga. En este trabajo, \textit{StopTransactionOnEVSideDisconnect} se configurará a verdadero y  \textit{UnlockConnectorOnEVSideDisconnect} a falso. Esto evitará que ún usuario no autorizado libere un vehículo conectado al punto de recarga para posteriormente conectar el suyo y cargar sin permiso.
+El punto de recarga puede detener una transacción en curso cuando se desconecta el cable del vehículo eléctrico. Si esta funcionalidad es compatible, es informada y controlada por la clave de configuración \textit{StopTransactionOnEVSideDisconnect}. Si se establece en falso, la transacción no se debe detener cuando el cable se desconecta del EV. Si se vuelve a conectar el EV, se permitiría nuevamente la transferencia de energía. En este caso, no hay ningún tipo de mecanismo para evitar que otros vehículos eléctricos distintos se carguen y desconecten durante la misma transacción en curso. Con \textit{UnlockConnectorOnEVSideDisconnect} ajustado a falso, el conector debería permanecer bloqueado en el punto de recarga hasta que el usuario detenga la recarga. En caso de que \textit{StopTransactionOnEVSideDisconnect} sea falso, tiene prioridad sobre \textit{UnlockConnectorOnEVSideDisconnect}. En otras palabras, los cables siempre permanecen bloqueados cuando el cable está desconectado en el lado EV al estar fijado \textit{StopTransactionOnEVSideDisconnect} en falso. Configurando \textit{StopTransactionOnEVSideDisconnect} a verdadero, la transacción se debería detener cuando el cable se desconecte del EV. Si se vuelve a conectar el EV, no se permitiría la transferencia de energía hasta que se detenga la transacción y se iniciará una nueva transacción. Si \textit{UnlockConnectorOnEVSideDisconnect} se configura a verdadero, también se desbloqueará el conector del punto de recarga. En este trabajo, \textit{StopTransactionOnEVSideDisconnect} se configurará a verdadero y  \textit{UnlockConnectorOnEVSideDisconnect} a falso. Esto evitará que ún usuario no autorizado libere un vehículo conectado al punto de recarga para posteriormente conectar el suyo y cargar sin permiso.
 
 Es probable que el CSMS aplique controles de cordura a los datos contenidos en una solicitud \textit{StopTransaction} recibida. El resultado de tales verificaciones de cordura no puede provocar que el CSMS no responda con una confirmación StopTransaction. No responder con ella solo hará que el punto de recarga vuelva a intentar el mismo mensaje.
 
@@ -1412,7 +1619,7 @@ Al recibir un restablecimiento completo, el punto de recarga debería intentar f
 
 El CSMS puede solicitar a un punto de recarga desbloquear un conector. Para ello, el punto de recarga debería enviar una solicitud \textit{UnlockConnector}
 
-El objetivo de este mensaje es el de ayudar a los conductores de PEV que tienen problemas para desconectar el cable del punto de carga en caso de algún tipo de mal  no esperado funcionamiento de la retención del cable del conector. Cuando un conductor de un EV llama al \textit{help-desk} de CPO, un operador podría activar manualmente el envío de una solicitud \textit{UnlockConnector} al punto de recarga, obligando a un nuevo intento de desbloqueo del conector. Si todo va según lo previsto esta vez el conector se desbloqueará y el conductor del vehículo eléctrico podrá desconectar el cable y marcharse.
+El objetivo de este mensaje es el de ayudar a los conductores de EV que tienen problemas para desconectar el cable del punto de carga en caso de algún tipo de mal  no esperado funcionamiento de la retención del cable del conector. Cuando un conductor de un EV llama al \textit{help-desk} de CPO, un operador podría activar manualmente el envío de una solicitud \textit{UnlockConnector} al punto de recarga, obligando a un nuevo intento de desbloqueo del conector. Si todo va según lo previsto esta vez el conector se desbloqueará y el conductor del vehículo eléctrico podrá desconectar el cable y marcharse.
 
 Al recibir una solicitud \textit{UnlockConnector}, el punto de recarga responderá con una confirmación \textit{UnlockConnector}. La confirmación debe indicar si el punto de recarga pudo desbloquear su conector. 
 
@@ -1563,7 +1770,7 @@ Explicar el modelo de proceso y la estructura de la sección.
 
 La prueba de concepto o PoC (Proof of Concept) es la implementación de un método o de una idea que trata de verificar que el concepto o teoría en cuestión es susceptible de ser explotada de una forma realista.
 
-En este apartado se desccribirá un posible caso real de robo del identificador de una tarjeta de fidelización de un cliente y los pasos seguidos para el mismo. Se dispone de un smartphone modelo Xiaomi Redmi Note 8T, mediante el cuál se procederá a leer una tarjeta con un tag RFID. Desde ese mismo teléfono móvil se simulará la emisión del mismo código para que, con el propio móvil se pueda recargar como si fuese el usuario al cuál se le han robado los datos.
+En este apartado se desccribirá un posible caso real de robo del identificador de una tarjeta de fidelización de un cliente y los pasos seguidos para el mismo. Se dispone de un smartphone modelo Xiaomi Redmi Note 8T, mediante el cuál se procederá a leer una tarjeta con una etiqueta RFID. Desde ese mismo teléfono móvil se simulará la emisión del mismo código para que, con el propio móvil se pueda recargar como si fuese el usuario al cuál se le han robado los datos.
 
 Es necesario conseguir \textit{rootear} en primer lugar el dispositivo dado que es la única opción de simular la emisión de códigos de tarjetas distintos a los generados por el propio dispositivo. Este es el proceso que permite a los usuarios de dispositivos Android obtener algunos privilegios para modificar algunas funciones que vienen por defecto en estos dispositivos.
 
@@ -1697,7 +1904,7 @@ Para ello, se instala la aplicación llamada \textit{Emulador de tarjetas Pro (N
   \label{fig:root6}
 \end{figure}
 
-Desde la app se incica que se coloque la tarjeta en la parte posterior del equipo para leerla tras pulsar al primer botón de la parte superior izquierda de la pantalla. Se lee la tarjeta para disponer del tag de la misma y se guarda en \textit{Aceptar}.
+Desde la app se incica que se coloque la tarjeta en la parte posterior del equipo para leerla tras pulsar al primer botón de la parte superior izquierda de la pantalla. Se lee la tarjeta para disponer de la etiqueta de la misma y se guarda en \textit{Aceptar}.
 
 
 \begin{figure}[h] 
@@ -1708,7 +1915,7 @@ Desde la app se incica que se coloque la tarjeta en la parte posterior del equip
   \label{fig:root7}
 \end{figure}
 
-Se pulsa en el icono inferior derecho del interior de la tarjeta para emularla. Se acepta la solicitud de cualquier tipo de permiso. Con ello la tarjeta se emulará durante un tiempo en intervalos temporales cortos pero alternos, por lo que en varios momentos la tarjeta queda correctamente \textit{copiada} para simular el número de tag de la tarjeta.
+Se pulsa en el icono inferior derecho del interior de la tarjeta para emularla. Se acepta la solicitud de cualquier tipo de permiso. Con ello la tarjeta se emulará durante un tiempo en intervalos temporales cortos pero alternos, por lo que en varios momentos la tarjeta queda correctamente \textit{copiada} para simular el número de etiqueta de la tarjeta.
 
 
 \begin{figure}[h] 
@@ -1747,7 +1954,7 @@ Un caso similar a este se puede ver en el siguiente ejemplo de la página de \te
 \begin{figure}[h] 
 \centering
   \includegraphics[width=1\textwidth]{figuras/authorize3.png}
-  \caption[Pantalla de eventos de la web tras los pasos de los tags]{Pantalla de eventos de la web tras los pasos de los tags\\
+  \caption[Pantalla de eventos de la web tras los pasos de las etiquetas]{Pantalla de eventos de la web tras los pasos de las etiquetas\\
   }
   \label{fig:authorize3}
 \end{figure}
@@ -1844,8 +2051,26 @@ Se debe seguir la norma ISO 690 (buscar en google ISO 690 ugr)
 
 % También se puede optar por incluir las referencias desde aquí mismo:
 \begin{thebibliography}{1}
-	
-\bibitem{uno} \textit P. V. Nikitin, K. V. S. Rao y S. Lazar, ``An overview of near field UHF RFID", IEEE RFID. Conferencia, 2007, p\'ags.167-174.
+
+
+\bibitem{eauno} \textit W. Cao, S. Geng, X. Peng, J. Nie, X. Li y P. Li, ``A Lightweight Encryption Algorithm for RFID System," 2022 3rd International Conference on Computer Vision, Image and Deep Learning \& International Conference on Computer Engineering and Applications (CVIDL \& ICCEA), págs- 1094-1097, 2022.
+\bibitem{eados} \textit M. S. Chishti, C. T. King y A. Banerjee, ``Exploring Half-Duplex Communication of NFC Read/Write Mode for Secure Multi-Factor Authentication," en IEEE Access, vol. 9, págs. 6344-6357, 2021.
+\bibitem{eatres} \textit U. Ali et al., ``RFID Authentication Scheme Based on Hyperelliptic Curve Signcryption," en IEEE Access, vol. 9, págs. 49942-49959, 2021.
+\bibitem{eacuatro} \textit Y. Yilmaz, V. -H. Do y B. Halak, ``ARMOR: An Anti-Counterfeit Security Mechanism for Low Cost Radio Frequency Identification Systems," en IEEE Transactions on Emerging Topics in Computing, vol. 9, número 4, págs. 2125-2138, 1 de octubre-diciembre 2021.
+\bibitem{eacinco} \textit H. Xu, X. Yin, F. Zhu y P. Li, ``An Enhanced Secure Authentication Scheme With One More Tag for RFID Systems," en IEEE Sensors Journal, vol. 21, número 15, págs. 17189-17199, 1 de agosto de 2021.
+\bibitem{easeis} \textit C. Palli, N. Jampala y T. A. Naidu, ``Sponge based lightweight authentication mechanism for RFID tags," 2021 4th International Conference on Security and Privacy (ISEA-ISAP), págs. 1-7, 2021.
+\bibitem{easiete} \textit Z. Leyu, Z. Xinyou, F. Yunjia, L. Shuyao, B. Jun y  H. Xijia, ``Design and Implementation of RFID Access Control System Based on Multiple Biometric Features," 2021 18th International Computer Conference on Wavelet Active Media Technology and Information Processing (ICCWAMTIP), págs. 570-575, 2021.
+\bibitem{eaocho} \textit Y. Luo, K. Fan, X. Wang, H. Li y Y. Yang, ``RUAP: Random rearrangement block matrix-based ultra-lightweight RFID authentication protocol for end-edge-cloud collaborative environment," en China Communications, vol. 19, número 7, págs. 197-213, julio de 2022.
+\bibitem{eanueve} \textit Z. Pourmirza y S. Walker, ``Electric Vehicle Charging Station: Cyber Security Challenges and Perspective," 2021 IEEE 9th International Conference on Smart Energy Grid Engineering (SEGE), págs. 111-116, 2021.
+\bibitem{eadiez} \textit Z. Garofalaki, D. Kosmanos, S. Moschoyiannis, D. Kallergis y C. Douligeris, ``Electric Vehicle Charging: A Survey on the Security Issues and Challenges of the Open Charge Point Protocol (OCPP)," en IEEE Communications Surveys \& Tutorials, vol. 24, número 3, págs. 1504-1533, ultimo cuatrimestre de 2022.
+\bibitem{eaonce} \textit H. Van Den Brinkyand P. Broos, ``"Cyber security challenges in the electric vehicle infrastructure," CIRED Porto Workshop 2022: E-mobility and power distribution systems, págs. 429-432, 2022.
+\bibitem{eadoce} \textit P. R. Babu, A. G. Reddy, B. Palaniswamy y A. K. Das, ``EV-PUF: Lightweight Security Protocol for Dynamic Charging System of Electric Vehicles Using Physical Unclonable Functions," en IEEE Transactions on Network Science and Engineering, 2022.
+\bibitem{eatrece} \textit M. Hataba, A. Sherif, M. Elsersy, M. Nabil, M. Mahmoud y K. H. Almotairi, ``Privacy-Preserving Biometric-based Authentication Scheme for Electric Vehicles Charging System," 2021 3rd IEEE Middle East and North Africa COMMunications Conference (MENACOMM), págs. 86-91, 2021.
+\bibitem{eacatorce} \textit P. R. Babu, R. Amin, A. G. Reddy, A. K. Das, W. Susilo y Y. Park, ``Robust Authentication Protocol for Dynamic Charging System of Electric Vehicles," en IEEE Transactions on Vehicular Technology, vol. 70, número 11, págs. 11338-11351, noviembre de 2021
+
+
+
+\bibitem{uno} \textit P. V. Nikitin, K. V. S. Rao y S. Lazar, ``An overview of near field UHF RFID", IEEE RFID. Conferencia, p\'ags.167-174, 2007.
 \bibitem{dos} \textit M. M. Singh, K. A. A. K. Adzman, y R. Hassan, ``Near Field Communication (NFC) Technology Security Vulnerabilities and Countermeasures", International Journal of Engineering \& Technology Vol.7, N\textdegree 4.31, p\'ags.298-305, 2018.
 \bibitem{tres} \textit ISO/IEC 18092. ``Near Field Comunication: interface and protocolo", 2004.
 \bibitem{cuatro} \textit ECMA International (2005). ``Near Field Communication - White Paper”, Ecma/TC32-TG19/2005/ 012, 2005.
