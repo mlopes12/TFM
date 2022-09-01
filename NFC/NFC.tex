@@ -69,6 +69,7 @@
 \setlength{\parindent}{15pt} % Sangría de párrafos estándar (15 puntos). Necesario incluirla si se usa el paquete 'parskip'.
 \usepackage[export]{adjustbox}
 \usepackage{caption}  % Para personalizar los pies de foto.
+\usepackage{float}  
 
 % Opciones del paquete caption para los pies de imágenes y tablas:
 \captionsetup{figurename=Figura, tablename=Tabla, labelsep=colon, labelfont=bf, font=small, justification=centering}
@@ -249,9 +250,29 @@ Catálogo de términos específicos del contexto del trabajo.
 
 \begin{description}
 	
-	\item[ciberseguridad]: Protección de los sistemas informáticos y de sus redes de comunicaciones, con el objetivo de mantener segura la información que procesan.
-	
-	\item[DES]: Data Encryption Standard. Es un algoritmo criptográfico, de tipo cifrado por bloque.
+	\item[ciberseguridad]: Protección de los sistemas informáticos y de sus redes de comunicaciones, con el objetivo de mantener segura la información que procesan.	
+	\item[RFID]: Radio Frequency Identification o identificación por radiofrecuencia. Es un sistema de almacenamiento y recuperación de datos remotos que usa dispositivos denominados etiquetas, tarjetas o transpondedores RFID.
+	\item[NFC]: Near-field communication o comunicación de campo cercano. Es una tecnología de comunicación inalámbrica, de corto alcance y alta frecuencia que permite el intercambio de datos entre dispositivos.
+	\item[IoT]: Internet of Things o internet de las cosas. Describe objetos físicos (o grupos de estos) con sensores, capacidad de procesamiento, software y otras tecnologías que se conectan e intercambian datos con otros dispositivos y sistemas a través de internet u otras redes de comunicación.
+	\item[UHF]: Ultra High Frequency o frecuencia ultraalta.
+	\item[HF]: High Frequency o frecuencia alta.
+	\item[LF]: Low Frecuency o frecuencia baja.
+	\item[BAP]: Battery-Assisted Pasive o pasivo asistido por batería son etiquetas RFID pasivas con una batería integrada.
+	\item[EVSE]: Electric Vehicle Supply Equipment o estación de carga eléctrica es un lugar que provee electricidad para la recarga rápida de las baterías de los vehículos eléctricos, incluyendo los vehículos híbridos enchufables.
+	\item[EV]: Electric Vehicle o vehículo eléctrico. Es un vehículo propulsado por uno o más motores eléctricos.
+	\item[CPS]: Cyber Physical System o sistema ciberfísico. Sistemas construidos mediante una integración segura y sin inconvenientes físicos y de computación.
+	\item[AC]: Alternating Current o corriente alterna.
+	\item[DC]: Direct Current o corriente continua.
+	\item[OCPP]: Open Charge Point Protocol o estándar de protocolo de punto de recarga abierto.
+	\item[CSMS]: Charging Station Management System o sistema de gestión de estaciones de carga. Es la designación del sistema de software backend al que se conectan todos los EVSE.
+	\item[WS]: WebSocket. Es una tecnología que proporciona un canal de comunicación bidireccional y full-duplex sobre un único socket TCP.
+	\item[SOAP]: Simple Object Access Protocol o protocolo simple de acceso a objetos.
+	\item[JSON]: JavaScript Object Notation o notación de objetos de JavaScript.
+	\item[2FA]: Two Factor Authentication o autenticación de doble factor. Trata de añadir un paso más a una autenticación simple (en el caso de este trabajo una tarjeta RFID).
+
+
+
+
 	
 	
 \end{description} 
@@ -492,7 +513,7 @@ Para las tecnologías NFC y RFID se han recogido los siguientes artículos:
 \item En \cite{eatres} se propone un esquema de autenticación RFID eficiente (RFID-AS) basado en Signcryption de curva hiperelíptica, el cual proporciona las funciones de seguridad necesarias para el sistema RFID, así como la seguridad frente a posibles ataques.
 \item En \cite{eacuatro} se propone un nuevo mecanismo de seguridad consistente en un protocolo ligero de autenticación mutua y un diseño de etiqueta antifalsificación, basado en combinar el esquema de encriptación de clave pública de \textit{Rabin} con la tecnología de funciones físicamente no clonables (PUF).
 \item En \cite{eacinco} se presenta el diseño y la implementación de Au-Hota, un sistema que puede autenticar la etiqueta y el usuario simultáneamente, y puede resistir el ataque de reproducción y el ataque de suplantación que no pueden resolverse con la mayoría de los métodos de capa física, asignando un identificador único al usuario basado en el acoplamiento inductivo entre dos etiquetas adyacentes.
-\item En \cite{easeis} se propone un nuevo mecanismo de autenticación ligero basado en permutación de esponja sin servidor para probar la autenticidad de las etiquetas RFID a cualquier lector legítimo y viceversa.
+\item En \cite{easeis} se propone un nuevo mecanismo de autenticación ligero basado en \textit{sponge permutation} sin servidor para probar la autenticidad de las etiquetas RFID a cualquier lector legítimo y viceversa.
 \item En \cite{easiete} se presenta un esquema de diseño que combina tecnología embebida con tecnología biométrica para implementar un sistema de control de acceso RFID basado en Raspberry PI.
 \item En \cite{eaocho} se diseña una función de encriptación ultraligera y se propone un esquema de autenticación RFID basado en esta función para el entorno colaborativo de extremo a extremo en la nube.
 \end{itemize}
@@ -543,9 +564,9 @@ La comunicación entre los dispositivos se realiza a través de una única banda
 
 Los dispositivos NFC deben cumplir con las normas ISO/IEC 18092 e ISO/IEC 14443. El primero define los modos de comunicación para la interfaz y el protocolo de comunicación de campo cercano y el otro es para tarjetas de identificación u objetos de intercambio internacional.
 
-Esta tecnología es una de las más importantes de IoT (\textit{Internet of Things}, internet de las cosas), ya que permite una interconexión fácil y segura entre objetos. IoT es una agrupación e interconexión de dispositivos y objetos a través de una red (bien sea privada o Internet), dónde todos ellos podrían ser visibles e interactuar entre sí. Todo lo que se necesitaría para utilizarla en los smartphones más modernos es encender la conectividad NFC del mismo y escanearlo en un lector de dispositivo.
+Esta tecnología es una de las más importantes de IoT, ya que permite una interconexión fácil y segura entre objetos. IoT es una agrupación e interconexión de dispositivos y objetos a través de una red (bien sea privada o Internet), dónde todos ellos podrían ser visibles e interactuar entre sí. Todo lo que se necesitaría para utilizarla en los smartphones más modernos es encender la conectividad NFC del mismo y escanearlo en un lector de dispositivo.
 
-Por otro lado, RFID (\textit{ Radio Frequency IDentification}, identificación por radiofrecuencia), es igualmente tecnología inalámbrica como NFC. En este caso se utiliza, a menudo, en tarjetas o etiquetas de acceso. Tiene dos componentes: etiquetas y lectores. El lector es un dispositivo con antenas. Emite ondas de radio y recibe señales de la etiqueta RFID. Cuando el lector reconozca la etiqueta, confirmará la identidad y le dará acceso. 
+Por otro lado, RFID , es igualmente tecnología inalámbrica como NFC. En este caso se utiliza, a menudo, en tarjetas o etiquetas de acceso. Tiene dos componentes: etiquetas y lectores. El lector es un dispositivo con antenas. Emite ondas de radio y recibe señales de la etiqueta RFID. Cuando el lector reconozca la etiqueta, confirmará la identidad y le dará acceso. 
 
 Si bien estas dos tecnologías tienen casi la misma funcionalidad, y para el uso del trabajo que se describirá más adelante la misma, son diferentes. 
 
@@ -574,16 +595,16 @@ Hay varios tipos de funcionamiento de las etiquetas RFID dependiendo de cómo la
 \begin{enumerate}
 
 \item Activo:\\
-Las etiquetas RFID activas tienen tanto su propio transmisor como una fuente de energía (batería) en la etiqueta. Estas son, en su mayoría, soluciones UHF (\textit{Ultra High Frequency}, frecuencia ultraalta), y los rangos de lectura de las mismas pueden extenderse hasta los 100 m en algunos casos. Las etiquetas activas suelen ser más grandes y caras que las pasivas, y se utilizan para rastrear grandes activos (como contenedores de carga, vehículos y máquinas). Además también suelen estar equipadas con sensores que miden y transmiten datos de temperatura, humedad, luz y golpes y vibraciones de los objetos a los que se pegan.
+Las etiquetas RFID activas tienen tanto su propio transmisor como una fuente de energía (batería) en la etiqueta. Estas son, en su mayoría, soluciones UHF, y los rangos de lectura de las mismas pueden extenderse hasta los 100 m en algunos casos. Las etiquetas activas suelen ser más grandes y caras que las pasivas, y se utilizan para rastrear grandes activos (como contenedores de carga, vehículos y máquinas). Además también suelen estar equipadas con sensores que miden y transmiten datos de temperatura, humedad, luz y golpes y vibraciones de los objetos a los que se pegan.
 
 Hay dos tipos de etiquetas activas.Por un lado los transpondedores, los cuales solo se "despiertan" y transmiten datos cuando reciben una señal de radio de un lector. Por ejemplo, al conectar uno de estos dispositivos a un vehículo destinado al pago en telepeajes o al paso por puntos de control este solo se activaría si pasase por un paso o puerta en particular. Esto es algo que ayuda a conservar la vida de la batería. Por otro lado están las balizas, las cuales emiten una señal en un intervalo preestablecido. Este tipo de etiqueta activa se utiliza en en los sistemas de ubicación en tiempo real (RTLS), utilizados para rastrear cualquier cosa, desde contenedores de carga preparados para enviarse en un barco o en dispositivos sanitarios como camas o sillas de ruedas.
 
 \item Pasivo:\\
-En las soluciones basadas en etiquetas RFID pasivas, tanto el lector como su antena envían una señal a la etiqueta, la cual se utiliza para encender la etiqueta y reflejar la energía de regreso al lector. Hay sistemas pasivos de LF (\textit{Low Frecuency}, baja frecuencia), HF (\textit{High Frecuency}, alta frecuencia) y UHF. En este caso los rangos de lectura son más reducidos que los de las etiquetas activas y están limitados por la potencia de la señal que se refleja en el lector (se conoce como retrodispersión de etiquetas).
+En las soluciones basadas en etiquetas RFID pasivas, tanto el lector como su antena envían una señal a la etiqueta, la cual se utiliza para encender la etiqueta y reflejar la energía de regreso al lector. Hay sistemas pasivos de LF, HF y UHF. En este caso los rangos de lectura son más reducidos que los de las etiquetas activas y están limitados por la potencia de la señal que se refleja en el lector (se conoce como retrodispersión de etiquetas).
 
 Habitualmente las etiquetas pasivas son más pequeñas, menos costosas y más flexibles que las activas. Esto significa que se pueden adjuntar o incluso incrustar en una mayor variedad de objetos. Las etiquetas UHF pasivas se utilizan habitualmente, por ejemplo, para el seguimiento a nivel de artículo de algún tipo de bien de consumo y productos farmacéuticos.
 
-\item Semipasivo (pasivo asistido por batería, BAP):\\
+\item Semipasivo (BAP):\\
 También existe un tercer tipo híbrido de etiqueta RFID. Los sistemas BAP o sistemas RFID semipasivos incorporan una fuente de alimentación en una configuración de etiqueta pasiva. La fuente de alimentación ayuda a garantizar que toda la energía recogida del lector se pueda utilizar para reflejar la señal, lo que hará que mejoren tanto la distancia de lectura como las tasas de transferencia de datos. A diferencia de los activos, estas etiquetas BAP no tienen sus propios transmisores
 
 \end{enumerate}
@@ -833,7 +854,7 @@ La solución más asumible es el incremento de la potencia de la señal del disp
 \chapter{Estaciones de recarga del coche eléctrico (EVSE)}
 \label{Estaciones de recarga del coche eléctrico (EVSE)}
 
-En la próxima década se espera un gran crecimiento de los vehículos eléctricos enchufables (EV) en el mundo. El calcula que en la próxima década habrá en circulación unos 120 millones de coches eléctricos. En lo que corresponde a España, actualmente se calcula que, en el mejor de los casos, no disponemos de más de 674 mil automóviles tanto eléctricos como híbridos. El equipo de carga, también conocido como Equipo de Suministro de Vehículos Eléctricos (EVSE) o estaciones de carga, proporciona carga segura a los vehículos eléctricos, de manera similar a las estaciones de servicio. 
+En la próxima década se espera un gran crecimiento de los vehículos eléctricos enchufables (EV) en el mundo. El calcula que en la próxima década habrá en circulación unos 120 millones de coches eléctricos. En lo que corresponde a España, actualmente se calcula que, en el mejor de los casos, no disponemos de más de 674 mil automóviles tanto eléctricos como híbridos. El equipo de carga, también conocido como EVSE o estación de carga, proporciona carga segura a los vehículos eléctricos, de manera similar a las estaciones de servicio. 
 
 Actualmente, una de las limitaciones más graves para la difusión del EV es la falta de una infraestructura de carga de EV generalizada, a pesar de la gran difusión de la infraestructura eléctrica. Aunque se espera que el problema del coste de los EV disminuya con su creciente difusión (lo que va produciendo una mayor investigación y avance en este tipo de tecnologías), la todavía limitada autonomía del automóvil y el aún largo tiempo de carga de la batería, mucho más prolongado en comparación con el que se tarda en rellenar el depósito de combustible de los vehículos de combustión interna \cite{diezuno}, son percibidos actualmente por los compradores como serias barreras a la compra \cite{diezdos}\cite{dieztres}.
 
@@ -841,11 +862,11 @@ Por ahora, el tiempo de recarga de la batería está limitado principalmente por
 
 Con una difusión masiva del EV, las cargas de las baterías tendrán un gran impacto en el funcionamiento de las redes inteligentes, por lo que se debería tener en cuenta la alta potencia necesaria para una carga rápida (por ejemplo, se requieren 150 kW para cargar un Tesla modelo S del 20\% al 80\% en 30 minutos). Los problemas de sobrecarga de la red eléctrica pueden surgir cuando varios vehículos en el mismo vecindario se recargan al mismo tiempo, o durante los picos de carga normales.
 
-Los sistemas de carga de coche eléctrico no dejan de ser un tipo de sistema ciberfísico. Estos sistemas ciberfísicos (CPS, por sus siglas en inglés) son sistemas construidos mediante una integración segura y sin inconvenientes físicos y de computación (es decir, detección, computación y redes). Las llamadas tecnologías de sistemas inteligentes, como el transporte inteligente, la red inteligente, los vehículos inteligentes... se basan en los fundamentos de esta integración de CPS. La carga inteligente proporciona un mecanismo de comunicación entre el EVSE y la red que admite el monitoreo y la gestión de energía para mejorar la eficiencia y la personalización de los horarios de carga. A través de una mejor conectividad y control estos protocolos de carga inteligente han sido diseñados para reducir costes, equilibrar las cargas máximas y facilitar una mejor integración con diferentes niveles de operadores de red y fuentes de energía renovable. Los EVSE existentes tienen varios componentes tanto de comunicación como informáticos los cuales se utilizan para gestionar y controlar su funcionamiento. Por otro lado, las tecnologías emergentes de redes inteligentes también tienen como objetivo el facilitar un intercambio de energía bidireccional entre los vehículos eléctricos enchufables y la red a través de EVSE, en particular los cargadores rápidos. Además durante el proceso de autenticación para el inicio de la recarga inteligente se envían tanto la información personal como la financiera. Por todo ello, que la operación de EVSE sea segura es muy importante tanto para los vehículos como para las personas y la infraestructura de la red eléctrica.
+Los sistemas de carga de coche eléctrico no dejan de ser un tipo de CPS. Estos CPS son sistemas construidos mediante una integración segura y sin inconvenientes físicos y de computación (es decir, detección, computación y redes). Las llamadas tecnologías de sistemas inteligentes, como el transporte inteligente, la red inteligente, los vehículos inteligentes... se basan en los fundamentos de esta integración de CPS. La carga inteligente proporciona un mecanismo de comunicación entre el EVSE y la red que admite el monitoreo y la gestión de energía para mejorar la eficiencia y la personalización de los horarios de carga. A través de una mejor conectividad y control estos protocolos de carga inteligente han sido diseñados para reducir costes, equilibrar las cargas máximas y facilitar una mejor integración con diferentes niveles de operadores de red y fuentes de energía renovable. Los EVSE existentes tienen varios componentes tanto de comunicación como informáticos los cuales se utilizan para gestionar y controlar su funcionamiento. Por otro lado, las tecnologías emergentes de redes inteligentes también tienen como objetivo el facilitar un intercambio de energía bidireccional entre los vehículos eléctricos enchufables y la red a través de EVSE, en particular los cargadores rápidos. Además durante el proceso de autenticación para el inicio de la recarga inteligente se envían tanto la información personal como la financiera. Por todo ello, que la operación de EVSE sea segura es muy importante tanto para los vehículos como para las personas y la infraestructura de la red eléctrica.
 
 Hay varias posibles motivaciones para lanzar un ataque a una estación de carga que van desde el robo de electricidad hasta algunos ataques más sofisticados buscan producir la interrupción de una red de estaciones de carga mediante el uso de un EVSE como punto de entrada a la misma. Los ataques podrían ser aún más graves si el malware consigue propagarse potencialmente a través de una red de estaciones de carga que pudieran afectar la red eléctrica.
 
-La Sociedad de Ingenieros Automotrices (SAE) ha desarrollado un conjunto de estándares y protocolos para ser implementados por los fabricantes de estaciones de carga. La cantidad de componentes interconectados en EVSE y la conectividad de este con otros subsistemas (vehículos, smartphones, la red eléctrica...), y los mecanismos de seguridad mal implementados hacen que EVSE sea muy vulnerable a los ataques cibernéticos. El Departamento de Energía/Departamento de Transporte de los Estados Unidos (DOE/ DOT) realizó un informe el cual destaca brechas de seguridad cibernética en la infraestructura EVSE actual que incluye ataques de intermediarios o terceras personas, fraude de pagos, privacidad, daños a la batería del vehículo, deegación de servicio (DoS) y el malware se propaga del vehículo eléctrico o EV al EVSE. El informe antes mencionado y algunos otros estudios \cite{once}\cite{doce}\cite{trece} demostraron algunas brechas y deficiencias en la infraestructura de carga existente por la falta de guías a seguir y pruebas de seguridad cibernética realizadas antes de su implementación. Además también indican algunos estudios cómo la carga descontrolada de EVSE puede crear un desequilibrio o un efecto negativo en la red eléctrica.
+La Sociedad de Ingenieros Automotrices (SAE) ha desarrollado un conjunto de estándares y protocolos para ser implementados por los fabricantes de estaciones de carga. La cantidad de componentes interconectados en EVSE y la conectividad de este con otros subsistemas (vehículos, smartphones, la red eléctrica...), y los mecanismos de seguridad mal implementados hacen que EVSE sea muy vulnerable a los ataques cibernéticos. El Departamento de Energía/Departamento de Transporte de los Estados Unidos (DOE/DOT) realizó un informe el cual destaca brechas de seguridad cibernética en la infraestructura EVSE actual que incluye ataques de intermediarios o terceras personas, fraude de pagos, privacidad, daños a la batería del vehículo, deegación de servicio (DoS) y el malware se propaga del vehículo eléctrico o EV al EVSE. El informe antes mencionado y algunos otros estudios \cite{once}\cite{doce}\cite{trece} demostraron algunas brechas y deficiencias en la infraestructura de carga existente por la falta de guías a seguir y pruebas de seguridad cibernética realizadas antes de su implementación. Además también indican algunos estudios cómo la carga descontrolada de EVSE puede crear un desequilibrio o un efecto negativo en la red eléctrica.
 
 
 \section{Seguridad de los dispositivos EVSE desde un punto de vista ciberfísico}
@@ -948,8 +969,8 @@ El software malicioso también puede aprovechar las lagunas del software y del s
 
 
 
-\section{Estándar de protocolo de punto de recarga abierto (Open Charge Point Protocol, OCPP)}
-\label{Estándar de protocolo de punto de recarga abierto (Open Charge Point Protocol, OCPP)}
+\section{OCPP}
+\label{OCPP}
 
 La estandarización de los protocolos de comunicación para la movilidad eléctrica es necesaria para garantizar que el rendimiento, la seguridad y la protección sean los mismos que los del vehículo convencional real. Las principales organizaciones que desarrollaron estándares para los EV son la Comisión Electrotécnica Internacional (IEC), la Sociedad de Ingeniería Automotriz (SAE), y otros consorcios públicos y empresas privadas de vehículos eléctricos que desarrollan estándares abiertos.
 
@@ -965,7 +986,7 @@ Existen diferentes estándares en continuo desarrollo en lo que respecta a la co
 
 Para la realización del trabajo se utilizará el protocolo OCPP. OCPP \cite{quincedos}\cite{quincetres} es un estándar abierto creado por Open Charge Alliance (OCA), que consiste en un consorcio de varias organizaciones públicas y privadas.
 
-OCPP es el estándar respaldado de facto por la industria para la comunicación entre una estación de carga y un sistema de gestión de estaciones de carga (CSMS) y está diseñado para adaptarse a cualquier tipo de técnica de carga \cite{quincetres}.
+OCPP es el estándar respaldado de facto por la industria para la comunicación entre una estación de carga y un CSMS y está diseñado para adaptarse a cualquier tipo de técnica de carga \cite{quincetres}.
 
 El objetivo de OCA es favorecer el desarrollo de una infraestructura de red con la creación de un protocolo abierto, libre e independiente de las características de cada fabricante individual, y que permita la gestión de todas las situaciones de una operación de recarga. El OCPP tiene como objetivo realizar una serie de operaciones entre componentes que representan dispositivos físicos involucrados en la operación de recarga. Estas operaciones se realizan mediante el intercambio de uno o más mensajes denominados Protocol Data Unity (Unidad de Datos de Protocolo, PDU).
 
@@ -1022,20 +1043,19 @@ En esta última versión de OCPP (2.0.1), el CSMS es capaz de proporcionar hasta
 
 Este trabajo utilizará el protocolo OCPP 1.6, ya que es la que dispone de un uso más extendido actualmente en las plataformas de gestión de los EVSE. La mayor parte de los puntos de recarga que se utilizan actualmente en la red disponen de la posibilidad de aplicar este protocolo.
 
-\chapter{Arquitectura del sistema}
-\label{Arquitectura del sistema}
+\chapter{Arquitectura de un sistema basado en OCPP}
+\label{Arquitectura de un sistema basado en OCPP}
 
-El protocolo OCPP utilizará WebSocket (WS) como protocolo de comunicación entre las estaciones de carga individuales y el sistema central. Los datos que pasan por WebSocket se pueden formatear en diferentes formatos incluyendo el Simple Object Access Protocol (Protocolo Simple de Acceso a Objetos, SOAP) o el JavaScript Object Notation (Notación de objetos de JavaScript, JSON). Utilizamos la implementación JSON, que es un formato ampliamente utilizado en varios campos, y se presta para interactuar con aplicaciones web escritas en lenguaje Java y aplicaciones en la plataforma Android. Se puede interactuar también con aplicaciones de otro tipo de lenguaje, como el PHP, desarrollado mayoritariamente en este sistema. El sistema desarrollado para la infraestructura de la recarga del coche eléctrico consta de la propia estación de carga, el sistema de gestión de las estaciones de carga, la base de datos que almacena los datos, el EV y el conductor del EV a través de una aplicación o de un entorno web, en un dispositivo como puede ser un smartphone, una tablet o incluso un PC, o a través de una tarjeta que preguntará al servidor si está o no autorizada.
+El protocolo OCPP utilizará WebSocket (WS) como protocolo de comunicación entre las estaciones de carga individuales y el sistema central. Los datos que pasan por WebSocket se pueden formatear en diferentes formatos incluyendo SOAP o JSON. Utilizamos la implementación JSON, que es un formato ampliamente utilizado en varios campos, y se presta para interactuar con aplicaciones web escritas en lenguaje Java y aplicaciones en la plataforma Android. Se puede interactuar también con aplicaciones de otro tipo de lenguaje, como el PHP, desarrollado mayoritariamente en este sistema. El sistema desarrollado para la infraestructura de la recarga del coche eléctrico consta de la propia estación de carga, el sistema de gestión de las estaciones de carga, la base de datos que almacena los datos, el EV y el conductor del EV a través de una aplicación o de un entorno web, en un dispositivo como puede ser un smartphone, una tablet o incluso un PC, o a través de una tarjeta que preguntará al servidor si está o no autorizada.
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=.75\textwidth]{figuras/esquema.png}
   \caption[Arquitectura del sistema propuesto]{Arquitectura del sistema propuesto\\
   }
   \label{fig:arquitectura}
 \end{figure}
-
 
 \begin{enumerate}
 
@@ -1047,7 +1067,7 @@ El protocolo OCPP utilizará WebSocket (WS) como protocolo de comunicación entr
 
 \item \textit{Base de datos}: La base de datos almacena datos de los puntos de recargas disponibles en el sistema o en otros sistemas con los que haya algún tipo de acuerdo, de los usuarios autorizados para usar los puntos de recarga, de todas las reservas en estos mismos y la información de facturación... La estructura de la base de datos se tratará más adelante.
 
-\item \textit{Sistema de gestión de estaciones de carga (CSMS)}: Coordina todas las operaciones. Consiste en una aplicación web que maneja las solicitudes tanto del punto de recarga como de la aplicación del usuario del EV e intercambia datos con la base de datos.  El servicio de atención al cliente de la estación central es responsable de proporcionar y recibir información de la aplicación del usuario. En particular, la aplicación envía solicitudes HTTP POST al servidor web, que contiene los datos enviados por parte de los puntos de recarga en formato JSON.
+\item \textit{CSMS}: Coordina todas las operaciones. Consiste en una aplicación web que maneja las solicitudes tanto del punto de recarga como de la aplicación del usuario del EV e intercambia datos con la base de datos.  El servicio de atención al cliente de la estación central es responsable de proporcionar y recibir información de la aplicación del usuario. En particular, la aplicación envía solicitudes HTTP POST al servidor web, que contiene los datos enviados por parte de los puntos de recarga en formato JSON.
 
 \end{enumerate}
 
@@ -1073,7 +1093,7 @@ Hay dos posibilidades de comunicación entre el punto de recarga y el CSMS en es
 
 El proceso para el inicio y la detención de una recarga se puede ver en el siguiente diagrama:
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramainiciofincarga.png}
   \caption[Diagrama de secuencia de una recarga]{Diagrama de secuencia de una recarga\\
@@ -1087,7 +1107,7 @@ Cuando un usuario desea finalizar la recarga y desenchufar el EV del punto de re
 
 El proceso de actualización de firmware es como el visto a continuación:
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramaactualizacionfirmware.png}
   \caption[Diagrama de actualización de firmware]{Diagrama de actualización de firmware\\
@@ -1159,7 +1179,7 @@ En este apartado se tratarán los modos de comunicación entre punto de recarga 
 \label{Authorize (Autorizar)}
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramaauthorize.png}
   \caption[Diagrama de \textit{Authorize}]{Diagrama de Authorize\\
@@ -1179,7 +1199,7 @@ Al recibir una solicitud de autorización, el CSMS debería responder con una co
 \label{BootNotificacion (notificación de arranque)}
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramabootnotification.png}
   \caption[Diagrama de \textit{BootNotification}]{Diagrama de BootNotification\\
@@ -1204,7 +1224,7 @@ En este estado pendiente de registro, el CSMS no puede iniciar ni una solicitud 
 \label{Heartbeat (latido)}
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramaheartbeat.png}
   \caption[Diagrama de \textit{Heartbeat}]{Diagrama de Heartbeat\\
@@ -1226,7 +1246,7 @@ Con JSON sobre WebSocket el envío de este tipo de paquetes no es obligatorio. S
 \label{MeterValues (valores del medidor)}
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramametervalues.png}
   \caption[Diagrama de \textit{MeterValues}]{Diagrama de MeterValues\\
@@ -1269,7 +1289,7 @@ Es probable que el CSMS haga alguna comprobación sobre los datos obtenidos de u
 \label{StartTransaction (iniciar transacción)}
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramastarttransaction.png}
   \caption[Diagrama de \textit{StartTransaction}]{Diagrama de StartTransaction\\
@@ -1291,7 +1311,7 @@ Es probable que el CSMS haga alguna comprobación sobre los datos obtenidos de u
 \label{StatusNotification (notificación de estado)}
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramastatusnotification.png}
   \caption[Diagrama de \textit{StatusNotification}]{Diagrama de StatusNotification\\
@@ -1445,7 +1465,7 @@ Al recibir una solicitud \textit{StatusNotification} el CSMS debería responder 
 \label{StopTransaction (detener transacción)}
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramastoptransaction.png}
   \caption[Diagrama de \textit{StopTransaction}]{Diagrama de StopTransaction\\
@@ -1481,7 +1501,7 @@ Si el punto de recarga ha implementado un caché de autorización, luego de reci
 \label{ChangeConfiguration (cambiar configuración)}
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramachangeconfiguration.png}
   \caption[Diagrama de \textit{ChangeConfiguration}]{Diagrama de ChangeConfiguration\\
@@ -1498,7 +1518,7 @@ Al recibir una solicitud \textit{ChangeConfiguration} el punto de recarga deber�
 \label{ClearCache (limpiar caché)}
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramaclearcache.png}
   \caption[Diagrama de \textit{ClearCache}]{Diagrama de ClearCache\\
@@ -1514,7 +1534,7 @@ El CSMS puede solicitar a un punto de recarga que borre su caché de autorizaci�
 
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramagetconfiguration.png}
   \caption[Diagrama de \textit{GetConfiguration}]{Diagrama de GetConfiguration\\
@@ -1532,7 +1552,7 @@ El punto de recarga podría limitar el número de claves de configuración solic
 \label{RemoteStartTransaction (inicio de recarga remoto)}
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramaremotestarttransaction.png}
   \caption[Diagrama de \textit{RemoteStartTransaction}]{Diagrama de RemoteStartTransaction\\
@@ -1563,7 +1583,7 @@ Las solicitudes \textit{RemoteStartTransaction} deben contener un identificador 
 \label{RemoteStopTransaction (detención de recarga remoto)}
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramaremotestoptransaction.png}
   \caption[Diagrama de \textit{RemoteStopTransaction}]{Diagrama de RemoteStopTransaction\\
@@ -1588,7 +1608,7 @@ Estos son los casos más habituales de \textit{RemoteStopTransaction}:
 \label{Reset (reiniciar)}
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramareset.png}
   \caption[Diagrama de \textit{Reset}]{Diagrama de Reset\\
@@ -1608,7 +1628,7 @@ Al recibir un restablecimiento completo, el punto de recarga debería intentar f
 \label{UnlockConnector (desbloqueo de conector)}
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.9\textwidth]{figuras/diagramaunlockconnector.png}
   \caption[Diagrama de \textit{UnlockConnector}]{Diagrama de UnlockConnector\\
@@ -1648,7 +1668,7 @@ A continuación se detalla un presupuesto estimado para el coste total de este p
 
 \subsubsection{Coste de personal}
 
-\begin{table*}[ht]
+\begin{table}[H]
 	\centering
 	\caption{Presupuesto de personal}
 	\label{tabla2}
@@ -1656,53 +1676,73 @@ A continuación se detalla un presupuesto estimado para el coste total de este p
 		\begin{tabular}{|c|c|c|c|c|}
 			\cline{1-5}
 			Tarea &	Perfil & Horas & Euros/Hora  &  Total\\ \hline
-			Desarrollo aplicación &	Programador Junior & 80 & 60 & 4800 \euro\\
-			Integración en entorno robótico & Programador Senior & 20 & 100 & 2000 \euro\\
-			Pruebas & Ingeniero de Pruebas & 20 & 80 & 1600 \euro\\
-			Supervisión del Proyecto & Jefe de Proyecto & 10 & 120 & 1200 \euro\\ \hline\hline
-			\multicolumn{4}{|c|}{Total} & \multicolumn{1}{c|}{10100 \euro}\\ \hline
+			Búsqueda de información para el estado del arte &	Jefe de Proyecto & 40 & 140 & 5600 \euro\\
+			Desarrollo aplicación Android &	Programador Junior & 20 & 70 & 1400 \euro\\
+			Desarrollo simulación NFC aleatorio & Programador Junior & 8 & 120 & 960 \euro\\
+			Pruebas & Ingeniero de Pruebas & 8 & 80 & 160 \euro\\
+			Supervisión del Proyecto & Jefe de Proyecto & 4 & 140 & 560 \euro\\ \hline\hline
+			\multicolumn{4}{|c|}{Total} & \multicolumn{1}{c|}{8680 \euro}\\ \hline
 		\end{tabular}
 	}
-\end{table*}
+\end{table}
 
 
 \subsubsection{Coste del hardware}
 
-Para la realización de este proyecto se ha realizado la compra de:
+Para la realización de este proyecto se han utilizado los siguientes equipos:
 
 \begin{enumerate}
 	
-	\item Ordenador con Intel i7:
+	\item Ordenador:
 	
-	Placa base: MSI GE62 6QF-060ES Heroes Ed.
+	Placa base: ASUS X541UV
 	
-	Procesador: Intel i7-6700HQ
+	Procesador: Intel i7-6500U
 	
-	RAM: 16 GB
+	RAM: 8 GB
 	
-	Disco duro: 1TB + 128GB SSD
+	Disco duro: 512GB SSD
 	
-	Tarjeta gráfica: Nvidia GTX970M
+	Tarjeta gráfica: Nvidia GeForce 920MX
 	
-	Monitor: 15.6"
-	
-	\begin{itemize}
-		\item Precio (sin IVA): 986,71 \euro\\
-	\end{itemize}
-	
-	\item Ordenador con Intel Atom:
-	
-	Asus Transformer Book H100TAM DK028B
-	
-	RAM: 32GB
-	
-	Disco duro: 500GB
+	Monitor: 15,6"
 	
 	\begin{itemize}
-		\item Precio (sin IVA): 260,27 \euro
+		\item Precio (sin IVA): 354,55 \euro\\
 	\end{itemize}
 	
 \end{enumerate}
+
+
+\begin{enumerate}
+	
+	\item Punto de recarga Alfen EVE MINI:
+		
+	\begin{itemize}
+		\item Precio (sin IVA): 983,47 \euro\\
+	\end{itemize}
+	
+\end{enumerate}
+
+\begin{enumerate}
+	
+	\item Smartphone:
+	
+	Procesador: Snapdragon 665
+	
+	RAM: 4 GB
+	
+	Disco duro: 128GB
+	
+	Monitor: 6,3"
+	
+	\begin{itemize}
+		\item Precio (sin IVA): 132,23 \euro\\
+	\end{itemize}
+	
+\end{enumerate}
+
+
 
 
 \subsubsection{Coste total}
@@ -1715,11 +1755,11 @@ Para la realización de este proyecto se ha realizado la compra de:
 		\begin{tabular}{|l|l|}
 			\cline{1-2}
 			Concepto &	Coste (Euros) \\ \hline
-			Costes de personal & 10100  \\
-			Costes de hardware  & 1246,98   \\ \hline
-			Subtotal  &  11346,97 \\
-			IVA (21\%) & 2882,86 \\ \hline \hline
-			Total Proyecto & \textbf{13729,83 \euro} \\ \hline
+			Costes de personal & 8680  \\
+			Costes de hardware  & 1470,25   \\ \hline
+			Subtotal  &  10150,25 \\
+			IVA (21\%) & 2131,55 \\ \hline \hline
+			Total Proyecto & \textbf{12281,80 \euro} \\ \hline
 	\end{tabular}}
 \end{table*}
 
@@ -1759,12 +1799,200 @@ Explicación de la solución llevada a cabo. Si se trata de un desarrollo se inc
 
 \section{Descripción de la solución}
 
-Breve descripción del tipo de solución adoptada: si es una aplicación y qué características tiene, si se trata de un tutorial, un modelo, etc.
+Como se ha podido comprobar a lo largo de este trabajo, es relativamente sencillo el hecho de poder copiar la etiqueta de identificación de un dispositivo RFID para posteriormente poder replicarla, incluso con un smartphone con tecnología NFC implementada sin coste adicional.
+
+Para poder reducir las posibilidades de ataque y complicar la posibilidad de reproducir este ataque, se han probado dos sistemas. 
+El primero de ellos trata de un sistema de autenticación de doble factor (2FA), que es una forma de identificarse en el proceso con dos pasos en lugar de uno. Por ejemplo, en \cite{eados} se propone un sistema de autenticación MFA. En este trabajo el proceso será el siguiente:
+
+\section{El proceso de análisis y desarrollo}
+
+En primer lugar, se dispondría de una app para smartphone. Esta app actualizaría cada cierto tiempo una pantalla principal en la cual se verían durante otro tiempo los procesos de carga que esperan por el segundo paso de autenticación. En este trabajo la app se programa en el sistema operativo Android.
+
+Para este segundo paso de autenticación podría haber varias opciones. Como se expresa en \cite{eatrece}, podría ser una identificación por biometría. También existen las posibilidades de realizar un doble paso de tarjetas RFID como se propone en \cite{eacinco}, en este caso tratándose de dos etiquetas adyacentes. Otra opción, que es la que se utiliza en este trabajo, se basaría en un código a recibir en el momento en el que se inicia el proceso de carga. Este código puede ser por SMS o por correo electrónico, eligiéndose el email en este caso porque no conllevaría un coste económico adicional.
+
+Tras ello, se combinará este sistema con otro basado en una tarjeta basada en NFC variable, habiendo una comunicación previa entre la misma y el punto de recarga, registrando una semilla y jugando con la hora actual. Al no disponer de esa tecnología, se aprovechará la opción que nos proporciona la plataforma web que gestiona el CSMS de que un usuario pueda enviar una orden de inicio de recarga remota (RemoteStartTransaction), haciendo el CSMS todo el proceso de simulación de tarjeta NFC y de inicio de recarga.
+
+Además, se tratará la configuración más segura para este punto de recarga, basándola en lo visto en el apartado anterior del protocolo OCPP. Esta configuración se realiza desde una plataforma disponible por parte del fabricante.
+
+\subsection{Método basado en 2FA}
+
+Este sistema cada vez es más habitual. Entre otros, es similar al utilizado en las aplicaciones bancarias, al de acceso a redes de empresas… En el caso de este trabajo funciona de la siguiente manera:
+
+\begin{itemize}
+\item En primer lugar al tratar de iniciar la recarga el usuario asociado al identificador de la tarjeta que se trata de autorizar recoge el email asociado a este en la base de datos sobre la que trabaja el CSMS envía un correo electrónico con un código de 6 dígitos asociado al intento de inicio de recarga.
+\item Posteriormente, en una app de Android programada para este trabajo y siempre que un usuario esté logueado se van realizando peticiones cada cierto tiempo. Estas peticiones consultan si hay alguna petición de inicio de recarga abierta por el propio usuario. En caso afirmativo, se verá en el listado de la pantalla principal de la app. 
+\item Se pulsa sobre ella y se pide un código de seis dígitos para autorizarla. Tras introducirlo, se consulta si el código es correcto y, en caso afirmativo, se autoriza la recarga con el identificador de etiqueta que se ha pasado por el cargador o que se ha enviado de manera remota.
+\end{itemize}
+
+Para este método, al enviarse un paquete Authorize además de preguntar al CSMS si el usuario que trata de iniciar la recarga tiene autorización para ello o no, se crea una entrada en una tabla de la base de datos del CSMS para que, al autorizar en la aplicación, se cree la petición RemoteStartTransaction.
 
 
-\section{El proceso de desarrollo}
+\subsection{Método basado en NFC con etiqueta aleatoria}
 
-Explicar el modelo de proceso y la estructura de la sección.
+Este sistema se ha probado de manera simulada. Es decir, se ha diseñado un sistema para hacerlo todo desde el CSMS. En los sistemas actuales para la recarga del coche eléctrico, como ya se trató anteriormente en el trabajo, hay la opción de enviar las peticiones de inicio de recarga desde una app o una web que interactúa con el CSMS. Igualmente, se podrían implementar en una tarjeta o sistema basado en NFC. Este sistema es similar al que se utiliza para la apertura y cierre a distancia de las puertas de los coches. Con todo ello, este método funciona de la siguiente manera:
+
+\begin{itemize}
+\item En primer lugar, para iniciar la recarga, se realizaría un intercambio previo de una semilla sobre la cual se va a descifrar el identificador de etiqueta del cliente. Para el funcionamiento de ello se necesitaría implementar algún método de doble paso de claves por la pantalla del punto de recarga. Por ello en este ejemplo la semilla ya estaría guardada en el sistema CSMS y sólo se haría el paso de tarjeta con la semilla mezclada con la hora.
+\item Este identificador de etiqueta se mezcla con la hora actual con el siguiente formato: YYYYMMDDhhmmss.
+\item Con ello, se envía el inicio de recarga. Al hacerlo de manera combinada con la autorización en doble factor, se realiza el proceso con la app de Android programada para este trabajo y, tras hacerse la comprobación de que, efectivamente, el usuario que recarga es el que se espera, ya se inicia correctamente el proceso de recarga.
+\end{itemize}
+
+Para este método no hay que hacer ningún cambio más en el sistema aparte de la simulación de esta tarjeta basada en NFC.
+
+
+
+\subsection{Diseño}
+
+Para implementar esto se requiere, en primer lugar, un sistema como el explicado en el capítulo \ref{Arquitectura de un sistema basado en OCPP}. Tras ello, se añadirán las herramientas creadas para la mejora de la seguridad, las cuáles no requieren en esta prueba un aumento de la estructura del sistema. En un caso real sí se añadiría una tarjeta NFC.
+
+\subsubsection{Diseño de sistema}
+
+En primer lugar, relacionado con lo se explicó , se utlizarán los siguientes elementos.
+
+\begin{itemize}
+\item Un ordenador que dará soporte tanto al CSMS como a la base de datos.
+\item Un punto de recarga.
+\item Un smartphone para iniciar recargas.
+\item Una tarjeta con una etiqueta RFID para las simulaciones previas y la prueba de concepto.
+\item Una manguera para simular una recarga.
+\end{itemize}
+
+Para esta simulación se conectarán tanto ordenador (CSMS y BD) como punto de recarga a la misma red y no siendo evidentemente necesario que los demás equipos estén conectados.
+
+El CSMS utilizado se llama \textit{Planet Charger}. Es un servidor web mediante el cuál, interactuando con la base de datos, se pueden realizar las siguientes acciones.
+
+\begin{itemize} 
+\item Un resumen de los datos de recargas.
+\item Registrar y editar los cargadores conectados al CSMS y algunos de sus datos.
+\item Registrar y editar los usuarios con permiso para recargar y sus datos.
+\item Disponer de un histórico de recargas realizadas en los cargadores conectados al CSMS.
+\item Disponer de un histórico de los paquetes y peticiones intercambiadas entre cargadores y CSMS.
+\item Otros enlaces de interés como gráficas, tarifas...
+\end{itemize}
+
+
+En el caso de este trabajo lo interesante son tanto los cargadores conectados a los CSMS, los permisos de los usuarios y el registro de las recargas.
+
+Este servidor web funciona con los lenguajes HTML, PHP, CSS y JavaScript.
+\begin{itemize} 
+\item HyperText Markup Language (HTML) es el componente más básico de la Web, ya que define el significado y la estructura del contenido web. Se combina con otras tecnologías para describir la visualización de una página web (CSS) o comportamientos (JavaScript).
+\item Hypertext Preprocessor (PHP) es un lenguaje de código abierto adecuado para el desarrollo web y que puede ser incrustado en HTML. Se utiliza la versión 7.2.5.
+\item Cascading Style Sheets (CSS) es el lenguaje de estilos utilizado para describir la presentación de documentos HTML.
+\item JavaScript (JS) es un lenguaje de programación ligero, interpretado, o compilado justo-a-tiempo (just-in-time) conocido mayormente como un lenguaje de scripting (secuencias de comandos) para páginas web.
+\end{itemize}
+
+El servidor web que se utiliza es Internet Information Services (IIS). Este convierte a un ordenador en un servidor web tanto para Internet como para intranet, es decir, que en los equipos que tienen este servicio instalado se podrían publicar páginas web de forma local y de forma remota. Se basa en este caso en un módulo PHP. La versión que se utiliza en este trabajo es la 10.0.
+
+La base de datos se basa en MariaDB. Este es un sistema de gestión de bases de datos derivado de MySQL con licencia GPL (General Public License). Se utiliza la versión 10.9.
+
+Como se ha descrito anteriormente, la comunicación con el punto de recarga se realiza a través de WebSocket y utilizando el protocolo de comunicación OCPP 1.6.
+
+Por otra parte, desde el propio ordenador y para facilitar el trabajo, se utiliza un gestor de puntos de recarga. Este puede ver los EVSE conectados a la misma red del ordenador en el que se ejecuta. La aplicación se llama \textit{Ace Service Installer}.
+
+Para las recargas se simulará una tarjeta NFC en lenguaje también PHP. 
+
+Se diseñará una app para sistemas operativos Android para completar la autenticación 2FA. Para ello se utiliza Android Studio y el lenguaje de programación Java.
+
+
+\subsubsection{Diseño detallado}
+
+En este apartado se describirán los aspectos más visuales del sistema y funcionamiento y, posteriormente, se tratarán las implmentaciones realizadas para llevar cumplir los requisitos propuestos en el trabajo.
+
+En primer lugar, el servicio web base utilizado, \textit{Planet Charger}, dispone lógicamente en su inicio de una pantalla para loguearse.
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=.5\textwidth]{figuras/design1.png}
+  \caption[Pantalla de login de la web]{Pantalla de login de la web\\
+  }
+  \label{fig:design1}
+\end{figure}
+
+Tras acceder a la plataforma, hay un menú lateral. En ese menú lateral los botones de \textit{Datos}, \textit{Usuarios}, \textit{Plazas}, \textit{Sesiones de recarga} y \textit{Comunicación}.
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=.5\textwidth]{figuras/design2.png}
+  \caption[Pantalla principal de la web]{Pantalla principal de la web\\
+  }
+  \label{fig:design2}
+\end{figure}
+
+Si se accede en el botón \textit{Usuario} se dispone de un listado de los usuarios registrados en la aplicación. Al editar un usuario se ven varios datos. En el caso de este trabajo solamente nos interesan \textit{e-mail} y \textit{Semilla de UID de tarjeta}. El primero para la autenticación doble factor y el segundo para la tarjeta NFC, en este caso simulada.
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=1\textwidth]{figuras/design3.png}
+  \caption[Pantallas de usuario]{Pantallas de usuario\\
+  }
+  \label{fig:design3}
+\end{figure}
+
+Tras este, hay otros apartados de interés de la web. En \textit{Plazas} hay dos enlaces, uno que lleva a un listado para editar los puntos de recarga y otro para comprobar su estado y dos botones, uno realizar algún tipo de operaciones sobre ellos, como reiniciarlos o realizar inicios y fines de recargas, y otro para consultar y cambiar la configuración general del EVSE.
+
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=1\textwidth]{figuras/design4.png}
+  \caption[Pantallas referidas a puntos de recarga]{Pantallas referidas a puntos de recarga\\
+  }
+  \label{fig:design4}
+\end{figure}
+
+Además del botón \textit{Sesiones de recarga}, donde se encuentran las cargas realizadas, se dispone de otro botón llamado \textit{Comunicación}. En el enlace \textit{Eventos} se dispone de los paquetes enviados por el punto de recarga. Y en respuestas se ven las respuestas del sistema a estos paquetes enviados por el punto.
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=1\textwidth]{figuras/design5.png}
+  \caption[Pantallas referidas a las comunicaciones con los puntos de recarga]{Pantallas referidas a las comunicaciones con los puntos de recarga\\
+  }
+  \label{fig:design5}
+\end{figure}
+
+Para la ejecución de la autenticación 2FA se ha implementado un pequeño módulo en el que se reciben las peticiones de inicio de proceso de recarga generadas para poder confirmarlas. 
+
+En este caso no se ha profundizado dado que se trata de un modelo simulado. Sin embargo, gran parte de las compañías que dan soporte a la recarga del vehículo del coche eléctrico disponen de aplicaciones, tanto en Android como en iOs, para realizar los procesos y controles que se hacen desde la app, al menos en la parte de llevar el control de procesos de recarga y de histórico de recargas del propio usuario. Por ello este módulo que se ha implementado como una entidad independiente podría integrarse sin problemas en una app de una compañía eléctrica.
+
+En primer lugar, al igual que en el anterior sistema, se dispone de una pantalla de inicio de login en la que se deben introducir lógicamente los mismos datos que en la web.
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=0.5\textwidth]{figuras/design6.png}
+  \caption[Pantalla principal de login de la app]{Pantalla principal de login de la app\\
+  }
+  \label{fig:design6}
+\end{figure}
+
+Al acceder de forma correcta, se percibe el listado de recargas a finalizar su autenticación. Habitualmente sólo se verá una dado que lo habitual es un usuario cargando con un vehículo.
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=0.5\textwidth]{figuras/design7.png}
+  \caption[Pantalla con el listado de cargas a confirmar]{Pantalla con el listado de cargas a confirmar\\
+  }
+  \label{fig:design7}
+\end{figure}
+
+Tras confirmarlo, se ve la pantalla en la que hay que insertar el código recibido por correo electrónico al iniciar el proceso de recarga.
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=0.5\textwidth]{figuras/design8.png}
+  \caption[Pantalla en la que introducir el código de confirmación de inicio de recarga]{Pantalla en la que introducir el código de confirmación de inicio de recarga\\
+  }
+  \label{fig:design8}
+\end{figure}
+
+Como se ve, todo lo que hace este sistema, al igual que la app de Android es interactuar para añadir, editar y eliminar datos en la base de datos e iniciar o parar recargas.
+
+
+\subsection{Implementación}
+
+Hablar de las HERRAMIENTAS utilizadas durante el desarrollo, la ORGANIZACIÓN del proyecto y aquellas peculiaridades de la forma de implementación.
+
+\subsection{Pruebas}
+
+En este apartado se tratará, en primer lugar, la prueba de concepto, mediante la cuál se prueba a realizar el ataque. Tras ello, se realizan pruebas de los instrumentos que ayudan a mejorar la seguridad de la autorización de recarga.
 
 \subsection{Prueba de concepto}
 
@@ -1777,7 +2005,7 @@ Es necesario conseguir \textit{rootear} en primer lugar el dispositivo dado que 
 Para ello, en el caso de el dispositivo que se va a utilizar para esta prueba se deben activar, en primer lugar, las opciones de desarrollador. Se hace en la pantalla de ajustes, en el apartado \textit{Mi dispositivo}, pulsando siete veces en \textit{Versión de MIUI}.
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.4\textwidth]{figuras/root1.png}
   \caption[Pantalla de \textit{Mi Dispositivo}]{Pantalla de \textit{Mi Dispositivo}\\
@@ -1787,7 +2015,7 @@ Para ello, en el caso de el dispositivo que se va a utilizar para esta prueba se
 
 Posteriormente se debe desbloquear el \textit{bootloader} (gestor de arranque) para poder instalar una \textit{ROM} (versiones modificadas de Android) o rootear el dispositivo, y para ello se deben en primer lugar activar tanto la \textit{depuración USB} como el \textit{desbloqueo OEM}. Esto se hace nuevamente en los ajustes del dispositivo dentro de las opciones de \textit{Ajustes adicionales} en los botones \textit{Opciones de desarrollador} y \textit{desbloqueo de OEM}. Se activan y dentro del desbloqueo OEM pedirá una cuenta de usuario del fabricante Xiaomi y disponer de una tarjeta SIM para continuar el proceso.
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.4\textwidth]{figuras/root2.png}
   \caption[Pantalla de \textit{Opciones de desarrollador}]{Pantalla de \textit{Opciones de desarrollador}\\
@@ -1799,7 +2027,7 @@ Para realizar este desbloqueo se necesita disponer de un ordenador con sistema o
 
 Se debe, por tanto, instalar ese programa e iniciar sesión en él con la cuenta de Xiaomi del propio dispositivo. Se apaga el teléfono y se enciende pulsando tanto el botón de encendido como el de volumen arriba para iniciarlo en un modo llamado \textit{fastboot}. Se conecta al ordenador y se espera que el botón \textit{Unlock} se sitúe en verde.
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.8\textwidth]{figuras/root3.png}
   \caption[Pantalla de advertencia previa a desbloqueo de \textit{Mi Unlock}]{Pantalla de advertencia previa a desbloqueo de \textit{Mi Unlock}\\
@@ -1809,7 +2037,7 @@ Se debe, por tanto, instalar ese programa e iniciar sesión en él con la cuenta
 
 Tras aceptar, \textit{Mi Unlock} comprueba que tanto cuenta como dispositivo son aptos. Si eso es así, el programa envía una solicitud a los servidores de Xiaomi con el dispositivo asociado. Tras ello, en la pantalla del programa aparecerá el tiempo que se debe esperar hasta el desbloqueo del dispositivo (siete días).
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.7\textwidth]{figuras/root4.png}
   \caption[Pantalla de aviso de tiempo a esperar para desbloqueo de dispositivo mediante \textit{Mi Unlock}]{Pantalla de aviso de tiempo a esperar para desbloqueo de dispositivo mediante \textit{Mi Unlock}\\
@@ -1819,7 +2047,7 @@ Tras aceptar, \textit{Mi Unlock} comprueba que tanto cuenta como dispositivo son
 
 Tras transcurrir esa semana, se puede retomar el proceso de desbloqueo. Se repiten los mismos pasos con \textit{Mi Unlock} y se espera a que finalice el proceso. En el caso de que no se hubiera cumplido el tiempo de espera la aplicación informa de cuántas horas quedan para retomar este proceso. Antes de iniciar con el desbloqueo se deben hacer copias de seguridad dado que este proceso reestablece el dispositivo a los valores de fábrica.
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.7\textwidth]{figuras/root5.png}
   \caption[Pantalla de aviso de de dispositivo correcto en \textit{Mi Unlock}]{Pantalla de aviso de de dispositivo correcto en \textit{Mi Unlock}\\
@@ -1845,7 +2073,7 @@ fastboot boot twrp.img
 
 Tras ello, el nuevo modo \textit{recovery} de este dispositivo será el de TWRP.
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.4\textwidth]{figuras/root51.png}
   \caption[Pantalla principal de TWRP]{Pantalla principal de TWRP\\
@@ -1856,7 +2084,7 @@ Tras ello, el nuevo modo \textit{recovery} de este dispositivo será el de TWRP.
 
 Ya desde \textit{TWRP} en primer lugar se formatea el equipo y se reinicia en modo \textit{recovery} después para que quede correctamente instalado.
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.4\textwidth]{figuras/root52.png}
   \caption[Proceso para formatear el dispositivo]{Proceso para formatear el dispositivo\\
@@ -1864,7 +2092,7 @@ Ya desde \textit{TWRP} en primer lugar se formatea el equipo y se reinicia en mo
   \label{fig:root52}
 \end{figure}
 
-\begin{figure}[h] 
+\begin{figure}[!h] 
 \centering
   \includegraphics[width=0.4\textwidth]{figuras/root53.png}
   \caption[Proceso para reiniciar en modo recovery]{Proceso para reiniciar en modo recovery\\
@@ -1875,7 +2103,7 @@ Ya desde \textit{TWRP} en primer lugar se formatea el equipo y se reinicia en mo
 
 En último lugar, se deben descargar y copiar al dispositivo las versiones correctas, según el dispositivo que se utilice, en extensión ZIP de los ficheros de instalación de Magisk y Disable\_DM-Veritypor ese orden  para poder rootear el dispositivo.
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.4\textwidth]{figuras/root54.png}
   \caption[Proceso para instalar ficheros zip para rootear]{Proceso para instalar ficheros zip para rootear\\
@@ -1885,7 +2113,7 @@ En último lugar, se deben descargar y copiar al dispositivo las versiones corre
 
 Con todo ello, el smartphone quedará rooteado y ya se puede pasar a realizar la prueba.
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.4\textwidth]{figuras/root55.png}
   \caption[Proceso para inciar el móvil en funcionamiento normal]{Proceso para inciar el móvil en funcionamiento normal\\
@@ -1896,7 +2124,7 @@ Con todo ello, el smartphone quedará rooteado y ya se puede pasar a realizar la
 Para ello, se instala la aplicación llamada \textit{Emulador de tarjetas Pro (NFC Card Emulator Pro)}. 
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.4\textwidth]{figuras/root6.png}
   \caption[Pantalla de \textit{Emulador de tarjetas Pro} tras instalar la app]{Pantalla de \textit{Emulador de tarjetas Pro} tras instalar la app\\
@@ -1907,7 +2135,7 @@ Para ello, se instala la aplicación llamada \textit{Emulador de tarjetas Pro (N
 Desde la app se incica que se coloque la tarjeta en la parte posterior del equipo para leerla tras pulsar al primer botón de la parte superior izquierda de la pantalla. Se lee la tarjeta para disponer de la etiqueta de la misma y se guarda en \textit{Aceptar}.
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.4\textwidth]{figuras/root7.png}
   \caption[Pantalla de \textit{Emulador de tarjetas Pro} tras leer una tarjeta]{Pantalla de \textit{Emulador de tarjetas Pro} tras leer una tarjeta\\
@@ -1918,7 +2146,7 @@ Desde la app se incica que se coloque la tarjeta en la parte posterior del equip
 Se pulsa en el icono inferior derecho del interior de la tarjeta para emularla. Se acepta la solicitud de cualquier tipo de permiso. Con ello la tarjeta se emulará durante un tiempo en intervalos temporales cortos pero alternos, por lo que en varios momentos la tarjeta queda correctamente \textit{copiada} para simular el número de etiqueta de la tarjeta.
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=0.4\textwidth]{figuras/root8.png}
   \caption[Pantalla de \textit{Emulador de tarjetas Pro} durante la emulación de una tarjeta]{Pantalla de \textit{Emulador de tarjetas Pro} durante la emulación de una tarjeta\\
@@ -1929,7 +2157,7 @@ Se pulsa en el icono inferior derecho del interior de la tarjeta para emularla. 
 Para comprobar que esto funciona correctamente, se realiza una prueba pasando la tarjeta sobre el cargador, el cuál envía al servidor Websocket un paquete de tipo \textit{Authorize}. Las operaciones del cargador utilizado (\textit{Alfen EVe mini}) se pueden revisar con el programa \textit{Ace Service Installer} siempre y cuando este se encuentre en la misma red que el ordenador desde el que se accede a este programa.
 
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=1\textwidth]{figuras/authorize1.png}
   \caption[Pantalla de logs de \textit{Ace Service Installer} tras el paso de tarjeta]{Pantalla de logs de \textit{Ace Service Installer} tras el paso de tarjeta\\
@@ -1940,7 +2168,7 @@ Para comprobar que esto funciona correctamente, se realiza una prueba pasando la
 Ahora, durante la emulación de la tarjeta, se pasa el smartphone por encima del punto de recarga para ver si el paso se produce correctamente. Se ve que, efectivamente, es así.
 
 
-\begin{figure}[h] 
+\begin{figure}[H]
 \centering
   \includegraphics[width=1\textwidth]{figuras/authorize2.png}
   \caption[Pantalla de logs de \textit{Ace Service Installer} tras el paso del smartphone que simula la tarjeta]{Pantalla de logs de \textit{Ace Service Installer} tras el paso del smartphone que simula la tarjeta\\
@@ -1951,7 +2179,7 @@ Ahora, durante la emulación de la tarjeta, se pasa el smartphone por encima del
 
 Un caso similar a este se puede ver en el siguiente ejemplo de la página de \textit{eventos de los cargadores} de la web.
 
-\begin{figure}[h] 
+\begin{figure}[H] 
 \centering
   \includegraphics[width=1\textwidth]{figuras/authorize3.png}
   \caption[Pantalla de eventos de la web tras los pasos de las etiquetas]{Pantalla de eventos de la web tras los pasos de las etiquetas\\
@@ -1960,45 +2188,7 @@ Un caso similar a este se puede ver en el siguiente ejemplo de la página de \te
 \end{figure}
 
 
-\subsection{Análisis}
 
-Fase de análisis
-
-
-\subsubsection{Definición de requisitos}
-
-Enumerar los requisitos del sistema dividiéndoles en funcionales y no funcionales.
-
-\subsubsection{Especificación de requisitos}
-
-Analizar y especificar los requisitos desde el punto de vista del comportamiento, estructura y funcionalidad del sistema.
-
-
-\subsection{Diseño}
-
-Fase de diseño
-
-\subsubsection{Diseño de sistema}
-
-Se expone la ARQUITECTURA del sistema y las TECNOLOGÍAS utilizadas en el desarrollo.
-
-\subsubsection{Diseño detallado}
-
-Se describe el diseño de las capas de PERSISTENCIA, MODELO e INTERFAZ del sistema.
-
-
-\subsection{Implementación}
-
-Hablar de las HERRAMIENTAS utilizadas durante el desarrollo, la ORGANIZACIÓN del proyecto y aquellas peculiaridades de la forma de implementación.
-
-\subsection{Pruebas}
-
-Centrarse en pruebas unitarias (no incluir todas las pruebas sino informes de las mismas) y de sistema (mostrar que cumple los casos de uso).
-
-
-\section{El producto del desarrollo}
-
-En el caso de desarrollar una herramienta es necesario mostrar, brevemente, el tipo de herramienta generada. Incluir algún pantallazo de la herramienta, su funcionalidad y la forma de ejecución de la misma.
 
 \chapter{Evaluación}
 \label{Evaluación}
