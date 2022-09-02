@@ -1988,7 +1988,34 @@ Como se ve, todo lo que hace este sistema, al igual que la app de Android es int
 
 \subsection{Implementación}
 
+Para la realización de la autenticación 2FA se han realizado los siguientes pasos:
+\begin{itemize}
+\item Lo primero es la creación una tabla en particular en la base de datos con los campos XXX,XXX,XXX y XXX.
+\item Posteriormente, tanto en la función que interpreta los paquetes \textit{Authorize} como en el \textit{RemoteStopTransaction} añadir una función que introduzca una entrada en la tabla y que envíe un correo con un código PIN para realizar la autorización 2FA.
+AÑADIR CÓDIGO
+\item La app, programada en Windows mediante \textit{Android Studio}, realiza cada X tiempo una consulta asíncrona a la base de datos con un identificador de usuario para ver cuáles son las recargas pendientes de la doble autorización.
+AÑADIR CÓDIGO.
+\item La app envía el código al servicio web, que comprueba si es correcto y contesta a la app. Si es correcto, se inicia la recarga. En caso contrario llegará un aviso de que es incorrecto.
+\item Para detener la recarga simplemente se debe realizar un paso de tarjeta o hacerlo desde la web.
+MIRAR DIAGRAMAS DE FLUJO
+\end{itemize}
+
+Para la simulación de la tarjeta NFC aleatoria:
+\begin{itemize}
+\item Se crea una función, la cual genera, a partir de una semilla, un número semialeatorio multiplicándola con la fecha y hora actuales.
+AÑADIR CÓDIGO.
+\item Para detener la recarga se hace la misma generación de la semilla en el \textit{RemoteStopTransaction}, pero en este caso se añade la función a la comprobación.
+AÑADIR CÓDIGO
+\end{itemize}
+
+
 Hablar de las HERRAMIENTAS utilizadas durante el desarrollo, la ORGANIZACIÓN del proyecto y aquellas peculiaridades de la forma de implementación.
+
+
+
+
+
+
 
 \subsection{Pruebas}
 
@@ -2288,11 +2315,6 @@ vehicles”. World Electr. Veh. J., 2013
 \bibitem{dieciseis} \textit Wan, Kaiyu, K. L. Man, y D. Hughes. ``Specification, Analyzing Challenges and Approaches for Cyber-Physical Systems (CPS).” Engineering Letters 18.3, 2010.
 \bibitem{diecisiete} \textit Orojloo, Hamed, y Mohammad Abdollahi Azgomi. ``A method for modeling and evaluation of the security of cyber-physical systems.” Information Security and Cryptology (ISCISC), 11ª Conferencia Internacional ISC sobre IEEE, 2014.
 
-\bibitem{CSSP}
-{CSSP, D.}:
-\newblock \textit{Recommended Practice: Improving Industrial Control Systems
-  Cybersecurity with Defense-In-Depth Strategies}.
-\newblock US-CERT Defense In Depth. (Octubre 2009)
 
 \end{thebibliography}
 
