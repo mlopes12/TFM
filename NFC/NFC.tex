@@ -297,91 +297,6 @@ Catálogo de términos específicos del contexto del trabajo.
 
 %*********************************************
 
-\chapter*{Ejemplos de uso de LaTeX (QUITAR DE LA MEMROIA)}
-\label{Ejemplos de uso de LaTeX}
-
-\section*{Ejemplo de uso de notas al pie}
-\label{Seguridad general}
-
-El término \emph{seguridad informática} abarca muchos aspectos, y dar una definición de manera genérica es complejo. Debe poderse aplicar a cualquier tipo de sistema informático, y al mismo tiempo describir qué se entiende por seguridad.
-
-Aunque existen diferentes definiciones según la fuente, a continuación se presentan algunos enunciados concisos:
-
-\begin{itemize}
-
-\item ``Es la protección de los datos, de las redes y del suministro eléctrico de un sistema informático.''\footnote{\textit{Definition of computer security.} Encyclopedia. Ziff Davis, PCMag. \url{http://www.pcmag.com/encyclopedia/term/44958/information-security}}
-
-\item ``Disciplina que se ocupa de diseñar normas, procedimientos y técnicas, destinados a conseguir que un sistema de información sea seguro.''\footnote{\url{https://es.wikipedia.org/wiki/Seguridad_informática}\label{segWiki}}
-
-\item ``Área de la informática enfocada en la protección de las infraestructuras computacionales y, especialmente, de la información contenida o que circula por ellas.''\textsuperscript{\ref{segWiki}}
-
-\end{itemize}
- 
-
-\section*{Ejemplo de imagen}
-
-Existen tres requisitos fundamentales a tener en cuenta de cara a proteger la información que procesan los sistemas informáticos.
-Se trata de: \textit{confidencialidad}, \textit{integridad} y \textit{disponibilidad}. Estos conceptos se refieren al uso, transferencia y almacenamiento de los datos, respectivamente.
-
-En la figura \ref{fig:fundamentos-seguridad} puede verse un esquema con los tres requisitos mencionados.
-
-\begin{figure}[htb] 
-\centering
-  \includegraphics[width=.55\textwidth]{figuras/c-i-a.png}
-  \caption[Elementos principales de seguridad de la información]{Elementos principales de seguridad de la información\\
-  \footnotesize{Fuente: \textit{http://geraintw.blogspot.com.es/2012/09/cia-infosec.html}}}
-  \label{fig:fundamentos-seguridad}
-\end{figure}
-
-
-\section*{Ejemplo de lista con números}
-
-\begin{enumerate}
-
-\item Confidencialidad:\\
-El principio de confidencialidad consiste en asegurar que la información es accesible sólo para aquellos destinatarios que estén autorizados, con independencia de dónde se almacene la información.
-La confidencialidad de los datos se implementa mediante mecanismos de control de acceso, tanto físicos (hardware) como  de programación (software).
-
-\item Integridad:\\
-La integridad de los datos se refiere a garantizar el estado de la información, protegiéndola de cambios accidentales o malintencionados. Mantener la integridad es esencial para la privacidad, la seguridad y la fiabilidad de los datos almacenados en un sistema.
-Las medidas que se utilizan para mitigar posibles fallos en los datos incluyen: copias de seguridad regulares, almacenamiento seguro de esas copias fuera del lugar de trabajo y herramientas de control de integridad.
-
-\item Disponibilidad:\\
-La disponibilidad de los datos tiene como objetivo que los usuarios autorizados tengan acceso a la información en el momento que la necesiten. Esto implica garantizar el correcto funcionamiento de los equipos utilizados para almacenar y procesar los datos, de los controles de seguridad para protegerlos, y de los canales de comunicación utilizados para acceder a ellos.
-
-\end{enumerate}
-
-
-\section*{Una tabla con varias cabeceras}
-\label{Ciberseguridad robótica}
-
-La tabla~\ref{tabla1} extiende a los robots sociales y asistenciales la clasificación de criticidad para sistemas industriales, propuesta en \cite{CSSP}.
-
-\begin{table*}[ht]
-	\centering
-	\caption{Perfiles de seguridad asociados a la robótica}
-	\label{tabla1}
-	\begin{tabular}{|l|ccc|}
-		\cline{2-4}
-		\multicolumn{1}{c}{} & \multicolumn{3}{|c|}{Criticidad} \\
-		\cline{1-4}
-		\multicolumn{1}{|c|}{Perfil} &  Confidencialidad & Integridad & Disponibilidad \\ \hline
-		Estación de trabajo (PC) & Alta & Alta 	&  Baja \\
-		Equipo para control industrial & Baja & Media & Muy alta \\
-		Robots asistenciales & Muy alta & Muy alta & Muy alta \\
-		Robots sociales & Muy alta & Media & Baja \\ \hline
-	\end{tabular}
-\end{table*}
-
-
-\section*{Descripción de ROS: Robot Operating System}
-\label{ROS}
-
-Vistazo general sobre ROS:\\
-- Historia y versión actual.\\
-- Aplicación: investigación y también robots comerciales.\\
-- Arquitectura: componentes básicos y funcionamiento.
-
 
 \section*{Ejemplo de código fuente}
 
@@ -631,6 +546,7 @@ También existe un tercer tipo híbrido de etiqueta RFID. Los sistemas BAP o sis
 
 
 \subsection{Posibles amenazas y contramedidas en RFID}
+\label{Posibles amenazas y contramedidas en RFID}
 
 Existen numerosas formas de y atacar a los clientes que utilizan la tecnología RFID tanto a su privacidad y seguridad física como a su privacidad informativa y sus autorizaciones públicas.
 
@@ -663,7 +579,7 @@ Igual que en el caso anterior, hay opciones para reducir estos ataques basándos
 \item Ataque de suplantación de identidad:\\
 Cuando un atacante logra con éxito sus objetivos en un ataque de clonación, donde el atacante puede registrar o leer la información entre la etiqueta y el lector. Luego, el atacante emula esta información y la vuelve a transmitir al lector, apareciendo esta información en el lado del propio lector como etiqueta válida.
 
-Dado que son casos similares que los anteriores se utilizarán las mismas estrategias para la defensa contra estos ataques, como la eliminación de etiquetas y sustitución de estas mismas por otras cada cierto tiempo, el bloqueo de los accesos en el momento en el que haya sospechas de posible robo de claves de acceso y la utilización de sedónimos para reducir el robo de información o la encriptación los datos de estas tarjetas. Tambén como en los casos anterioree se pueden reducir las posibilidades de escucha utilizando protocolos de límite de distancia o reduciendo la intensidad de la señal.
+Dado que son casos similares que los anteriores se utilizarán las mismas estrategias para la defensa contra estos ataques, como la eliminación de etiquetas y sustitución de estas mismas por otras cada cierto tiempo, el bloqueo de los accesos en el momento en el que haya sospechas de posible robo de claves de acceso y la utilización de sedónimos para reducir el robo de información o la encriptación los datos de estas tarjetas. Tambén como en los casos anteriores se pueden reducir las posibilidades de escucha utilizando protocolos de límite de distancia o reduciendo la intensidad de la señal.
 
 \item Ataque de denegación de servicio (DoS):\\
 Se suele realizar ejecutando varias peticiones, en este caso comunicaciones RFID, para desbordar al lector y evitar que los usuarios legítimos puedan acceder Lla interferencia de la señal en el canal radiofrecuencia es un ejemplo común de un ataque DoS para los sistemas RFID. Este ataque trata con datos de etiquetas y tiene lugar cuando un atacante niega el servicio de un usuario válido.
@@ -1365,8 +1281,8 @@ Los posibles estados del punto de recarga y su denominación en la tabla de esta
 La siguiente tabla describe los eventos que pueden llevar a un cambio de estado:
 
 \begin{longtable}{|p{1cm}|p{14cm}|}
-\caption{my caption}
-\label{variability_impl_mech}
+\caption{Eventos que pueden llevar a cambios de estado}
+\label{Eventos que pueden llevar a cambios de estado}
 \endfirsthead
 \endhead
 \hline
@@ -1660,7 +1576,10 @@ Realizar una simulación de la gestión del proyecto software desarrollo. La ges
 
 \subsection{Definición del proyecto}
 
+
 \subsection{Estimación de tareas y recursos}
+
+
 
 \subsection{Presupuesto}
 
@@ -1676,12 +1595,12 @@ A continuación se detalla un presupuesto estimado para el coste total de este p
 		\begin{tabular}{|c|c|c|c|c|}
 			\cline{1-5}
 			Tarea &	Perfil & Horas & Euros/Hora  &  Total\\ \hline
-			Búsqueda de información para el estado del arte &	Jefe de Proyecto & 40 & 140 & 5600 \euro\\
-			Desarrollo aplicación Android &	Programador Junior & 20 & 70 & 1400 \euro\\
-			Desarrollo simulación NFC aleatorio & Programador Junior & 8 & 120 & 960 \euro\\
-			Pruebas & Ingeniero de Pruebas & 8 & 80 & 160 \euro\\
-			Supervisión del Proyecto & Jefe de Proyecto & 4 & 140 & 560 \euro\\ \hline\hline
-			\multicolumn{4}{|c|}{Total} & \multicolumn{1}{c|}{8680 \euro}\\ \hline
+			Búsqueda de información para el estado del arte &	Jefe de Proyecto & 40 & 80 & 3200 \euro\\
+			Desarrollo aplicación Android autenticación 2FA &	Programador & 32 & 50 & 1600 \euro\\
+			Desarrollo simulación NFC aleatorio & Programador & 20 & 50 & 1000 \euro\\
+			Pruebas & Ingeniero de Pruebas & 8 & 60 & 480 \euro\\
+			Supervisión del Proyecto & Jefe de Proyecto & 4 & 80 & 320 \euro\\ \hline\hline
+			\multicolumn{4}{|c|}{Total} & \multicolumn{1}{c|}{6600 \euro}\\ \hline
 		\end{tabular}
 	}
 \end{table}
@@ -1755,11 +1674,11 @@ Para la realización de este proyecto se han utilizado los siguientes equipos:
 		\begin{tabular}{|l|l|}
 			\cline{1-2}
 			Concepto &	Coste (Euros) \\ \hline
-			Costes de personal & 8680  \\
+			Costes de personal & 6600  \\
 			Costes de hardware  & 1470,25   \\ \hline
-			Subtotal  &  10150,25 \\
-			IVA (21\%) & 2131,55 \\ \hline \hline
-			Total Proyecto & \textbf{12281,80 \euro} \\ \hline
+			Subtotal  &  8070,25 \\
+			IVA (21\%) & 1694,75 \\ \hline \hline
+			Total Proyecto & \textbf{9765 \euro} \\ \hline
 	\end{tabular}}
 \end{table*}
 
@@ -1769,33 +1688,86 @@ Para la realización de este proyecto se han utilizado los siguientes equipos:
 
 \subsection{Identificación de tareas}
 
+Para la realización de este proyecto se deben realizar varias tareas. 
+\begin{itemize}
+\item Una revisión de la situación actual de las tecnologías que se van a utilizar (estado del arte). Servirá para conocer posibles vulnerabilidades sencillas de explotar y, además, varias de las posibles soluciones que se han implementado para ello.
+\item Conocer y probar algún método sencillo de explotación de de esa vulnerabilidad.
+\item Pensar y reflexionar sobre posibles soluciones y formas de reducir la vulnerabilidad.
+\item Implementar mediante código o aplicaciones la solución o la simulación de la solución.
+\end{itemize}
+
 \subsection{Estimación de tareas}
+
+Como ya se trata en el presupuesto, los tiempos de las tareas aproximadamente serían los siguientes:
+\begin{itemize}
+\item El estado del arte llevaría un tiempo aproximado de una semana laboral. Sería el jefe de proyecto el encargado de esta parte, ya que debería darle las pautas a los empleados de cuáles son los objetivos reales y los métodos para tratar las vulnerabilidades. 
+\item La implementación de los métodos llevaría cuatro días laborales en el caso de la app de Android y dos días y medio en la implementación NFC.
+\item Las pruebas llevarán un tiempo estimado de una jornada laboral.
+\end{itemize}
+
 
 \subsection{Planificación de tareas}
 
+El orden de las tareas es el indicado. En primer lugar, el estado del arte para, posteriormente, disponer de las ideas de planificación. Posteriormente se realizan las implementaciones del método de autenticación 2FA y la simulación de la tarjeta NFC variable. Las pruebas se repartirían en seis horas para la primera de ambas y dos para la segunda.
+
+El tiempo de realización total estaría en torno a las tres semanas contando posibles imprevistos. Al no poder dedicarse las semanas completas (tiempo de espera para continuar el proceso de desbloqueo del móvil, tiempo de espera para la llegada de algunos componentes para las pruebas...) el tiempo real ha estado repartido en 16 semanas.
 
 
 \section{Gestión de recursos}
 
+En este apartado se tratará parte de la amortización y del uso de los distintos componentes a lo largo del trabajo.
+
 \subsection{Especificación de recursos}
 
-\subsection{Asignación de recursos}
+El ordenador se ha utilizado en todos los procesos realizados durante el trabajo.
 
+\begin{itemize}
+\item Se ha instalado el CSMS base (\textit{Planet Charger} y los servidores websocket) sobre el que se han realizado los cambios.
+\item La base de datos del CSMS también se ha juntado en el mismo equipo. Para una buena práctica debería separarse en otra máquina, al igual que el CSMS. Sin embargo, al tratarse de un sistema de pruebas no se ha considerado necesario.
+\item El proceso de desbloqueo del móvil para poder copiar las etiquetas RFID se ha realizado desde el mismo equipo.
+\item El punto de recarga estaba también conectado al equipo mediante un cable de red.
+\item La implementación de ambas soluciones, una mediante un editor de textos y la otra mediante \textit{Android Studio} se han realizado en el mismo equipo.
+\end{itemize}
+
+Por otro lado el dispositivo móvil se ha utilizado para dos cosas.
+
+\begin{itemize}
+\item La copia de la etiqueta RFID y las pruebas de que se puede generar esta desde una app.
+\item El uso de la aplicación de 2FA para autorizar los inicios de recarga.
+\end{itemize}
+
+\subsection{Asignación de recursos}
+Suponiendo una amortización total de cinco años para un ordenador portátil o laptop, y de tres años para un smartphone, en un periodo de 16 semanas (4 meses) los precio de las mismas serían 23,63 \euro para el primero y de 13,69 \euro para el segundo. Por otro lado, el tiempo de amortización del punto de recarga no se conoce todavía, pero con la creciente y rápida mejora de estas teconologías se pueden asumir también unos 5 años, lo que hace un total de 65,56 \euro.
+
+En el caso del ordenador al utilizarse un mayor número de recursos que en lo normal al utilizar un servidor web, bases de datos y servidores WebSocket se puede suponer una amortización estimada de 30 \euro. Por otro lado, el smartphone tiene una situación similar, por lo que se supone una amortización de 20 \euro. Sin embargo, el punto de recarga solo se ha utilizado para momentos puntuales, por lo que se considera que la amortización se mantiene en 65,56 \euro
 
 
 
 \section{Gestión de riesgos}
 
+Todos estos procesos conllevan siempre asociado una posibilidad de que alguno de los equipos falle o se pueda perder algún tipo de información. Esto se trata en este apartado.
+
 \subsection{Identificación de riesgos}
+
+Los riesgos asociados a los tres equipos principales varían entre sí. 
+
+En el caso del punto de recarga, el riesgo es mínimo, dado que no se realiza ninguna modificación ni de hardware ni de software en el mismo.
+
+Para el ordenador, el cuál tiene los códigos necesarios para implementar la soluciones el riesgo es un fallo en el mismo que haría desaparecer todo lo realizado hasta ahora, además del CSMS y de la base de datos. 
+
+Finalmente en el caso del smartphone el riesgo principal sería cometer un error durante el proceso de desbloqueo y \textit{root} que dejaría inservible el dispositivo.
 
 \subsection{Análisis de riesgos}
 
+En el caso del ordenador un error en cualquier componente que no sea el disco duro sería salvable, dado que se pueden extraer con cierta facilidad los datos. Sin embargo, si el error está en el disco duro se perderá todo el trabajo. Por ello estos códigos referidos a las implementaciones se han ido subiendo a un repositorio de \textit{GitHub}.
+
+En el caso del dispositivo móvil incluso en algunos momentos del proceso de \textit{root} se ofrece la opción de realizar copias de seguridad, algo que efectivamente se ha realizado.
 
 
 \chapter{Solución}
 \label{Solución}
 
-Explicación de la solución llevada a cabo. Si se trata de un desarrollo se incidirá en el proceso de desarrollo; en otro caso, se justificará y describirá la solución propuesta. El capítulo tendrá una extensión aproximada de cuarenta páginas y, en ningún caso, excederá las cincuenta.
+En este apartado se explicará, de forma clara, tanto el sistema del que se dispone como de las soluciones que se han implementado para mejorar los aspectos de seguridad tratados en este trabajo. 
 
 \section{Descripción de la solución}
 
@@ -1988,28 +1960,67 @@ Como se ve, todo lo que hace este sistema, al igual que la app de Android es int
 
 \subsection{Implementación}
 
+En este apartado se tratan los dos sistemas programados en este apartado, comparando los procesos actuales con los resultantes tras esteos cambios. El código de los mismos se podrá encontrar en los anexos de este trabajo.
+
 Para la realización de la autenticación 2FA se han realizado los siguientes pasos:
 \begin{itemize}
-\item Lo primero es la creación una tabla en particular en la base de datos con los campos XXX,XXX,XXX y XXX.
+\item Lo primero es la creación una tabla en particular en la base de datos con los campos:
+\begin{itemize}
+\item \textit{id\_authorization} (identificador único de la solicitud de inicio de recarga)
+\item \textit{id\_plaza} (identificador único de la plaza en la que se pretende iniciar recarga)
+\item \textit{idTag} (etiqueta de identificación con la que se pretende iniciar recarga)
+\item \textit{codigo} (código que se envía por email al usuario al que está asociado la tarjeta y que este tiene que introducir en la app para confirmar el inicio de recarga)
+\item \textit{fecha} (fecha de solicitud del inicio de recarga)
+\item \textit{validez} (tiempo en segundos de validez de la solicitud de inicio de recarga)
+\item \textit{id\_individuo} (identificador único del individuo que pretende iniciar recarga)
+\item \textit{autorizada} (indica si se ha confirmado la solicitud de inicio o no)
+\item \textit{idTagCharge} (etiqueta de identificación con la que se inicia la recarga que es distinta a la de la tarjeta para evitar la posibilidad de que con la misma etiqueta que se inicia carga se pueda detener)
+\end{itemize}
 \item Posteriormente, tanto en la función que interpreta los paquetes \textit{Authorize} como en el \textit{RemoteStopTransaction} añadir una función que introduzca una entrada en la tabla y que envíe un correo con un código PIN para realizar la autorización 2FA.
-AÑADIR CÓDIGO
-\item La app, programada en Windows mediante \textit{Android Studio}, realiza cada X tiempo una consulta asíncrona a la base de datos con un identificador de usuario para ver cuáles son las recargas pendientes de la doble autorización.
-AÑADIR CÓDIGO.
+\item La app, programada en Windows mediante \textit{Android Studio}, realiza constantemente una consulta asíncrona a la base de datos con un identificador de usuario para ver cuáles son las recargas pendientes de la doble autorización.
 \item La app envía el código al servicio web, que comprueba si es correcto y contesta a la app. Si es correcto, se inicia la recarga. En caso contrario llegará un aviso de que es incorrecto.
 \item Para detener la recarga simplemente se debe realizar un paso de tarjeta o hacerlo desde la web.
-MIRAR DIAGRAMAS DE FLUJO
 \end{itemize}
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=1\textwidth]{figuras/diagrama2faauthorize.png}
+  \caption[Diagrama de flujo del funcionamiento del protocolo OCPP 1.6 (izquierda) y añadiendo la autenticación 2FA (derecha) iniciando el proceso de recarga con una tarjeta]{Diagrama de flujo del funcionamiento del protocolo OCPP 1.6 (izquierda) y añadiendo la autenticación 2FA (derecha) iniciando el proceso de recarga con una tarjeta\\
+  }
+  \label{fig:diagrama2fa1}
+\end{figure}
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=1\textwidth]{figuras/diagrama2farst.png}
+  \caption[Diagrama de flujo del funcionamiento del protocolo OCPP 1.6 (izquierda) y añadiendo la autenticación 2FA (derecha) iniciando el proceso de recarga desde el CSMS]{Diagrama de flujo del funcionamiento del protocolo OCPP 1.6 (izquierda) y añadiendo la autenticación 2FA (derecha) iniciando el proceso de recarga desde el CSMS\\
+  }
+  \label{fig:diagrama2fa2}
+\end{figure}
+
 
 Para la simulación de la tarjeta NFC aleatoria:
 \begin{itemize}
-\item Se crea una función, la cual genera, a partir de una semilla, un número semialeatorio multiplicándola con la fecha y hora actuales.
-AÑADIR CÓDIGO.
-\item Para detener la recarga se hace la misma generación de la semilla en el \textit{RemoteStopTransaction}, pero en este caso se añade la función a la comprobación.
-AÑADIR CÓDIGO
+\item Se crea una función, la cual genera, a partir de una semilla, un número semialeatorio multiplicándola con la fecha y hora actuales en segundos.
+\begin{itemize}
+\item La semila hexadecimal sobre la que se va a calcular la etiqueta se pasa a decimal (para las simulaciones posteriores se recoge la etiqueta de una tarjeta RFID).
+\item Se toma toda la fecha actual en segundos.
+\item Los dos valores anteriores se multiplican y se convierten a hexadecimal.
+\item Finalmente se recogen los catorce caracteres más significativos y, en caso de que haya menos de catorce, se añaden a la derecha tantos ceros como se necesiten hasta cubrir los catorce.
 \end{itemize}
+\item En caso de que se detenga con la tarjeta se hace la misma generación a partir de la semilla en el \textit{Authorize}, pero en este caso se añade la función a la comprobación. Al no poder pararse con una tarjeta distinta a la que inició recarga (eso sólo pasa cuando se produce una reserva antes de iniciar la recarga) se envía un \textit{RemoteStopTransaction} siempre y cuando la tarjeta esté autorizada. En caso de que sea un \textit{RemoteStopTransaction} desde la web no hay nada que modificar ya que no necesita de la etiqueta para detener la recarga.
+\end{itemize}
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=1\textwidth]{figuras/diagramaNFCvariable.png}
+  \caption[Diagrama de flujo del funcionamiento del protocolo OCPP 1.6 (izquierda) y añadiendo una etiqueta variable (derecha) finalizando el proceso de recarga con una tarjeta]{Diagrama de flujo del funcionamiento del protocolo OCPP 1.6 (izquierda) y añadiendo una etiqueta variable (derecha) finalizando el proceso de recarga con una tarjeta\\
+  }
+  \label{fig:diagramanfc}
+\end{figure}
 
+Y, finalmente, el resultado definitivo se produce aplicando ambos criterios de forma simultánea. Dado que afectan a partes distintas del proceso no se modifican el uno al otro.
 
-Hablar de las HERRAMIENTAS utilizadas durante el desarrollo, la ORGANIZACIÓN del proyecto y aquellas peculiaridades de la forma de implementación.
+Sin embargo, para la simulación en los \textit{Authorize} se hace una simulación modificando la etiqueta de una tarjeta no variable. Con ella se puede simular el comportamiento de una tarjeta NFC en los procesos que inicia el EVSE. Para los procesos que inicia el servicio web del CSMS esta simulación sería la implementación en código definitiva.
 
 
 
@@ -2022,6 +2033,7 @@ Hablar de las HERRAMIENTAS utilizadas durante el desarrollo, la ORGANIZACIÓN de
 En este apartado se tratará, en primer lugar, la prueba de concepto, mediante la cuál se prueba a realizar el ataque. Tras ello, se realizan pruebas de los instrumentos que ayudan a mejorar la seguridad de la autorización de recarga.
 
 \subsection{Prueba de concepto}
+\label{Prueba de concepto}
 
 La prueba de concepto o PoC (Proof of Concept) es la implementación de un método o de una idea que trata de verificar que el concepto o teoría en cuestión es susceptible de ser explotada de una forma realista.
 
@@ -2215,37 +2227,164 @@ Un caso similar a este se puede ver en el siguiente ejemplo de la página de \te
 \end{figure}
 
 
+\subsection{Pruebas de posibles soluciones}
+
+\subsubsection{Autenticación 2FA}
+
+En esta prueba se simularán un inicio tanto con un paso de tarjeta en el EVSE como una petición desde el servicio web.
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=0.5\textwidth]{figuras/prueba1.png}
+  \caption[Pantalla del cargador en estado \textit{Libre}]{Pantalla del cargador en estado Libre\\
+  }
+  \label{fig:prueba1}
+\end{figure}
+
+En el primero de los casos el cargador sí que cambia de estado, con una pantalla de espera.
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=0.5\textwidth]{figuras/prueba2.png}
+  \caption[Pantalla del cargador tras enviar un \textit{Authorize}]{Pantalla del cargador tras enviar un Authorize\\
+  }
+  \label{fig:prueba2}
+\end{figure}
+
+En el segundo, no hay ninguna modificación. A partir de aquí, el proceso es similar, llegando inmediatamente después de enviar la orden un correo electrónico con el código a introducir en la app.
+
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=0.5\textwidth]{figuras/prueba3.png}
+  \caption[Ejemplo de correo electrónico que llega al usuario al solicitar un inicio de recarga]{Ejemplo de correo electrónico que llega al usuario al solicitar un inicio de recarga\\
+  }
+  \label{fig:prueba3}
+\end{figure}
+
+Tras introducirlo, se envía una orden de recarga al cargador y este inicia la recarga.
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=0.5\textwidth]{figuras/prueba4.png}
+  \caption[Pantalla del EVSE mientras se realiza una recarga]{Pantalla del EVSE mientras se realiza una recarga\\
+  }
+  \label{fig:prueba4}
+\end{figure}
+
+La comprobación más importante, que es el que el cargador vuelva a su estado original en caso de un paso de tarjeta si no se realiza la segunda autorización, funciona correctamente. En caso de que un usuario robase la etiqueta de tarjeta no dispondría de acceso al usuario en la plataforma de la persona que es la legítima propietaria de la misma.
+
+\subsubsection{Etiqueta NFC variable}
+
+En este caso lo interesante a probar es el paso de tarjeta mientras se realiza una recarga.
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=0.5\textwidth]{figuras/prueba5.png}
+  \caption[Pantalla del EVSE al pasar una tarjeta mientras se realiza una recarga]{Pantalla del EVSE al pasar una tarjeta mientras se realiza una recarga\\
+  }
+  \label{fig:prueba5}
+\end{figure}
+
+Si se pasa la misma tarjeta que inició la recarga esta no se debería detener dado que además de esta tarjeta variable se ha creado una \textit{ficticia} en el inicio de recarga (se debe recordar que el propio cargador detiene una recarga iniciada con la misma etiqueta que se pase por el cargador al estar transcurriendo una recarga). Esto protege el sistema del robo de la etiqueta de la tarjeta al inicio de la sesión e impide que un usuario no autorizado pueda detener de algún modo la recarga del usuario que está cargando en ese momento. 
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=0.5\textwidth]{figuras/prueba6.png}
+  \caption[Pantalla del EVSE al pasar una tarjeta mientras se realiza una recarga]{Pantalla del EVSE al pasar una tarjeta mientras se realiza una recarga\\
+  }
+  \label{fig:prueba6}
+\end{figure}
+
+
+\subsubsection{Combinación de autenticación 2FA y etiqueta NFC variable}
+
+Como se dijo anteriormente, uno de los cambios afecta al inicio del proceso y el otro influye en la segunda parte. Por ello, combinándolas y realizando las mismas pruebas se obtiene
+
 
 
 \chapter{Evaluación}
 \label{Evaluación}
 
+El objetivo de este trabajo era aumentar la seguridad en uno de los puntos del proceso de la recarga del coche eléctrico más vulnerables: la autorización del usuario. Al utilizarse un sistema con una simple etiqueta de identificación RFID, esta es sencilla de robar (como se vio en \ref{Prueba de concepto}). Esto propicia el ataque de suplantación de identidad, en la que otro usuario se haría pasar por el usuario autorizado para recargar sin su consentimiento.
 
-Demostración de la validez de la solución elaborada. La solución se considera válida si resuelve los problemas expuestos en el planteamiento del problema y satisface los objetivos definidos en la introducción. Según el caso la forma de evaluación se basará en la ejecución de casos de prueba o en la realización de cuestionarios. Extensión entre quince y veinte páginas.
+Para ello se han propuesto las dos soluciones tratadas. La primera, autenticación 2FA, está referida al software, por lo que se podría añadir con los sistemas actuales, dado que solo añadiría un punto intermedio en el proceso de inicio de recarga. Para la segunda se necesitaría una mayor infraestructura para comprender las tarjetas variables,  que estas de algún modo dispusieran de un temporizador o algún tipo de contador para reproducir el sistema y que el punto de recarga fuese capaz de comprender de algún modo esta información.
 
 \section{Proceso de evaluación}
 
 \subsection{Forma de evaluación}
 
-Explicar la forma en la cual se ha evaluado la aplicación
+En ambos casos se han tratado de realizar varias suplantaciones de identidad, utilizando la etiqueta de la tarjeta con permiso en ambas. Con el funcionamiento actual del protocolo OCPP en ambos casos debería producirse esta suplantación, iniciando y deteniendo recarga.
+
+Para poder determinar si la solución es correcta se debe hacer el mismo proceso de robo de tarjeta y ver que en uno de los casos no inicia la recarga y en el otro no se detiene. Viendo esto y no observando ninguna pérdida de funcionalidad se deberían dar por buenas ambas soluciones.
 
 \subsection{Casos de prueba}
 
-Casos de pruebas realizados
+\subsubsection{Autenticación 2FA}
+Al añadir ese punto intermedio del código de confirmación, por mucho que se disponga de los datos de etiqueta del usuario autorizado si no se dispone de los datos de acceso a la plataforma de la persona autorizada no se podrá iniciar la recarga.
+
+\subsubsection{NFC variable}
+
+En este caso hay que tratar de evitar que, aún robando el usuario la etiqueta con la que se inicia la recarga, esta no se pueda detener. Por ello, en primer lugar, aunque se pase una tarjeta, la etiqueta asociada a la recarga tiene que ser un número aleatorio. Esto es debido a que el cargador de forma independiente puede terminar la recarga con la etiqueta con la que la inició.
+
+Podría no ser necesario el uso de una tarjeta variable. Sin embargo, si no se introduce, en el momento de comprobar los permisos en el CSMS también la detendría (no dependería de una semilla y un contador, fecha...).
+
+Por ello, las pruebas realizadas fueron tratar de detener la recarga con la misma etiqueta con la que se inició, observando que al utilizarse una tercera etiqueta variable la recarga no se detiene. Si faltasen o la etiqueta aleatoria asociada a la recarga o la tarjeta NFC semialeatoria se podría utilizar perfectamente la misma etiqueta.
 
 \section{Análisis de resultados}
 
+Con todo ello, los resultados obtenidos pueden ser considerados como satisfactorios dado que, con estas dos nuevas características, sería necesario algo más que robar la etiqueta con permiso para poder cometer una suplantación de identidad:
 
+\begin{itemize}
+\item En el primero de los casos (2FA) el usuario atacante debería conocer el código de la autorización a la que se asociará la recarga y los datos de acceso a la plataforma del usuario con permisos para poder introducir el mismo.
+\item En el segundo de ellos (NFC variable) habría que conocer la semilla y los cálculos y procedimientos que se realizan para calcular las posibles etiquetas que se generarían a partir de ellas.
+\end{itemize}
 
-\mychapter{1}{Conclusión}
+Todo ello aporta mucha más seguridad a esta parte del proceso de recarga.
 
-Expresión personal del conjunto de conclusiones que, a juicio del autor, se derivan de los resultados expuestos en el trabajo.Deberá tener una extensión entre cinco y diez páginas.
+\mychapter{1}{Conclusiones}
+
+La evolución de la ciberseguridad de este tipo de sistemas es constante y muy elevada, sin embargo todavía se ven muchos aspectos mejorables.
+En tecnologías como RFID y NFC la seguridad ya está en un punto bastante avanzado a pesar de que, como se puede ver en el estado el arte, esta es muy mejorable y lógicamente está en constante mejora.
+
+Por otra parte, en los sistemas de recarga del coche eléctrico todavía se necesita realizar un gran desarrollo en la seguridad. Sobre todo es necesario porque se trata de un campo que está utilizándose y extendiéndose prácticamente con un crecimiento exponencial por lo que las amenazas son cada vez mayores. Además, como se puede ver en este trabajo algunas de las vulnerabilidades son fácilmente explotables, como la suplantación de identidad vista. Al tratarse de una tecnología en la que entra en juego también sistemas de gestión, bases de datos, páginas web..., las amenazas se multiplican por cada utilidad añadida a este tipo de redes. El protocolo visto, OCPP, comienza en sus versiones más recientes a darle más importancia a la seguridad, añadiendo un mayor control a este tipo de sistemas.
+
 
 \subsection*{Aportaciones realizadas}
 
+Este trabajo cuenta con varios puntos clave. 
+
+\begin{itemize}
+\item En primer lugar se ha hecho una revisión de todos los trabajos realizados hasta la fecha en torno a la seguridad de las comunicaciones basadas en RFID y NFC, y por otro lado a la situación actual, tanto de seguridad como de situación de las tecnologías, del proceso de recarga del coche eléctrico.
+
+Tras ello y centrando la mirada en la vulnerabilidad más fácil de explotar (suplantación de identidad robando la tarjeta) se han aportado dos diseños
+
+\begin{itemize}
+\item Referido a una modificación de software del CSMS, se ha añadido una autenticación de doble factor (2FA) basada en un generador de peticiones de inicio de recarga asociadas a códigos y un formulario para introducir estos códigos y autorizar estos inicios de recarga.
+
+\item En torno a una modificación del software del CSMS, y simulando una modificación de hardware, que sería externa al punto de recarga (una tarjeta NFC con una etiqueta variable con un contador, la fecha actual...) poder autorizar los inicios y los fines de recarga con una etiqueta distinta. Esto emula de algún modo los sistemas de seguridad de apertura mediante control remoto de vehículos en la propia automoción.
+
+\end{itemize}
+
+
+\end{itemize}
 
 
 \subsection*{Trabajos futuros}
+
+En el planteamiento general inicial del trabajo se propusieron además dos casos posibles de estudio.
+
+\begin{itemize}
+\item Un lector biométrico para poder autorizar al usuario desde el punto de recarga. Para lo que se busca en este proyecto, que es no realizar modificaciones de hardware o software sobre el punto de recarga, sería imposible de realizar. Sin embargo, es una línea interesante a tratar por parte de los fabricantes de cargadores destinados al coche eléctrico.
+
+\item Una idea más sería la de añadir un teclado o una pantalla táctil para introducir un código de usuario para autorizar la recarga. Sería un doble factor (2FA) igual que el que se ha diseñado en este proyecto pero, al igual que en el caso anterior, requeriría la modificación del hardware del punto de recarga.
+
+\item Se estudiaron otras posibilidades que no afectasen al hardware pero que, seguramente, no solucionarían totalmente el problema actual del robo de tarjetas. Por ejemplo, el uso de una secuencia de dos etiquetas. Esto es más cómodo para el usuario pero se podría realizar igual el robo de etiquetas aunque este sería más complicado al necesitarse el robo de las dos.
+
+\item Otras opciones pero, en este caso, también tratando el hardware del vehículo, sería la opción de una comunicación del vehículo con el punto a través de la manguera o a distancia con un código RFID o NFC.
+
+\end{itemize}
+
 
 
 
