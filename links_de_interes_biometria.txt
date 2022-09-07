@@ -1,4 +1,0 @@
-https://www.phpcentral.com/pregunta/30/como-implementar-lector-de-huella-que-funcione-con-html-php-y-mysql
-https://platzi.com/comunidad/hola-quisiera-saber-si-puedo-incluir-autentificacion-de-huella-en-laravel/
-https://jomutech.com/webbrowserbiometricfingerprintauthenticationphpsoftwarecode/
-https://jomutech.com/how-can-i-add-biometric-verification-in-php/
