@@ -2246,7 +2246,7 @@ Para poder determinar si la solución es correcta se debe hacer el mismo proceso
 
 \subsection{Casos de prueba}
 
-En este apartado se diseminan tanto la prueba de concepto como las soluciones implementadas para evitar que mediante esta prueba se consiga robar una tarjeta NFC.
+En este apartado se diseminan tanto la prueba de concepto como las soluciones implementadas para evitar que mediante esta prueba se consiga robar una tarjeta NFC. Además, antes de ello, hay que realizar una configuración previa del punto de recarga mediante la una aplicación del fabricante destinada para ello. Esta configuración seguiría permitiendo el robo de tarjeta pero elimina bastantes opciones de ello.
 
 \subsubsection{Prueba de concepto}
 \label{Prueba de concepto}
@@ -2444,10 +2444,48 @@ Un caso similar a este se puede ver en el siguiente ejemplo de la página de \te
 
 
 
+\subsubsection{Configuración previa a las soluciones}
+Mediante un software del fabricante (\textit{Ace Service Installer}) que se puede comunicar con el punto de recarga se realiza una configuración previa en base a lo tratado antes en \ref{OCPP}:
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=1\textwidth]{figuras/conf1.png}
+  \caption[Pantalla de configuración de autorización general del punto de recarga]{Pantalla de configuración de autorización general del punto de recarga\\
+  }
+  \label{fig:conf1}
+\end{figure}
+
+En primer lugar se desactivan las \textit{White list} y la \textit{Local list} para evitar que estas puedan generar algún tipo de caché que guarde las etiquetas. Se evita también que las recargas se paren con un número de etiqueta erróneo.
+
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=1\textwidth]{figuras/conf2.png}
+  \caption[Pantalla de configuración de autorización según conexión del punto de recarfa]{Pantalla de configuración de autorización según conexión del punto de recarga\\
+}
+  \label{fig:conf2}
+\end{figure}
+
+Se configuran las actuaciones online y offline. En offline (si el punto tiene algún problema de conexión) no se autoriza nada y en modo conectado siempre tiene que esperar por la respuesta del CSMS.
+
+
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=1\textwidth]{figuras/conf3.png}
+  \caption[Pantalla de configuración de autorización con clave maestra del punto de recarga]{Pantalla de configuración de autorización con clave maestra  del punto de recarga\\
+}
+  \label{fig:conf3}
+\end{figure}
+
+Se desactiva asimismo la posibilidad de funcionar con una clave maestra.
+
+Con todo ello configurado ya se podrían realizar de forma correcta las pruebas de las soluciones propuestas en este proyecto.
+
+
 
 \subsubsection{Posibles soluciones}
 
-Como se trató anteriormente existen tres soluciones cuyas pruebas se diseminan en este apartado. Las dos primeras basadas una en una autenticación 2FA y en NFC con etiqueta variable respectivamente y la tercera de ellas es la combinación de ambas.
+Como se trató anteriormente existen tres soluciones cuyas pruebas se diseminan en este apartado. Las dos primeras basadas una en una autenticación 2FA y en NFC con etiqueta variable respectivamente y la tercera de ellas es la combinación de ambas. 
 
 \subsubsubsection{Autenticación 2FA}
 
@@ -2675,9 +2713,9 @@ mercados y de la opinión pública, Boletín Oficial del Estado, 6 de marzo de 2
 Para gestionar el código creado se ha utilizado GitHub como servicio de control de versiones. Se crea una cuenta con el usuario de correo de la Universidad de León y, con ello, se ha creado un repositorio. En él se encuentran:
 
 \begin{itemize}
-\item Carpeta de proyecto de aplicación de Android: \url{https://github.com/mlopes12/TFM/tree/main/App}
-\item Carpeta con el código y su explicación en un fichero \textit{readme}: \url{https://github.com/mlopes12/TFM/tree/main/Web}
-\item Carpeta con la memoria: \url{https://github.com/mlopes12/TFM/tree/main/TFM}
+\item Carpeta de proyecto de aplicación de Android y webservice con el código explicado y un fichero aclaratorio : \url{https://github.com/mlopes12/TFM/tree/main/App}
+\item Carpeta con el código explicado y un fichero aclaratorio \textit{readme}: \url{https://github.com/mlopes12/TFM/tree/main/Web}
+\item Carpeta con la memoria y su explicación en un fichero \textit{readme}: \url{https://github.com/mlopes12/TFM/tree/main/TFM}
 \item Carpeta con otro material (vídeos): \url{https://github.com/mlopes12/TFM/tree/main/Otros}
 \end{itemize}
 
