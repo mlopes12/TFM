@@ -1,0 +1,32 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#BB0511</item>
+        <item name="colorPrimaryDark">#89040D</item>
+        <item name="colorAccent">#990410</item>
+        <item name="actionBarStyle">@style/ActionBarStyle</item>
+        <item name="colorControlNormal">#BB0511</item>
+    </style>
+
+    <style name="spinner_style" parent="Base.Widget.AppCompat.Spinner">
+        <item name="android:textColor">#BB0511</item>
+    </style>
+
+
+    <style name="ActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="titleTextStyle">@style/ActionBarTitleTextStyle</item>
+        <item name="android:colorBackground">#BB0511</item>
+    </style>
+
+    <style name="ActionBarTitleTextStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="actionOverflowButtonStyle" parent="@style/Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">#FFFFFF</item>
+    </style>
+
+
+</resources>
