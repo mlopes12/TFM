@@ -2,7 +2,7 @@
 
 En este repositorio se encuentran los códigos utilizados para la implantación de las soluciones.
 
-Se divide en tres carpetas: app, web y vídeos
+Se divide en dos carpetas: app y web
 
 ## app
 
@@ -23,17 +23,12 @@ La app está en la carpeta \TFM:
 El webservice en \webservice
 
 ·En \webservice\app.php se encuentran las funciones que interactúan con la app y el resto del CSMS
-
-·En \webservice\data\sql_app.php se encuentran las funciones mediante las que app.php y, por tanto, la app y el resto del CSMS, interactúa con la BD.
+	·En \webservice\data\sql_app.php se encuentran las funciones mediante las que app.php y, por tanto, la app y el resto del CSMS, interactúa con la BD.
 	
 
 ## web
 
 Listado de nuevos códigos y de cambios en los mismos en el servidor que hace las veces de CSMS.
-
-## otros
-
-Vídeos demostrativos.
 
 ## Licencia
 [MIT](https://www.gnu.org/licenses/gpl-3.0.html)
