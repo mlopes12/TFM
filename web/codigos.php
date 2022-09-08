@@ -371,6 +371,19 @@
 		$status_charging = false;
 		while ($row = $queryPDO->fetch())
 			$status_charging = ($row[0] > 0)?true:false;
+                    
+	        if(!$status_charging){
+			$query = " SELECT count(id) from cargas
+				where estacion='$mac' and fin is null and inicio > DATE_SUB(NOW(),INTERVAL 5 MINUTE)"; 
+			echo $query;
+			$this->connectPDO();//Conecta
+			$queryPDO=$this->link->prepare($query);//Prepara la consulta
+			$queryPDO->execute(array());//Ejecuta la consulta y autoalmacena el queryResult
+			$status_charging = false;
+			while ($row = $queryPDO->fetch())
+				$status_charging = ($row[0] > 0)?true:false;
+	        }
+		
 		return $status_charging;
 	}
 	
@@ -484,7 +497,7 @@
 		$this->connectPDO();
 		$queryPDO=$this->link->prepare($query);
 		$queryPDO->execute(array());
-		}
+	}
 	
         
 	
