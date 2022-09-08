@@ -30,5 +30,23 @@ El webservice en \webservice
 
 Listado de nuevos códigos y de cambios en los mismos en el servidor que hace las veces de CSMS.
 
+## otros
+
+Vídeos de pruebas de app y del sistema.
+
+·En funcionamiento_app.mp4 se captura el funcionamiento de la app de autorización de doble factor (2FA)
+
+·En prueba1.mp4 se inicia y finaliza la recarga desde la web.
+
+·En prueba2.mp4 se inicia y finaliza la recarga con pasos de tarjeta.
+
+·En prueba3.mp4 se inicia desde la web y finaliza pasando la tarjeta.
+
+·En prueba3.mp4 se inicia pasando la tarjeta y finaliza desde la web.
+
+
+Los tiempos de espera son los producidos porque en caso de realizarlo todo desde la tarjeta tarda más en enviar los StartTransaction y los StopTransaction hacia el CSMS.
+
+
 ## Licencia
 [MIT](https://github.com/mlopes12/TFM//blob/main/LICENSE.md)
